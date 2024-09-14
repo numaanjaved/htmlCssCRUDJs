@@ -9,6 +9,8 @@ html {
 }
 :root {
   --primary-font-color: #212121;
+  --sky-blue: #90cfcf;
+  --light-grey: #eaeaea;
 }
 .header {
   width: 100%;
@@ -16,7 +18,7 @@ html {
   display: flex;
   justify-content: start;
   align-items: center;
-  background-color: #90cfcf;
+  background-color: var(--sky-blue);
 
   > .navbar {
     display: flex;
@@ -24,7 +26,6 @@ html {
     justify-content: start;
     align-items: center;
     > .logo_container {
-      /* background-color: #871e1e; */
       margin-left: 3rem;
       height: 8rem;
       width: 20rem;
@@ -44,5 +45,20 @@ html {
         line-height: 2.4rem;
       }
     }
+  }
+}
+
+.footer {
+  height: 3rem;
+  width: 100%;
+  background-color: var(--light-grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > .copy_right {
+    font-family: "poppins", sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--primary-font-color);
   }
 }
