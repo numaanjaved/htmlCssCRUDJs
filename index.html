@@ -43,13 +43,23 @@
       <section class="data_input_section">
         <form class="data_form">
           <div class="form_profile_picture_container">
-            <label for="imageUpload">Upload Profile Picture</label>
-            <input
-              type="file"
-              id="imageUpload"
-              name="image"
-              accept="image/png, image/jpeg, image/jpg"
-            />
+            <div class="image_input">
+              <label class="choose_img_label" for="imageUpload"
+                >Upload Profile Picture</label
+              >
+              <input
+                type="file"
+                id="imageUpload"
+                name="image"
+                accept="image/png, image/jpeg, image/jpg"
+              />
+            </div>
+            <div class="profile_picture_display_container">
+              <img
+                src="./Assets/images/profile_picture.jpg"
+                alt="profile_picture"
+              />
+            </div>
           </div>
           <div class="form_input_content">
             <div class="form_text_content_container">

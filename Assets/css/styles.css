@@ -49,6 +49,86 @@ html {
   }
 }
 
+.data_input_section {
+  padding: 4rem 12rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  > .data_form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    > .form_profile_picture_container {
+      background-color: #d0e8e8;
+      border-radius: 20px;
+      -webkit-border-radius: 20px;
+      -moz-border-radius: 20px;
+      -ms-border-radius: 20px;
+      -o-border-radius: 20px;
+      width: 35rem;
+      min-width: 35rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      /*border: 2px solid #9b2424;
+      */
+      height: 60rem;
+
+      > .image_input {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        > input[type="file"] {
+          display: none;
+        }
+        > .choose_img_label {
+          cursor: pointer;
+          background-color: skyblue;
+          height: 4rem;
+          width: 70%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 200px;
+          -webkit-border-radius: 200px;
+          -moz-border-radius: 200px;
+          -ms-border-radius: 200px;
+          -o-border-radius: 200px;
+          color: var(--primary-font-color);
+          font-family: "Lato", sans-serif;
+          font-size: 2rem;
+          font-weight: 500;
+          box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        }
+      }
+      > .profile_picture_display_container {
+        width: 100%;
+        height: 45rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > img {
+          border: 5px solid var(--sky-blue);
+          height: 100%;
+          border-radius: 2000px;
+          -webkit-border-radius: 2000px;
+          -moz-border-radius: 2000px;
+          -ms-border-radius: 2000px;
+          -o-border-radius: 2000px;
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+            rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        }
+      }
+    }
+  }
+}
+
 .footer {
   height: 3rem;
   width: 100%;
