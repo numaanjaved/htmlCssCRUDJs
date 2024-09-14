@@ -188,6 +188,7 @@ html {
             outline-color: var(--sky-blue);
             border: 2px solid var(--sky-blue);
             font-family: "poppins", sans-serif;
+            font-size: 1.4rem;
             padding: 0.5rem 1rem;
             color: var(--primary-font-color);
             margin-bottom: 1.3rem;
@@ -228,7 +229,6 @@ html {
       }
       > .btns_container {
         width: 100%;
-
         column-gap: 4rem;
         display: flex;
         flex-direction: row;
