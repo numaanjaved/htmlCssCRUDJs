@@ -7,3 +7,42 @@
 html {
   font-size: 62.5%;
 }
+:root {
+  --primary-font-color: #212121;
+}
+.header {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: #90cfcf;
+
+  > .navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    > .logo_container {
+      /* background-color: #871e1e; */
+      margin-left: 3rem;
+      height: 8rem;
+      width: 20rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: center;
+      cursor: pointer;
+      > img {
+        height: 7rem;
+        aspect-ratio: 1;
+      }
+      > .logo_name {
+        font-family: "Bruno Ace SC", sans-serif;
+        font-size: 2.3rem;
+        margin-left: 0.7rem;
+        line-height: 2.4rem;
+      }
+    }
+  }
+}
