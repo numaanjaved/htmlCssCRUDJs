@@ -51,6 +51,8 @@ html {
   }
 }
 
+/*<<<<<<<<------------- Input section -------------->>>>>>>>>>*/
+
 .data_input_section {
   padding: 4rem 12rem;
   width: 100%;
@@ -276,6 +278,58 @@ html {
     }
   }
 }
+.user_data_section {
+  padding: 4rem 12rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > .user_data_main_container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    > .user_data_section_heading {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--sky-blue);
+      font-family: "poppins", sans-serif;
+      font-size: 4rem;
+      color: var(--primary-font-color);
+    }
+    > .user_data_display_container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--primary-font-color);
+      > .data_headings_container {
+        background-color: var(--light-sky);
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        > .data_heading {
+          color: var(--primary-font-color);
+          font-family: "poppins", sans-serif;
+          font-size: 1.5rem;
+          /* background-color: #a01919; */
+          width: 12.5%;
+          text-align: center;
+          padding: 1rem 0;
+        }
+        > .data_heading:not(.data_heading:last-child) {
+          border-right: 2px solid var(--primary-font-color);
+        }
+      }
+    }
+  }
+}
+/*<<<<<<<<------------- Display section -------------->>>>>>>>>>*/
 
 .footer {
   height: 3rem;
