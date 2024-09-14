@@ -175,7 +175,7 @@ html {
           display: flex;
           flex-direction: column;
           width: 60%;
-          height: 35rem;
+          height: 36rem;
           > .text_form_labels {
             font-family: "poppins", sans-serif;
             font-weight: 400;
@@ -190,7 +190,7 @@ html {
             font-family: "poppins", sans-serif;
             padding: 0.5rem 1rem;
             color: var(--primary-font-color);
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.3rem;
             border-radius: 4px;
             -webkit-border-radius: 4px;
             -moz-border-radius: 4px;
@@ -199,10 +199,10 @@ html {
           }
         }
         > .type_textArea_container {
-          height: 35rem;
+          height: 36rem;
           width: calc(100% - 60%);
           > .user_bio_input {
-            height: 29rem;
+            height: 32rem;
             width: 100%;
             padding: 1rem 2rem;
             font-family: "poppins", sans-serif;
