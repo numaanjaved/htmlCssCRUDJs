@@ -22,6 +22,7 @@ imgUploadBtn.addEventListener("mouseleave", () => {
 let userFirstName = document.getElementById("user_Fname");
 let userLastName = document.getElementById("user_Lname");
 let userEmail = document.getElementById("user_email");
+let userContactNumber = document.getElementById("user_contact");
 let form = document.querySelector(".data_form");
 let FnameErr = document.querySelector(".Fname_error");
 let LnameErr = document.querySelector(".Lname_error");
@@ -79,6 +80,21 @@ form.addEventListener("submit", (e) => {
       emailErr.innerHTML = "";
       emailErr.style.display = "none";
       userEmail.value = "";
+    }
+  }
+  //   Contact Number Validation
+  if (userContactNumber.value == "" || userContactNumber == null) {
+    contactErr.innerHTML = `Please fill the Contact Number field`;
+    contactErr.style.display = "block";
+  } else {
+    if (!userContactNumber.value.match(/^\+[0-9]{2,}[0-9]{7,}$/)) {
+      contactErr.innerHTML = `Please match the given example`;
+      userContactNumber.value = "";
+      contactErr.style.display = "block";
+    } else {
+      contactErr.innerHTML = "";
+      contactErr.style.display = "none";
+      userContactNumber.value = "";
     }
   }
 });
