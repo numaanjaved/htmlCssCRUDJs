@@ -13,6 +13,7 @@ html {
   --light-grey: #eaeaea;
   --light-sky: #d0e5e8;
   --white-color: #fff;
+  --error-color: #a31b1b;
 }
 .header {
   width: 100%;
@@ -181,7 +182,7 @@ html {
             font-family: "poppins", sans-serif;
             font-weight: 500;
             font-size: 1.5rem;
-            color: #a31b1b;
+            color: var(--error-color);
             display: none;
           }
           > .user_inputs {
@@ -233,7 +234,7 @@ html {
             font-family: "poppins", sans-serif;
             font-weight: 500;
             font-size: 1.5rem;
-            color: #a31b1b;
+            color: var(--error-color);
             display: none;
           }
         }
@@ -332,8 +333,6 @@ html {
             color: var(--primary-font-color);
             font-family: "poppins", sans-serif;
             font-size: 1.5rem;
-            /* background-color: #a01919; */
-
             text-align: center;
             padding: 1rem 0;
             border-right: 2px solid var(--primary-font-color);
@@ -356,7 +355,6 @@ html {
             color: var(--primary-font-color);
             font-family: "poppins", sans-serif;
             font-size: 1.5rem;
-            /* background-color: #a01919; */
             width: 100%;
             text-align: center;
             padding: 1rem 0;
@@ -391,7 +389,6 @@ html {
               color: var(--white-color);
               font-family: "poppins", sans-serif;
               font-size: 1.5rem;
-              /* background-color: #a01919; */
               width: 100%;
               text-align: center;
               padding: 1rem 0;
