@@ -23,6 +23,7 @@ let userFirstName = document.getElementById("user_Fname");
 let userLastName = document.getElementById("user_Lname");
 let userEmail = document.getElementById("user_email");
 let userContactNumber = document.getElementById("user_contact");
+let userAddress = document.getElementById("user_address");
 let form = document.querySelector(".data_form");
 let FnameErr = document.querySelector(".Fname_error");
 let LnameErr = document.querySelector(".Lname_error");
@@ -35,7 +36,7 @@ form.addEventListener("submit", (e) => {
 
   //   First Name Validation
   if (userFirstName.value == "" || userFirstName == null) {
-    FnameErr.innerHTML = `Please fill the First Name`;
+    FnameErr.innerHTML = `Please fill the First Name field`;
     FnameErr.style.display = "block";
   } else {
     if (!userFirstName.value.match(/^[a-zA-Z]{1,}$/)) {
@@ -50,7 +51,7 @@ form.addEventListener("submit", (e) => {
   }
   // Last Name Validation
   if (userLastName.value == "" || userLastName == null) {
-    LnameErr.innerHTML = `Please fill the Last Name`;
+    LnameErr.innerHTML = `Please fill the Last Name field`;
     LnameErr.style.display = "block";
   } else {
     if (!userLastName.value.match(/^[a-zA-Z]{1,}$/)) {
@@ -95,6 +96,21 @@ form.addEventListener("submit", (e) => {
       contactErr.innerHTML = "";
       contactErr.style.display = "none";
       userContactNumber.value = "";
+    }
+  }
+  //   Address Validation{}
+  if (userAddress.value == "" || userAddress == null) {
+    addressErr.innerHTML = `Please fill the Address field`;
+    addressErr.style.display = "block";
+  } else {
+    if (!userAddress.value.match(/^[a-zA-Z0-9\s,.'-]{3,}$/)) {
+      addressErr.innerHTML = `Please match the given example`;
+      userAddress.value = "";
+      addressErr.style.display = "block";
+    } else {
+      addressErr.innerHTML = "";
+      addressErr.style.display = "none";
+      userAddress.value = "";
     }
   }
 });
