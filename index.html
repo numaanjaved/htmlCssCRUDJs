@@ -46,26 +46,32 @@
 				<div class="form_input_content">
 					<div class="form_text_content_container">
 						<div class="type_input_container">
-							<label class="text_form_labels" for="user_name">First Name</label>
-							<input type="text" class="user_inputs" id="user_name" name="user_name" required
-								autocomplete="off" placeholder="e.g., John" />
-							<label class="text_form_labels" for="user_name">Last Name</label>
-							<input type="text" class="user_inputs" id="user_name" name="user_name" required
-								autocomplete="off" placeholder="e.g., Smith" />
+							<label class="text_form_labels" for="userF_name">First Name</label>
+							<span class="error_msg"></span>
+							<input type="text" class="user_inputs" id="user_Fname" name="userF_name" autocomplete="off"
+								placeholder="e.g., John" />
+							<label class="text_form_labels" for="userL_name">Last Name</label>
+							<span class="error_msg"></span>
+							<input type="text" class="user_inputs" id="user_Lname" name="userL_name" autocomplete="off"
+								placeholder="e.g., Smith" />
 							<label class="text_form_labels" for="user_email">Email</label>
-							<input type="email" class="user_inputs" id="user_email" name="user_email" required
-								autocomplete="off" placeholder="e.g., johnsmith@gmail.com" />
+							<span class="error_msg"></span>
+							<input type="email" class="user_inputs" id="user_email" name="user_email" autocomplete="off"
+								placeholder="e.g., johnsmith@gmail.com" />
 							<label class="text_form_labels" for="user_contact">Contact Number</label>
-							<input type="text" class="user_inputs" id="user_contact" name="user_contact" required
+							<span class="error_msg"></span>
+							<input type="text" class="user_inputs" id="user_contact" name="user_contact"
 								autocomplete="off" placeholder="+001234567891" />
 							<label class="text_form_labels" for="user_address">Address</label>
-							<input type="text" class="user_inputs" id="user_address" name="user_address" required
+							<span class="error_msg"></span>
+							<input type="text" class="user_inputs" id="user_address" name="user_address"
 								autocomplete="off" placeholder="123 Elm St, Springfield, IL" />
 						</div>
 						<div class="type_textArea_container">
 							<label class="text_form_labels" for="user_bio">Profile Description</label>
+							<span class="error_msg"></span>
 							<textarea class="user_bio_input" id="user_bio" name="user_bio" spellcheck="false" required
-								autocomplete="off" placeholder="Enter your bio here......"></textarea>
+								autocomplete="off" placeholder="Write 100 words...."></textarea>
 						</div>
 					</div>
 

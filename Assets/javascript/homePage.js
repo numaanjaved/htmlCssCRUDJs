@@ -17,3 +17,9 @@ imgUploadBtn.addEventListener("mouseenter", () => {
 imgUploadBtn.addEventListener("mouseleave", () => {
   imgInfoMsg.style.opacity = 0;
 });
+
+// Adding form Validation
+// let userFirstName = document.getElementById("user_Fname");
+// console.log(userFirstName);
+
+// userFirstName.onchange = () => {};
