@@ -14,6 +14,12 @@ html {
   --light-sky: #d0e5e8;
   --white-color: #fff;
   --error-color: #a31b1b;
+  --btn-green: #31b231;
+  --btn-green-hover: #249324;
+  --btn-red: #ca2d2d;
+  --btn-red-hover: #a31b1b;
+  --btn-blue: #498df3;
+  --btn-blue-hover: #3170ce;
 }
 .header {
   width: 100%;
@@ -264,25 +270,25 @@ html {
           box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
         }
         > .form_btns:first-child {
-          background-color: #498df3;
+          background-color: var(--btn-blue);
           transition: all 0.2s linear;
           -webkit-transition: all 0.2s linear;
           -moz-transition: all 0.2s linear;
           -ms-transition: all 0.2s linear;
           -o-transition: all 0.2s linear;
           &:hover {
-            background-color: #3170ce;
+            background-color: var(--btn-blue-hover);
           }
         }
         > .form_btns:last-child {
-          background-color: #31b231;
+          background-color: var(--btn-green);
           transition: all 0.2s linear;
           -webkit-transition: all 0.2s linear;
           -moz-transition: all 0.2s linear;
           -ms-transition: all 0.2s linear;
           -o-transition: all 0.2s linear;
           &:hover {
-            background-color: #249324;
+            background-color: var(--btn-green-hover);
           }
         }
       }
@@ -453,21 +459,21 @@ html {
               -o-transition: all 0.2s linear;
             }
             > .Ops_Buttons:nth-child(1) {
-              background-color: #1eaa25;
+              background-color: var(--btn-green);
               &:hover {
-                background-color: rgb(19, 118, 24);
+                background-color: var(--btn-green-hover);
               }
             }
             > .Ops_Buttons:nth-child(2) {
-              background-color: #4040f4;
+              background-color: var(--btn-blue);
               &:hover {
-                background-color: #2c2cc4;
+                background-color: var(--btn-blue-hover);
               }
             }
             > .Ops_Buttons:nth-child(3) {
-              background-color: #ca2d2d;
+              background-color: var(--btn-red);
               &:hover {
-                background-color: #a31b1b;
+                background-color: var(--btn-red-hover);
               }
             }
           }
