@@ -112,21 +112,22 @@ html {
         }
       }
       > .profile_picture_display_container {
-        width: 100%;
-        height: 45rem;
+        width: 28rem;
+        height: 28rem;
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+          rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+        border: 5px solid var(--sky-blue);
+        overflow: hidden;
         > img {
-          border: 5px solid var(--sky-blue);
           height: 100%;
-          border-radius: 2000px;
-          -webkit-border-radius: 2000px;
-          -moz-border-radius: 2000px;
-          -ms-border-radius: 2000px;
-          -o-border-radius: 2000px;
-          box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-            rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
         }
       }
     }
