@@ -19,7 +19,25 @@ imgUploadBtn.addEventListener("mouseleave", () => {
 });
 
 // Adding form Validation
-// let userFirstName = document.getElementById("user_Fname");
-// console.log(userFirstName);
+// First Name Validation
+let userFirstName = document.getElementById("user_Fname");
+let form = document.querySelector(".data_form");
+let errorMessage = document.querySelector(".error_msg");
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-// userFirstName.onchange = () => {};
+  if (userFirstName.value == "" || userFirstName == null) {
+    errorMessage.innerHTML = `Please fill the First Name`;
+    errorMessage.style.display = "block";
+  } else {
+    if (!userFirstName.value.match(/^[a-zA-Z]{1,}$/)) {
+      errorMessage.innerHTML = `Please match the given example`;
+      userFirstName.value = "";
+      errorMessage.style.display = "block";
+    } else {
+      errorMessage.innerHTML = "";
+      errorMessage.style.display = "none";
+      userFirstName.value = "";
+    }
+  }
+});
