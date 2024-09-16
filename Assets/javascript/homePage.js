@@ -19,25 +19,47 @@ imgUploadBtn.addEventListener("mouseleave", () => {
 });
 
 // Adding form Validation
-// First Name Validation
 let userFirstName = document.getElementById("user_Fname");
+let userLastName = document.getElementById("user_Lname");
+let userEmail = document.getElementById("user_email");
 let form = document.querySelector(".data_form");
-let errorMessage = document.querySelector(".error_msg");
+let FnameErr = document.querySelector(".Fname_error");
+let LnameErr = document.querySelector(".Lname_error");
+let emailErr = document.querySelector(".email_error");
+let contactErr = document.querySelector(".contact_error");
+let addressErr = document.querySelector(".address_error");
+let bioErr = document.querySelector(".bio_error");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  //   First Name Validation
   if (userFirstName.value == "" || userFirstName == null) {
-    errorMessage.innerHTML = `Please fill the First Name`;
-    errorMessage.style.display = "block";
+    FnameErr.innerHTML = `Please fill the First Name`;
+    FnameErr.style.display = "block";
   } else {
     if (!userFirstName.value.match(/^[a-zA-Z]{1,}$/)) {
-      errorMessage.innerHTML = `Please match the given example`;
+      FnameErr.innerHTML = `Please match the given example`;
       userFirstName.value = "";
-      errorMessage.style.display = "block";
+      FnameErr.style.display = "block";
     } else {
-      errorMessage.innerHTML = "";
-      errorMessage.style.display = "none";
+      FnameErr.innerHTML = "";
+      FnameErr.style.display = "none";
       userFirstName.value = "";
+    }
+  }
+  // Last Name Validation
+  if (userLastName.value == "" || userLastName == null) {
+    LnameErr.innerHTML = `Please fill the Last Name`;
+    LnameErr.style.display = "block";
+  } else {
+    if (!userLastName.value.match(/^[a-zA-Z]{1,}$/)) {
+      LnameErr.innerHTML = `Please match the given example`;
+      userLastName.value = "";
+      LnameErr.style.display = "block";
+    } else {
+      LnameErr.innerHTML = "";
+      LnameErr.style.display = "none";
+      userLastName.value = "";
     }
   }
 });
