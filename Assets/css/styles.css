@@ -91,6 +91,17 @@ html {
         > input[type="file"] {
           display: none;
         }
+        > #img_info {
+          color: var(--primary-font-color);
+          font-family: "poppins", sans-serif;
+          font-size: 1.3rem;
+          transition: all 0.2s linear;
+          -webkit-transition: all 0.2s linear;
+          -moz-transition: all 0.2s linear;
+          -ms-transition: all 0.2s linear;
+          -o-transition: all 0.2s linear;
+          opacity: 0;
+        }
         > .choose_img_label {
           cursor: pointer;
           background-color: skyblue;
@@ -128,6 +139,7 @@ html {
         overflow: hidden;
         > img {
           height: 100%;
+          width: 100%;
         }
       }
     }
