@@ -62,4 +62,23 @@ form.addEventListener("submit", (e) => {
       userLastName.value = "";
     }
   }
+  //   Email Validation
+  if (userEmail.value == "" || userEmail == null) {
+    emailErr.innerHTML = `Please fill the Email field`;
+    emailErr.style.display = "block";
+  } else {
+    if (
+      !userEmail.value.match(
+        /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/
+      )
+    ) {
+      emailErr.innerHTML = `Please match the given example`;
+      userEmail.value = "";
+      emailErr.style.display = "block";
+    } else {
+      emailErr.innerHTML = "";
+      emailErr.style.display = "none";
+      userEmail.value = "";
+    }
+  }
 });
