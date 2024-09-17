@@ -18,14 +18,17 @@ imgUploadBtn.addEventListener("mouseleave", () => {
   imgInfoMsg.style.opacity = 0;
 });
 
-// Adding form Validation
+// Adding form Validation=>
+let form = document.querySelector(".data_form");
 let userFirstName = document.getElementById("user_Fname");
 let userLastName = document.getElementById("user_Lname");
 let userEmail = document.getElementById("user_email");
 let userContactNumber = document.getElementById("user_contact");
 let userAddress = document.getElementById("user_address");
 let userBio = document.getElementById("user_bio");
-let form = document.querySelector(".data_form");
+let bioLimitText = document.querySelector(".limit_text");
+let bioLimitExceed = document.querySelector(".limit_exceed_text");
+// Error messages
 let FnameErr = document.querySelector(".Fname_error");
 let LnameErr = document.querySelector(".Lname_error");
 let emailErr = document.querySelector(".email_error");
@@ -119,4 +122,13 @@ form.addEventListener("submit", (e) => {
     bioErr.innerHTML = `Please fill the Profile description field`;
     bioErr.style.display = "block";
   }
+});
+// Character limit functionality
+userBio.addEventListener("input", () => {
+  if (userBio.value.length > 300) {
+    bioLimitExceed.innerHTML = `Characters Limit Exceeded`;
+  } else {
+    bioLimitExceed.innerHTML = ``;
+  }
+  bioLimitText.innerHTML = `${userBio.value.length}/300`;
 });
