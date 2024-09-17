@@ -242,6 +242,24 @@ html {
             color: var(--error-color);
             display: none;
           }
+          > .textArea_Info_msg_container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            > .limit_text {
+              font-family: "poppins", sans-serif;
+              font-size: 1.5rem;
+              font-weight: 500;
+              color: var(--primary-font-color);
+            }
+            > .limit_exceed_text {
+              font-family: "poppins", sans-serif;
+              font-size: 1.5rem;
+              font-weight: 500;
+              color: var(--error-color);
+            }
+          }
         }
       }
       > .btns_container {
