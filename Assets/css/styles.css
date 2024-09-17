@@ -98,6 +98,13 @@ html {
         > input[type="file"] {
           display: none;
         }
+        > #img_error {
+          font-family: "poppins", sans-serif;
+          font-weight: 500;
+          font-size: 1.5rem;
+          color: var(--error-color);
+          display: none;
+        }
         > #img_info {
           color: var(--primary-font-color);
           font-family: "poppins", sans-serif;

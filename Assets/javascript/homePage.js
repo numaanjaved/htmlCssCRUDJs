@@ -2,12 +2,12 @@
 
 let imgInput = document.querySelector("#imageUpload");
 let imgDisplay = document.querySelector("#form_img");
-
 imgInput.addEventListener("change", () => {
   imgDisplay.src = URL.createObjectURL(imgInput.files[0]);
 });
+console.log(imgDisplay.src);
+let userImages = [];
 // Image information msg
-
 let imgUploadBtn = document.querySelector(".choose_img_label");
 let imgInfoMsg = document.querySelector("#img_info");
 imgUploadBtn.addEventListener("mouseenter", () => {
@@ -35,6 +35,7 @@ let emailErr = document.querySelector(".email_error");
 let contactErr = document.querySelector(".contact_error");
 let addressErr = document.querySelector(".address_error");
 let bioErr = document.querySelector(".bio_error");
+let image_error_msg = document.getElementById("img_error");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let validationCheck = true;
@@ -129,6 +130,18 @@ form.addEventListener("submit", (e) => {
       bioLimitExceed.innerHTML = `Characters Limit Exceeded`;
     }
   }
+
+  // creating img src:
+  if (
+    imgDisplay.src == "http://127.0.0.1:5500/Assets/images/default_profile.png"
+  ) {
+    image_error_msg.innerHTML = `Please upload an image`;
+    image_error_msg.style.display = "block";
+  } else {
+    image_error_msg.innerHTML = ``;
+    image_error_msg.style.display = "none";
+  }
+  userImages.push(URL.createObjectURL(imgInput.files[0]));
   if (validationCheck) {
     usersDataArray.push({
       FirstName: userFirstName.value,
@@ -137,11 +150,12 @@ form.addEventListener("submit", (e) => {
       Contact: userContactNumber.value,
       Address: userAddress.value,
       Bio: userBio.value,
+      "User Picture src": imgInput.files[0],
     });
   }
   form.reset();
   console.log(usersDataArray);
-  usersDataArray.forEach((data) => console.log(data));
+  usersDataArray.forEach((data, index) => console.log(data));
 });
 // Character limit functionality
 userBio.addEventListener("input", () => {
