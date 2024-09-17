@@ -19,6 +19,7 @@ imgUploadBtn.addEventListener("mouseleave", () => {
 });
 
 // Adding form Validation=>
+let usersDataArray = [];
 let form = document.querySelector(".data_form");
 let userFirstName = document.getElementById("user_Fname");
 let userLastName = document.getElementById("user_Lname");
@@ -37,17 +38,17 @@ let addressErr = document.querySelector(".address_error");
 let bioErr = document.querySelector(".bio_error");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-
+  let validationCheck = true;
   //   First Name Validation
   if (userFirstName.value == "" || userFirstName == null) {
     FnameErr.innerHTML = `Please fill the First Name field`;
     FnameErr.style.display = "block";
-    userFirstName.value = "";
+    validationCheck = false;
   } else {
     if (!userFirstName.value.match(/^[a-zA-Z]{1,}$/)) {
       FnameErr.innerHTML = `Please match the given example`;
       FnameErr.style.display = "block";
-      userFirstName.value = "";
+      validationCheck = false;
     } else {
       FnameErr.innerHTML = "";
       FnameErr.style.display = "none";
@@ -57,12 +58,12 @@ form.addEventListener("submit", (e) => {
   if (userLastName.value == "" || userLastName == null) {
     LnameErr.innerHTML = `Please fill the Last Name field`;
     LnameErr.style.display = "block";
-    userLastName.value = "";
+    validationCheck = false;
   } else {
     if (!userLastName.value.match(/^[a-zA-Z]{1,}$/)) {
       LnameErr.innerHTML = `Please match the given example`;
       LnameErr.style.display = "block";
-      userLastName.value = "";
+      validationCheck = false;
     } else {
       LnameErr.innerHTML = "";
       LnameErr.style.display = "none";
@@ -72,7 +73,7 @@ form.addEventListener("submit", (e) => {
   if (userEmail.value == "" || userEmail == null) {
     emailErr.innerHTML = `Please fill the Email field`;
     emailErr.style.display = "block";
-    userEmail.value = "";
+    validationCheck = false;
   } else {
     if (
       !userEmail.value.match(
@@ -81,7 +82,7 @@ form.addEventListener("submit", (e) => {
     ) {
       emailErr.innerHTML = `Please match the given example`;
       emailErr.style.display = "block";
-      userEmail.value = "";
+      validationCheck = false;
     } else {
       emailErr.innerHTML = "";
       emailErr.style.display = "none";
@@ -91,12 +92,12 @@ form.addEventListener("submit", (e) => {
   if (userContactNumber.value == "" || userContactNumber == null) {
     contactErr.innerHTML = `Please fill the Contact Number field`;
     contactErr.style.display = "block";
-    userContactNumber.value = "";
+    validationCheck = false;
   } else {
     if (!userContactNumber.value.match(/^\+[0-9]{2,}[0-9]{7,}$/)) {
       contactErr.innerHTML = `Please match the given example`;
       contactErr.style.display = "block";
-      userContactNumber.value = "";
+      validationCheck = false;
     } else {
       contactErr.innerHTML = "";
       contactErr.style.display = "none";
@@ -106,12 +107,12 @@ form.addEventListener("submit", (e) => {
   if (userAddress.value == "" || userAddress == null) {
     addressErr.innerHTML = `Please fill the Address field`;
     addressErr.style.display = "block";
-    userAddress.value = "";
+    validationCheck = false;
   } else {
     if (!userAddress.value.match(/^[a-zA-Z0-9\s,.'-]{3,}$/)) {
       addressErr.innerHTML = `Please match the given example`;
       addressErr.style.display = "block";
-      userAddress.value = "";
+      validationCheck = false;
     } else {
       addressErr.innerHTML = "";
       addressErr.style.display = "none";
@@ -121,20 +122,27 @@ form.addEventListener("submit", (e) => {
   if (userBio.value == "" || userBio == null) {
     bioErr.innerHTML = `Please fill the Profile description field`;
     bioErr.style.display = "block";
-    userBio.value = "";
+    validationCheck = false;
+  } else {
+    if (userBio.value.length > 300) {
+      bioErr.innerHTML = `Your bio exceeds the 300 character limit`;
+      bioErr.style.display = "block";
+      bioLimitExceed.innerHTML = `Characters Limit Exceeded`;
+    }
   }
-
-  let usersDataArray = [
-    {
+  if (validationCheck) {
+    usersDataArray.push({
       FirstName: userFirstName.value,
       LastName: userLastName.value,
       Email: userEmail.value,
       Contact: userContactNumber.value,
       Address: userAddress.value,
       Bio: userBio.value,
-    },
-  ];
-  console.log(usersDataArray[0]);
+    });
+  }
+  form.reset();
+  console.log(usersDataArray);
+  usersDataArray.forEach((data) => console.log(data));
 });
 // Character limit functionality
 userBio.addEventListener("input", () => {
@@ -149,3 +157,9 @@ userBio.addEventListener("input", () => {
   }
   bioLimitText.innerHTML = `${userBio.value.length}/300`;
 });
+
+// Testing Values:
+
+let userFullNameData = document.getElementById("user_fullName_data");
+let userEmailData = document.getElementById("user_email_data");
+let userContactNumberData = document.getElementById("user_contactNumber_data");
