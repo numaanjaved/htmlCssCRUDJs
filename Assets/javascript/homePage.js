@@ -24,6 +24,7 @@ let userLastName = document.getElementById("user_Lname");
 let userEmail = document.getElementById("user_email");
 let userContactNumber = document.getElementById("user_contact");
 let userAddress = document.getElementById("user_address");
+let userBio = document.getElementById("user_bio");
 let form = document.querySelector(".data_form");
 let FnameErr = document.querySelector(".Fname_error");
 let LnameErr = document.querySelector(".Lname_error");
@@ -98,7 +99,7 @@ form.addEventListener("submit", (e) => {
       userContactNumber.value = "";
     }
   }
-  //   Address Validation{}
+  //   Address Validation
   if (userAddress.value == "" || userAddress == null) {
     addressErr.innerHTML = `Please fill the Address field`;
     addressErr.style.display = "block";
@@ -112,5 +113,10 @@ form.addEventListener("submit", (e) => {
       addressErr.style.display = "none";
       userAddress.value = "";
     }
+  }
+  //   Bio Validation
+  if (userBio.value == "" || userBio == null) {
+    bioErr.innerHTML = `Please fill the Profile description field`;
+    bioErr.style.display = "block";
   }
 });
