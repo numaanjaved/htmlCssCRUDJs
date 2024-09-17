@@ -3,10 +3,9 @@
 let imgInput = document.querySelector("#imageUpload");
 let imgDisplay = document.querySelector("#form_img");
 
-imgInput.onchange = () => {
+imgInput.addEventListener("change", () => {
   imgDisplay.src = URL.createObjectURL(imgInput.files[0]);
-};
-
+});
 // Image information msg
 
 let imgUploadBtn = document.querySelector(".choose_img_label");
