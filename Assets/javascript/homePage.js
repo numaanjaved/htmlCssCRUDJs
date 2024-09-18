@@ -240,9 +240,6 @@ form.addEventListener("submit", (e) => {
     userLnameElem.innerHTML = `${data.LastName}`;
     userEmailElem.innerHTML = `${data.Email}`;
     userContactNumElem.innerHTML = `${data.Contact}`;
-    // console.log(
-    //   `${data.FirstName} ${data.LastName} ${data.Email} ${data.Contact} ${data.userPicture}`
-    // );
   });
   console.log(usersDataArray);
 });
