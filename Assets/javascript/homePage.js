@@ -196,7 +196,7 @@ form.addEventListener("submit", (e) => {
 
     //   Adding Classes and appending
     userDataContainer.classList.add("individual_user_data");
-    userDataContainer.setAttribute("id", `prof00${index}`);
+    userDataContainer.setAttribute("id", `prof00${index + 1}`);
     usersDataMainContainer.appendChild(userDataContainer);
 
     userTextRecordContainer.classList.add("text_record");
@@ -227,7 +227,6 @@ form.addEventListener("submit", (e) => {
     // Individual buttons for each row
     ProfileBtnOpsContainer.classList.add("profile_btns_container");
     userDataContainer.appendChild(ProfileBtnOpsContainer);
-
     profileReadBtn.classList.add("Ops_Buttons");
     profileReadBtn.setAttribute("id", "read_btn");
     profileReadBtn.innerHTML = "Read";
