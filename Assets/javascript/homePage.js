@@ -39,7 +39,16 @@ let addressErr = document.querySelector(".address_error");
 let bioErr = document.querySelector(".bio_error");
 let image_error_msg = document.getElementById("img_error");
 
-// Testing Values:
+// Each user record elements:=>
+// Main container:
+let usersDataMainContainer = document.querySelector(
+  ".individual_user_data_container"
+);
+
+let userDataContainer = document.createElement("div");
+userDataContainer.classList.add("individual_user_data");
+usersDataMainContainer.appendChild(userDataContainer);
+
 let userFirstNameDisplay = document.getElementById("Fname");
 let userLastNameDisplay = document.getElementById("Lname");
 let userEmailDisplay = document.getElementById("user_email_data");
@@ -140,6 +149,8 @@ form.addEventListener("submit", (e) => {
       bioErr.style.display = "block";
       bioLimitExceed.innerHTML = `Characters Limit Exceeded`;
     }
+    bioErr.innerHTML = ``;
+    bioErr.style.display = "none";
   }
 
   // creating img src:
@@ -152,7 +163,6 @@ form.addEventListener("submit", (e) => {
     image_error_msg.innerHTML = ``;
     image_error_msg.style.display = "none";
   }
-  console.log(URL.createObjectURL(imgInput.files[0]));
   let userDataObj = {
     FirstName: userFirstName.value,
     LastName: userLastName.value,
@@ -171,17 +181,17 @@ form.addEventListener("submit", (e) => {
   ) {
     imgDisplay.src = "http://127.0.0.1:5500/Assets/images/default_profile.png";
   }
-  console.log(usersDataArray);
   usersDataArray.forEach((data, index) => {
     userFirstNameDisplay.innerHTML = `${data.FirstName}`;
     userLastNameDisplay.innerHTML = `${data.LastName}`;
     userEmailDisplay.innerHTML = `${data.Email}`;
     userContactNumberDisplay.innerHTML = `${data.Contact}`;
     userImgDisplay.src = `${data.userPicture}`;
-    console.log(
-      `${data.FirstName} ${data.LastName} ${data.Email} ${data.Contact} ${data.userPicture}`
-    );
+    // console.log(
+    //   `${data.FirstName} ${data.LastName} ${data.Email} ${data.Contact} ${data.userPicture}`
+    // );
   });
+  console.log(usersDataArray);
 });
 // Character limit functionality
 userBio.addEventListener("input", () => {
