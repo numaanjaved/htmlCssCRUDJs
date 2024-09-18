@@ -46,10 +46,6 @@ let usersDataMainContainer = document.querySelector(
   ".individual_user_data_container"
 );
 
-// let UserRecordFunc = () => {
-
-// };
-
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let validationCheck = true;
