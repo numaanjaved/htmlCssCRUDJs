@@ -109,13 +109,6 @@ profileDelBtn.setAttribute("id", "delete_btn");
 profileDelBtn.innerHTML = "Delete";
 ProfileBtnOpsContainer.appendChild(profileDelBtn);
 
-let userFirstNameDisplay = document.getElementById("Fname");
-let userLastNameDisplay = document.getElementById("Lname");
-let userEmailDisplay = document.getElementById("user_email_data");
-let userContactNumberDisplay = document.getElementById(
-  "user_contactNumber_data"
-);
-let userImgDisplay = document.querySelector(".user_profile_img");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let validationCheck = true;
