@@ -41,75 +41,78 @@ let image_error_msg = document.getElementById("img_error");
 
 // Each user record elements:=>
 // Main container:
+
 let usersDataMainContainer = document.querySelector(
   ".individual_user_data_container"
 );
-
 let userDataContainer = document.createElement("div");
-userDataContainer.classList.add("individual_user_data");
-usersDataMainContainer.appendChild(userDataContainer);
-
 let userTextRecordContainer = document.createElement("div");
-userTextRecordContainer.classList.add("text_record");
-userDataContainer.appendChild(userTextRecordContainer);
-
 let userProfilePicContainer = document.createElement("div");
-userProfilePicContainer.classList.add("user_profile_data");
-userTextRecordContainer.appendChild(userProfilePicContainer);
-
 let userProfilePicFigureTag = document.createElement("figure");
-userProfilePicFigureTag.classList.add("profile_img_container");
-userProfilePicContainer.appendChild(userProfilePicFigureTag);
-
 let userProfilePicImgTag = document.createElement("img");
-userProfilePicImgTag.classList.add("user_profile_img");
-userProfilePicImgTag.setAttribute("alt", "Profile_img");
-userProfilePicImgTag.setAttribute("src", "./Assets/images/human_icon.png");
-userProfilePicFigureTag.appendChild(userProfilePicImgTag);
-
 let userFullNameElem = document.createElement("p");
-userFullNameElem.classList.add("user_profile_data");
-userFullNameElem.setAttribute("id", "user_fullName_data");
-userTextRecordContainer.appendChild(userFullNameElem);
-
 let userFnameElem = document.createElement("span");
-userFnameElem.setAttribute("id", "Fname");
-userFullNameElem.appendChild(userFnameElem);
 let userLnameElem = document.createElement("span");
-userLnameElem.setAttribute("id", "Lname");
-userFullNameElem.appendChild(userLnameElem);
-
 let userEmailElem = document.createElement("p");
-userEmailElem.classList.add("user_profile_data");
-userEmailElem.setAttribute("id", "user_email_data");
-userTextRecordContainer.appendChild(userEmailElem);
 let userContactNumElem = document.createElement("p");
-userContactNumElem.classList.add("user_profile_data");
-userContactNumElem.setAttribute("id", "user_contactNumber_data");
-userTextRecordContainer.appendChild(userContactNumElem);
-
-// Individual buttons for each row
 let ProfileBtnOpsContainer = document.createElement("div");
-ProfileBtnOpsContainer.classList.add("profile_btns_container");
-userDataContainer.appendChild(ProfileBtnOpsContainer);
-
 let profileReadBtn = document.createElement("button");
-profileReadBtn.classList.add("Ops_Buttons");
-profileReadBtn.setAttribute("id", "read_btn");
-profileReadBtn.innerHTML = "Read";
-ProfileBtnOpsContainer.appendChild(profileReadBtn);
 let profileUpdateBtn = document.createElement("button");
-profileUpdateBtn.classList.add("Ops_Buttons");
-profileUpdateBtn.setAttribute("id", "update_btn");
-profileUpdateBtn.innerHTML = "Update";
-ProfileBtnOpsContainer.appendChild(profileUpdateBtn);
 let profileDelBtn = document.createElement("button");
-profileDelBtn.classList.add("Ops_Buttons");
-profileDelBtn.setAttribute("id", "delete_btn");
-profileDelBtn.innerHTML = "Delete";
-ProfileBtnOpsContainer.appendChild(profileDelBtn);
+let UserRecordFunc = () => {
+  userDataContainer.classList.add("individual_user_data");
+  usersDataMainContainer.appendChild(userDataContainer);
+
+  userTextRecordContainer.classList.add("text_record");
+  userDataContainer.appendChild(userTextRecordContainer);
+
+  userProfilePicContainer.classList.add("user_profile_data");
+  userTextRecordContainer.appendChild(userProfilePicContainer);
+
+  userProfilePicFigureTag.classList.add("profile_img_container");
+  userProfilePicContainer.appendChild(userProfilePicFigureTag);
+
+  userProfilePicImgTag.classList.add("user_profile_img");
+  userProfilePicImgTag.setAttribute("alt", "Profile_img");
+  userProfilePicImgTag.setAttribute("src", "./Assets/images/human_icon.png");
+  userProfilePicFigureTag.appendChild(userProfilePicImgTag);
+
+  userFullNameElem.classList.add("user_profile_data");
+  userFullNameElem.setAttribute("id", "user_fullName_data");
+  userTextRecordContainer.appendChild(userFullNameElem);
+
+  userFnameElem.setAttribute("id", "Fname");
+  userFullNameElem.appendChild(userFnameElem);
+  userLnameElem.setAttribute("id", "Lname");
+  userFullNameElem.appendChild(userLnameElem);
+
+  userEmailElem.classList.add("user_profile_data");
+  userEmailElem.setAttribute("id", "user_email_data");
+  userTextRecordContainer.appendChild(userEmailElem);
+  userContactNumElem.classList.add("user_profile_data");
+  userContactNumElem.setAttribute("id", "user_contactNumber_data");
+  userTextRecordContainer.appendChild(userContactNumElem);
+
+  // Individual buttons for each row
+  ProfileBtnOpsContainer.classList.add("profile_btns_container");
+  userDataContainer.appendChild(ProfileBtnOpsContainer);
+
+  profileReadBtn.classList.add("Ops_Buttons");
+  profileReadBtn.setAttribute("id", "read_btn");
+  profileReadBtn.innerHTML = "Read";
+  ProfileBtnOpsContainer.appendChild(profileReadBtn);
+  profileUpdateBtn.classList.add("Ops_Buttons");
+  profileUpdateBtn.setAttribute("id", "update_btn");
+  profileUpdateBtn.innerHTML = "Update";
+  ProfileBtnOpsContainer.appendChild(profileUpdateBtn);
+  profileDelBtn.classList.add("Ops_Buttons");
+  profileDelBtn.setAttribute("id", "delete_btn");
+  profileDelBtn.innerHTML = "Delete";
+  ProfileBtnOpsContainer.appendChild(profileDelBtn);
+};
 
 form.addEventListener("submit", (e) => {
+  UserRecordFunc();
   e.preventDefault();
   let validationCheck = true;
   //   First Name Validation
