@@ -187,8 +187,6 @@ form.addEventListener("submit", (e) => {
     let userProfilePicFigureTag = document.createElement("figure");
     let userProfilePicImgTag = document.createElement("img");
     let userFullNameElem = document.createElement("p");
-    let userFnameElem = document.createElement("span");
-    let userLnameElem = document.createElement("span");
     let userEmailElem = document.createElement("p");
     let userContactNumElem = document.createElement("p");
     let ProfileBtnOpsContainer = document.createElement("div");
@@ -219,11 +217,6 @@ form.addEventListener("submit", (e) => {
     userFullNameElem.setAttribute("id", "user_fullName_data");
     userTextRecordContainer.appendChild(userFullNameElem);
 
-    userFnameElem.setAttribute("id", "Fname");
-    userFullNameElem.appendChild(userFnameElem);
-    userLnameElem.setAttribute("id", "Lname");
-    userFullNameElem.appendChild(userLnameElem);
-
     userEmailElem.classList.add("user_profile_data");
     userEmailElem.setAttribute("id", "user_email_data");
     userTextRecordContainer.appendChild(userEmailElem);
@@ -249,8 +242,7 @@ form.addEventListener("submit", (e) => {
     ProfileBtnOpsContainer.appendChild(profileDelBtn);
     // Putting Values in Them
     userProfilePicImgTag.src = `${data.userPicture}`;
-    userFnameElem.innerHTML = `${data.FirstName}`;
-    userLnameElem.innerHTML = `${data.LastName}`;
+    userFullNameElem.innerHTML = `${data.FirstName} ${data.LastName}`;
     userEmailElem.innerHTML = `${data.Email}`;
     userContactNumElem.innerHTML = `${data.Contact}`;
     console.log(usersDataArray);
