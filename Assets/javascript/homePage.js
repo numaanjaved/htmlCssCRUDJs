@@ -28,6 +28,10 @@ let userAddress = document.getElementById("user_address");
 let userBio = document.getElementById("user_bio");
 let bioLimitText = document.querySelector(".limit_text");
 let bioLimitExceed = document.querySelector(".limit_exceed_text");
+let individualUserDataContainer = document.querySelector(
+  ".individual_user_data_container"
+);
+
 // Error messages
 let FnameErr = document.querySelector(".Fname_error");
 let LnameErr = document.querySelector(".Lname_error");
@@ -36,6 +40,14 @@ let contactErr = document.querySelector(".contact_error");
 let addressErr = document.querySelector(".address_error");
 let bioErr = document.querySelector(".bio_error");
 let image_error_msg = document.getElementById("img_error");
+
+// Testing Values:
+let userFirstNameDisplay = document.getElementById("Fname");
+let userLastNameDisplay = document.getElementById("Lname");
+let userEmailDisplay = document.getElementById("user_email_data");
+let userContactNumberDisplay = document.getElementById(
+  "user_contactNumber_data"
+);
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let validationCheck = true;
@@ -142,20 +154,35 @@ form.addEventListener("submit", (e) => {
     image_error_msg.style.display = "none";
   }
   userImages.push(URL.createObjectURL(imgInput.files[0]));
+  let userDataObj = {
+    FirstName: userFirstName.value,
+    LastName: userLastName.value,
+    Email: userEmail.value,
+    Contact: userContactNumber.value,
+    Address: userAddress.value,
+    Bio: userBio.value,
+    "User Picture src": imgInput.files[0],
+  };
   if (validationCheck) {
-    usersDataArray.push({
-      FirstName: userFirstName.value,
-      LastName: userLastName.value,
-      Email: userEmail.value,
-      Contact: userContactNumber.value,
-      Address: userAddress.value,
-      Bio: userBio.value,
-      "User Picture src": imgInput.files[0],
-    });
+    usersDataArray.push(userDataObj);
   }
   form.reset();
+  if (
+    imgDisplay.src != "http://127.0.0.1:5500/Assets/images/default_profile.png"
+  ) {
+    imgDisplay.src = "http://127.0.0.1:5500/Assets/images/default_profile.png";
+  }
   console.log(usersDataArray);
-  usersDataArray.forEach((data, index) => console.log(data));
+  usersDataArray.forEach((data, index) => {
+    userFirstNameDisplay.innerHTML = `${data.FirstName}`;
+    userLastNameDisplay.innerHTML = `${data.LastName}`;
+    userEmailDisplay.innerHTML = `${data.Email}`;
+    userContactNumberDisplay.innerHTML = `${data.Contact}`;
+
+    console.log(
+      `${data.FirstName} ${data.LastName} ${data.Email} ${data.Contact}`
+    );
+  });
 });
 // Character limit functionality
 userBio.addEventListener("input", () => {
@@ -170,9 +197,3 @@ userBio.addEventListener("input", () => {
   }
   bioLimitText.innerHTML = `${userBio.value.length}/300`;
 });
-
-// Testing Values:
-
-let userFullNameData = document.getElementById("user_fullName_data");
-let userEmailData = document.getElementById("user_email_data");
-let userContactNumberData = document.getElementById("user_contactNumber_data");
