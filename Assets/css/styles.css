@@ -397,8 +397,8 @@ html {
         color: var(--white-color);
         width: 100%;
         display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        flex-direction: column;
+        /* justify-content: space-between; */
         > .individual_user_data {
           width: 100%;
           display: flex;
