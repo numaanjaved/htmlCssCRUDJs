@@ -242,11 +242,11 @@ form.addEventListener("submit", (e) => {
     imgDisplay.src = "http://127.0.0.1:5500/Assets/images/default_profile.png";
   }
   usersDataArray.forEach((data, index) => {
-    userFirstNameDisplay.innerHTML = `${data.FirstName}`;
-    userLastNameDisplay.innerHTML = `${data.LastName}`;
-    userEmailDisplay.innerHTML = `${data.Email}`;
-    userContactNumberDisplay.innerHTML = `${data.Contact}`;
-    userImgDisplay.src = `${data.userPicture}`;
+    userProfilePicImgTag.src = `${data.userPicture}`;
+    userFnameElem.innerHTML = `${data.FirstName}`;
+    userLnameElem.innerHTML = `${data.LastName}`;
+    userEmailElem.innerHTML = `${data.Email}`;
+    userContactNumElem.innerHTML = `${data.Contact}`;
     // console.log(
     //   `${data.FirstName} ${data.LastName} ${data.Email} ${data.Contact} ${data.userPicture}`
     // );
