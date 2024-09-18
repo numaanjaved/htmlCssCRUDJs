@@ -5,8 +5,6 @@ let imgDisplay = document.querySelector("#form_img");
 imgInput.addEventListener("change", () => {
   imgDisplay.src = URL.createObjectURL(imgInput.files[0]);
 });
-console.log(imgDisplay.src);
-let userImages = [];
 // Image information msg
 let imgUploadBtn = document.querySelector(".choose_img_label");
 let imgInfoMsg = document.querySelector("#img_info");
@@ -48,6 +46,7 @@ let userEmailDisplay = document.getElementById("user_email_data");
 let userContactNumberDisplay = document.getElementById(
   "user_contactNumber_data"
 );
+let userImgDisplay = document.querySelector(".user_profile_img");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let validationCheck = true;
@@ -72,7 +71,7 @@ form.addEventListener("submit", (e) => {
     LnameErr.style.display = "block";
     validationCheck = false;
   } else {
-    if (!userLastName.value.match(/^[a-zA-Z]{1,}$/)) {
+    if (!userLastName.value.match(/^[a-zA-Z\s]{1,}$/)) {
       LnameErr.innerHTML = `Please match the given example`;
       LnameErr.style.display = "block";
       validationCheck = false;
@@ -153,7 +152,7 @@ form.addEventListener("submit", (e) => {
     image_error_msg.innerHTML = ``;
     image_error_msg.style.display = "none";
   }
-  userImages.push(URL.createObjectURL(imgInput.files[0]));
+  console.log(URL.createObjectURL(imgInput.files[0]));
   let userDataObj = {
     FirstName: userFirstName.value,
     LastName: userLastName.value,
@@ -161,7 +160,7 @@ form.addEventListener("submit", (e) => {
     Contact: userContactNumber.value,
     Address: userAddress.value,
     Bio: userBio.value,
-    "User Picture src": imgInput.files[0],
+    userPicture: URL.createObjectURL(imgInput.files[0]),
   };
   if (validationCheck) {
     usersDataArray.push(userDataObj);
@@ -178,9 +177,9 @@ form.addEventListener("submit", (e) => {
     userLastNameDisplay.innerHTML = `${data.LastName}`;
     userEmailDisplay.innerHTML = `${data.Email}`;
     userContactNumberDisplay.innerHTML = `${data.Contact}`;
-
+    userImgDisplay.src = `${data.userPicture}`;
     console.log(
-      `${data.FirstName} ${data.LastName} ${data.Email} ${data.Contact}`
+      `${data.FirstName} ${data.LastName} ${data.Email} ${data.Contact} ${data.userPicture}`
     );
   });
 });
