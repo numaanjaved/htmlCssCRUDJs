@@ -34,7 +34,6 @@ let readModalFunc = (
   modalMainContainer.classList.add("modal_container");
   usersDataMainContainer.appendChild(modalMainContainer);
   modalMainContainer.setAttribute("id", `prof00${id}`);
-  modalMainContainer.style.display = "block";
   let modalContentContainer = document.createElement("div");
   modalContentContainer.classList.add("modal_content_container");
   modalMainContainer.appendChild(modalContentContainer);
@@ -111,6 +110,9 @@ let readModalFunc = (
   modalCloseBtn.classList.add("modal_close_btn");
   modalCloseBtn.innerHTML = `Close`;
   modalContentContainer.appendChild(modalCloseBtn);
+  modalCloseBtn.addEventListener("click", () => {
+    modalMainContainer.style.display = "none";
+  });
 };
 
 let recordFunc = (
@@ -133,6 +135,11 @@ let recordFunc = (
   let profileReadBtn = document.createElement("button");
   let profileUpdateBtn = document.createElement("button");
   let profileDelBtn = document.createElement("button");
+  // Buttons functionality:
+  profileReadBtn.addEventListener("click", () => {
+    let modal = document.getElementById(`prof00${id}`);
+    modal.style.display = "block";
+  });
 
   //   Adding Classes and appending
   userDataContainer.classList.add("individual_user_data");
