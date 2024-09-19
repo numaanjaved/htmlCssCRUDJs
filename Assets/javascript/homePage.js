@@ -61,7 +61,7 @@ form.addEventListener("submit", (e) => {
     FnameErr.style.display = "block";
     validationCheck = false;
   } else {
-    if (!userFirstName.value.match(/^[a-zA-Z]{1,}$/)) {
+    if (!userFirstName.value.match(/^[a-zA-Z\s]+$/)) {
       FnameErr.innerHTML = `Please match the given example`;
       FnameErr.style.display = "block";
       validationCheck = false;
@@ -76,7 +76,7 @@ form.addEventListener("submit", (e) => {
     LnameErr.style.display = "block";
     validationCheck = false;
   } else {
-    if (!userLastName.value.match(/^[a-zA-Z\s]{1,}$/)) {
+    if (!userLastName.value.match(/^[a-zA-Z\s]+$/)) {
       LnameErr.innerHTML = `Please match the given example`;
       LnameErr.style.display = "block";
       validationCheck = false;
@@ -110,7 +110,7 @@ form.addEventListener("submit", (e) => {
     contactErr.style.display = "block";
     validationCheck = false;
   } else {
-    if (!userContactNumber.value.match(/^\+[0-9]{2,}[0-9]{7,}$/)) {
+    if (!userContactNumber.value.match(/^[0-9]{2,}[0-9]{7,}$/)) {
       contactErr.innerHTML = `Please match the given example`;
       contactErr.style.display = "block";
       validationCheck = false;

@@ -115,6 +115,15 @@ html {
           -ms-transition: all 0.2s linear;
           -o-transition: all 0.2s linear;
           opacity: 0;
+          background-color: #fff;
+          width: 32rem;
+          text-align: center;
+          border-radius: 1rem;
+          -webkit-border-radius: 1rem;
+          -moz-border-radius: 1rem;
+          -ms-border-radius: 1rem;
+          -o-border-radius: 1rem;
+          margin-bottom: 1rem;
         }
         > .choose_img_label {
           cursor: pointer;
