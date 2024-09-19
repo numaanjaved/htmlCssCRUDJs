@@ -62,7 +62,7 @@ let readModalFunc = (
   let profID = document.createElement("p");
   profID.classList.add("modal_data");
   ModalTextContainer.appendChild(profID);
-  profID.innerHTML = `${id}`;
+  profID.innerHTML = `prof00${id}`;
 
   let modalFullNameHeading = document.createElement("p");
   modalFullNameHeading.classList.add("modal_data_headings");
@@ -137,15 +137,16 @@ let recordFunc = (
   let profileDelBtn = document.createElement("button");
   // Buttons functionality:
   profileReadBtn.addEventListener("click", () => {
-    let modal = document.getElementById(`prof00${id}`);
-    modal.style.display = "block";
+    let modal = document.querySelector(`#prof00${id}`);
+    if (modal) {
+      modal.style.display = "block";
+      console.log(modal);
+    }
   });
-
   //   Adding Classes and appending
   userDataContainer.classList.add("individual_user_data");
   userDataContainer.setAttribute("id", `${id}`);
   usersDataMainContainer.appendChild(userDataContainer);
-
   userTextRecordContainer.classList.add("text_record");
   userDataContainer.appendChild(userTextRecordContainer);
 
@@ -354,7 +355,7 @@ form.addEventListener("submit", (e) => {
       `${data.FirstName} ${data.LastName}`,
       `${data.Email}`,
       `${data.Contact}`,
-      `prof00${index + 1}`
+      index + 1
     );
     readModalFunc(
       `${data.userPicture}`,
@@ -363,7 +364,7 @@ form.addEventListener("submit", (e) => {
       `${data.Contact}`,
       `${data.Address}`,
       `${data.Bio}`,
-      `prof00${index + 1}`
+      index + 1
     );
   });
 });
