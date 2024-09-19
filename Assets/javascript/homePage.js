@@ -21,10 +21,73 @@ let usersDataMainContainer = document.querySelector(
   ".individual_user_data_container"
 );
 
-// let readModalFunc=()=>{
+let readModalFunc = () => {
+  let modalMainContainer = document.createElement("div");
+  modalMainContainer.classList.add("modal_container");
+  usersDataMainContainer.appendChild(modalMainContainer);
 
-// }
+  let modalContentContainer = document.createElement("div");
+  modalContentContainer.classList.add("modal_content_container");
+  modalMainContainer.appendChild(modalContentContainer);
 
+  let ModalPictureContainer = document.createElement("div");
+  ModalPictureContainer.classList.add("modal_picture_container");
+  modalContentContainer.appendChild(ModalPictureContainer);
+
+  let ModalPicFigureTag = document.createElement("figure");
+  ModalPicFigureTag.classList.add("profile_figure_tag");
+  ModalPictureContainer.appendChild(ModalPicFigureTag);
+
+  let ModalPic = document.createElement("img");
+  ModalPic.setAttribute("src", "./Assets/images/default_profile.png");
+  ModalPicFigureTag.appendChild(ModalPic);
+
+  let ModalTextContainer = document.createElement("div");
+  ModalTextContainer.classList.add("modal_text_content_container");
+  modalContentContainer.appendChild(ModalTextContainer);
+
+  let profIDHeading = document.createElement("p");
+  profIDHeading.classList.add("modal_data_headings");
+  ModalTextContainer.appendChild(profIDHeading);
+  let profID = document.createElement("p");
+  profID.classList.add("modal_data");
+  ModalTextContainer.appendChild(profID);
+  let modalFullNameHeading = document.createElement("p");
+  modalFullNameHeading.classList.add("modal_data_headings");
+  ModalTextContainer.appendChild(modalFullNameHeading);
+  let modalFullName = document.createElement("p");
+  modalFullName.classList.add("modal_data");
+  ModalTextContainer.appendChild(modalFullName);
+  let modalEmailHeading = document.createElement("p");
+  modalEmailHeading.classList.add("modal_data_headings");
+  ModalTextContainer.appendChild(modalEmailHeading);
+  let modalEmail = document.createElement("p");
+  modalEmail.classList.add("modal_data");
+  ModalTextContainer.appendChild(modalEmail);
+  let modalContactNumHeading = document.createElement("p");
+  modalContactNumHeading.classList.add("modal_data_headings");
+  ModalTextContainer.appendChild(modalContactNumHeading);
+  let modalContactNum = document.createElement("p");
+  modalContactNum.classList.add("modal_data");
+  ModalTextContainer.appendChild(modalContactNum);
+  let modalAddressHeading = document.createElement("p");
+  modalAddressHeading.classList.add("modal_data_headings");
+  ModalTextContainer.appendChild(modalAddressHeading);
+  let modalAddress = document.createElement("p");
+  modalAddress.classList.add("modal_data");
+  ModalTextContainer.appendChild(modalAddress);
+  let modalBioHeading = document.createElement("p");
+  modalBioHeading.classList.add("modal_data_headings");
+  ModalTextContainer.appendChild(modalBioHeading);
+  let modalBio = document.createElement("p");
+  modalBio.classList.add("modal_data");
+  ModalTextContainer.appendChild(modalBio);
+  let modalCloseBtn = document.createElement("button");
+  modalCloseBtn.classList.add("modal_close_btn");
+  modalCloseBtn.innerHTML = `Close`;
+  modalContentContainer.appendChild(modalCloseBtn);
+};
+readModalFunc();
 let recordFunc = (
   profilePic,
   userName,

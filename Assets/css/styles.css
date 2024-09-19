@@ -522,10 +522,10 @@ html {
           }
         }
         > .modal_container {
+          display: none;
           position: absolute;
           top: 0;
           left: 45rem;
-          display: none;
           margin: 2rem 0;
           width: 40rem;
           background-color: var(--light-sky);
