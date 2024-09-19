@@ -401,6 +401,9 @@ html {
         }
       }
       .individual_user_data_container {
+        position: relative;
+        top: 0;
+        left: 0;
         background-color: var(--primary-font-color);
         padding-bottom: 0.1rem;
         color: var(--white-color);
@@ -519,6 +522,9 @@ html {
           }
         }
         > .modal_container {
+          position: absolute;
+          top: 0;
+          left: 45rem;
           display: none;
           margin: 2rem 0;
           width: 40rem;

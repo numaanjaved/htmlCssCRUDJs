@@ -20,6 +20,11 @@ imgUploadBtn.addEventListener("mouseleave", () => {
 let usersDataMainContainer = document.querySelector(
   ".individual_user_data_container"
 );
+
+// let readModalFunc=()=>{
+
+// }
+
 let recordFunc = (
   profilePic,
   userName,
@@ -90,12 +95,6 @@ let recordFunc = (
   profileDelBtn.setAttribute("id", "delete_btn");
   profileDelBtn.innerHTML = "Delete";
   ProfileBtnOpsContainer.appendChild(profileDelBtn);
-  // console.log(
-  //   `${profilePic}
-  //   ${userName}
-  //   ${userEmail}
-  //   ${userContactNum}`
-  // );
 };
 // Adding form Validation=>
 let usersDataArray = [];
