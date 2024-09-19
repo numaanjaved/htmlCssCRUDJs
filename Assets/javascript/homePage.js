@@ -87,7 +87,7 @@ let readModalFunc = () => {
   modalCloseBtn.innerHTML = `Close`;
   modalContentContainer.appendChild(modalCloseBtn);
 };
-readModalFunc();
+
 let recordFunc = (
   profilePic,
   userName,
