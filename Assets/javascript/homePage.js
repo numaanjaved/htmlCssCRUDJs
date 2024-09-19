@@ -349,6 +349,15 @@ form.addEventListener("submit", (e) => {
       `${data.Contact}`,
       `prof00${index + 1}`
     );
+    readModalFunc(
+      `${data.userPicture}`,
+      `${data.FirstName} ${data.LastName}`,
+      `${data.Email}`,
+      `${data.Contact}`,
+      `${data.Address}`,
+      `${data.Bio}`,
+      `prof00${index + 1}`
+    );
   });
 });
 // Character limit functionality
