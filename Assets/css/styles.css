@@ -400,6 +400,12 @@ html {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        > .empty_msg {
+          font-family: "poppins", sans-serif;
+          font-size: 2.5rem;
+          color: rgb(255, 255, 52);
+          display: none;
+        }
         > .individual_user_data {
           width: 100%;
           display: flex;
@@ -504,8 +510,8 @@ html {
           }
         }
         > .modal_container {
+          display: none;
           margin: 2rem 0;
-
           width: 40rem;
           background-color: var(--light-sky);
           border-radius: 2rem;

@@ -29,7 +29,13 @@ let bioLimitExceed = document.querySelector(".limit_exceed_text");
 let individualUserDataContainer = document.querySelector(
   ".individual_user_data_container"
 );
-
+let emptyRecord_msg = document.createElement("p");
+emptyRecord_msg.classList.add("empty_msg");
+individualUserDataContainer.appendChild(emptyRecord_msg);
+if (usersDataArray.length == 0) {
+  emptyRecord_msg.style.display = "block";
+  emptyRecord_msg.innerHTML = `No Record Found!`;
+}
 // Error messages
 let FnameErr = document.querySelector(".Fname_error");
 let LnameErr = document.querySelector(".Lname_error");
