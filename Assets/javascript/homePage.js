@@ -21,11 +21,20 @@ let usersDataMainContainer = document.querySelector(
   ".individual_user_data_container"
 );
 
-let readModalFunc = () => {
+let readModalFunc = (
+  profilePic,
+  userName,
+  userEmail,
+  userContactNum,
+  userAddress,
+  userBio,
+  id = null
+) => {
   let modalMainContainer = document.createElement("div");
   modalMainContainer.classList.add("modal_container");
   usersDataMainContainer.appendChild(modalMainContainer);
-
+  modalMainContainer.setAttribute("id", `prof00${id}`);
+  modalMainContainer.style.display = "block";
   let modalContentContainer = document.createElement("div");
   modalContentContainer.classList.add("modal_content_container");
   modalMainContainer.appendChild(modalContentContainer);
@@ -39,7 +48,7 @@ let readModalFunc = () => {
   ModalPictureContainer.appendChild(ModalPicFigureTag);
 
   let ModalPic = document.createElement("img");
-  ModalPic.setAttribute("src", "./Assets/images/default_profile.png");
+  ModalPic.setAttribute("src", `${profilePic}`);
   ModalPicFigureTag.appendChild(ModalPic);
 
   let ModalTextContainer = document.createElement("div");
@@ -49,39 +58,55 @@ let readModalFunc = () => {
   let profIDHeading = document.createElement("p");
   profIDHeading.classList.add("modal_data_headings");
   ModalTextContainer.appendChild(profIDHeading);
+  profIDHeading.innerHTML = `Profile ID:`;
+
   let profID = document.createElement("p");
   profID.classList.add("modal_data");
   ModalTextContainer.appendChild(profID);
+  profID.innerHTML = `${id}`;
+
   let modalFullNameHeading = document.createElement("p");
   modalFullNameHeading.classList.add("modal_data_headings");
   ModalTextContainer.appendChild(modalFullNameHeading);
+  modalFullNameHeading.innerHTML = `Full Name:`;
   let modalFullName = document.createElement("p");
   modalFullName.classList.add("modal_data");
   ModalTextContainer.appendChild(modalFullName);
+  modalFullName.innerHTML = `${userName}`;
+
   let modalEmailHeading = document.createElement("p");
   modalEmailHeading.classList.add("modal_data_headings");
   ModalTextContainer.appendChild(modalEmailHeading);
+  modalEmailHeading.innerHTML = `Email:`;
   let modalEmail = document.createElement("p");
   modalEmail.classList.add("modal_data");
   ModalTextContainer.appendChild(modalEmail);
+  modalEmail.innerHTML = `${userEmail}`;
+
   let modalContactNumHeading = document.createElement("p");
   modalContactNumHeading.classList.add("modal_data_headings");
   ModalTextContainer.appendChild(modalContactNumHeading);
+  modalContactNumHeading.innerHTML = `Contact Number:`;
   let modalContactNum = document.createElement("p");
   modalContactNum.classList.add("modal_data");
   ModalTextContainer.appendChild(modalContactNum);
+  modalContactNum.innerHTML = `${userContactNum}`;
   let modalAddressHeading = document.createElement("p");
   modalAddressHeading.classList.add("modal_data_headings");
   ModalTextContainer.appendChild(modalAddressHeading);
+  modalAddressHeading.innerHTML = `Address:`;
   let modalAddress = document.createElement("p");
   modalAddress.classList.add("modal_data");
   ModalTextContainer.appendChild(modalAddress);
+  modalAddress.innerHTML = `${userAddress}`;
   let modalBioHeading = document.createElement("p");
   modalBioHeading.classList.add("modal_data_headings");
   ModalTextContainer.appendChild(modalBioHeading);
+  modalBioHeading.innerHTML = `Profile Description or Bio:`;
   let modalBio = document.createElement("p");
   modalBio.classList.add("modal_data");
   ModalTextContainer.appendChild(modalBio);
+  modalBio.innerHTML = `${userBio}`;
   let modalCloseBtn = document.createElement("button");
   modalCloseBtn.classList.add("modal_close_btn");
   modalCloseBtn.innerHTML = `Close`;
