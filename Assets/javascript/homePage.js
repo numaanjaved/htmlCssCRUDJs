@@ -140,9 +140,41 @@ let recordFunc = (
     let modal = document.querySelector(`#prof00${id}`);
     if (modal) {
       modal.style.display = "block";
-      console.log(modal);
+    } else {
+      console.log(`Modal not found`);
     }
   });
+  profileDelBtn.addEventListener("click", () => {
+    let recordContainer = document.querySelector(`#prof00${id}`);
+    let modal = document.querySelector(`#prof00${id}`);
+    if (recordContainer && modal) {
+      recordContainer.remove();
+      modal.remove();
+      usersDataArray.splice(id - 1, 1);
+      usersDataMainContainer.innerHTML = ``;
+      usersDataArray.forEach((data, index) => {
+        recordFunc(
+          `${data.userPicture}`,
+          `${data.FirstName} ${data.LastName}`,
+          `${data.Email}`,
+          `${data.Contact}`,
+          index + 1
+        );
+        readModalFunc(
+          `${data.userPicture}`,
+          `${data.FirstName} ${data.LastName}`,
+          `${data.Email}`,
+          `${data.Contact}`,
+          `${data.Address}`,
+          `${data.Bio}`,
+          index + 1
+        );
+      });
+    } else {
+      console.log(`No record found with ID: prof00${id}`);
+    }
+  });
+
   //   Adding Classes and appending
   userDataContainer.classList.add("individual_user_data");
   userDataContainer.setAttribute("id", `${id}`);
