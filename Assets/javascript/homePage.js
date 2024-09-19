@@ -14,7 +14,89 @@ imgUploadBtn.addEventListener("mouseenter", () => {
 imgUploadBtn.addEventListener("mouseleave", () => {
   imgInfoMsg.style.opacity = 0;
 });
+// Each user record elements:=>
+// Main container:
 
+let usersDataMainContainer = document.querySelector(
+  ".individual_user_data_container"
+);
+let recordFunc = (
+  profilePic,
+  userName,
+  userEmail,
+  userContactNum,
+  id = null
+) => {
+  // Defining Elements
+  let userDataContainer = document.createElement("div");
+  let userTextRecordContainer = document.createElement("div");
+  let userProfilePicContainer = document.createElement("div");
+  let userProfilePicFigureTag = document.createElement("figure");
+  let userProfilePicImgTag = document.createElement("img");
+  let userFullNameElem = document.createElement("p");
+  let userEmailElem = document.createElement("p");
+  let userContactNumElem = document.createElement("p");
+  let ProfileBtnOpsContainer = document.createElement("div");
+  let profileReadBtn = document.createElement("button");
+  let profileUpdateBtn = document.createElement("button");
+  let profileDelBtn = document.createElement("button");
+
+  //   Adding Classes and appending
+  userDataContainer.classList.add("individual_user_data");
+  userDataContainer.setAttribute("id", `${id}`);
+  usersDataMainContainer.appendChild(userDataContainer);
+
+  userTextRecordContainer.classList.add("text_record");
+  userDataContainer.appendChild(userTextRecordContainer);
+
+  userProfilePicContainer.classList.add("user_profile_data");
+  userTextRecordContainer.appendChild(userProfilePicContainer);
+
+  userProfilePicFigureTag.classList.add("profile_img_container");
+  userProfilePicContainer.appendChild(userProfilePicFigureTag);
+
+  userProfilePicImgTag.classList.add("user_profile_img");
+  userProfilePicImgTag.setAttribute("alt", "Profile_img");
+  userProfilePicImgTag.setAttribute("src", `${profilePic}`);
+  userProfilePicFigureTag.appendChild(userProfilePicImgTag);
+
+  userFullNameElem.classList.add("user_profile_data");
+  userFullNameElem.setAttribute("id", "user_fullName_data");
+  userFullNameElem.innerHTML = `${userName}`;
+  userTextRecordContainer.appendChild(userFullNameElem);
+
+  userEmailElem.classList.add("user_profile_data");
+  userEmailElem.setAttribute("id", "user_email_data");
+  userEmailElem.innerHTML = `${userEmail}`;
+  userTextRecordContainer.appendChild(userEmailElem);
+
+  userContactNumElem.classList.add("user_profile_data");
+  userContactNumElem.setAttribute("id", "user_contactNumber_data");
+  userContactNumElem.innerHTML = `${userContactNum}`;
+  userTextRecordContainer.appendChild(userContactNumElem);
+
+  // Individual buttons for each row
+  ProfileBtnOpsContainer.classList.add("profile_btns_container");
+  userDataContainer.appendChild(ProfileBtnOpsContainer);
+  profileReadBtn.classList.add("Ops_Buttons");
+  profileReadBtn.setAttribute("id", "read_btn");
+  profileReadBtn.innerHTML = "Read";
+  ProfileBtnOpsContainer.appendChild(profileReadBtn);
+  profileUpdateBtn.classList.add("Ops_Buttons");
+  profileUpdateBtn.setAttribute("id", "update_btn");
+  profileUpdateBtn.innerHTML = "Update";
+  ProfileBtnOpsContainer.appendChild(profileUpdateBtn);
+  profileDelBtn.classList.add("Ops_Buttons");
+  profileDelBtn.setAttribute("id", "delete_btn");
+  profileDelBtn.innerHTML = "Delete";
+  ProfileBtnOpsContainer.appendChild(profileDelBtn);
+  // console.log(
+  //   `${profilePic}
+  //   ${userName}
+  //   ${userEmail}
+  //   ${userContactNum}`
+  // );
+};
 // Adding form Validation=>
 let usersDataArray = [];
 let form = document.querySelector(".data_form");
@@ -26,12 +108,10 @@ let userAddress = document.getElementById("user_address");
 let userBio = document.getElementById("user_bio");
 let bioLimitText = document.querySelector(".limit_text");
 let bioLimitExceed = document.querySelector(".limit_exceed_text");
-let individualUserDataContainer = document.querySelector(
-  ".individual_user_data_container"
-);
+
 let emptyRecord_msg = document.createElement("p");
 emptyRecord_msg.classList.add("empty_msg");
-individualUserDataContainer.appendChild(emptyRecord_msg);
+usersDataMainContainer.appendChild(emptyRecord_msg);
 if (usersDataArray.length == 0) {
   emptyRecord_msg.style.display = "block";
   emptyRecord_msg.innerHTML = `No Record Found!`;
@@ -44,13 +124,6 @@ let contactErr = document.querySelector(".contact_error");
 let addressErr = document.querySelector(".address_error");
 let bioErr = document.querySelector(".bio_error");
 let image_error_msg = document.getElementById("img_error");
-
-// Each user record elements:=>
-// Main container:
-
-let usersDataMainContainer = document.querySelector(
-  ".individual_user_data_container"
-);
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -180,73 +253,15 @@ form.addEventListener("submit", (e) => {
     }
   }
 
-  individualUserDataContainer.innerHTML = ``;
+  usersDataMainContainer.innerHTML = ``;
   usersDataArray.forEach((data, index) => {
-    // Defining Elements
-    let userDataContainer = document.createElement("div");
-    let userTextRecordContainer = document.createElement("div");
-    let userProfilePicContainer = document.createElement("div");
-    let userProfilePicFigureTag = document.createElement("figure");
-    let userProfilePicImgTag = document.createElement("img");
-    let userFullNameElem = document.createElement("p");
-    let userEmailElem = document.createElement("p");
-    let userContactNumElem = document.createElement("p");
-    let ProfileBtnOpsContainer = document.createElement("div");
-    let profileReadBtn = document.createElement("button");
-    let profileUpdateBtn = document.createElement("button");
-    let profileDelBtn = document.createElement("button");
-
-    //   Adding Classes and appending
-    userDataContainer.classList.add("individual_user_data");
-    userDataContainer.setAttribute("id", `prof00${index + 1}`);
-    usersDataMainContainer.appendChild(userDataContainer);
-
-    userTextRecordContainer.classList.add("text_record");
-    userDataContainer.appendChild(userTextRecordContainer);
-
-    userProfilePicContainer.classList.add("user_profile_data");
-    userTextRecordContainer.appendChild(userProfilePicContainer);
-
-    userProfilePicFigureTag.classList.add("profile_img_container");
-    userProfilePicContainer.appendChild(userProfilePicFigureTag);
-
-    userProfilePicImgTag.classList.add("user_profile_img");
-    userProfilePicImgTag.setAttribute("alt", "Profile_img");
-    userProfilePicImgTag.setAttribute("src", "./Assets/images/human_icon.png");
-    userProfilePicFigureTag.appendChild(userProfilePicImgTag);
-
-    userFullNameElem.classList.add("user_profile_data");
-    userFullNameElem.setAttribute("id", "user_fullName_data");
-    userTextRecordContainer.appendChild(userFullNameElem);
-
-    userEmailElem.classList.add("user_profile_data");
-    userEmailElem.setAttribute("id", "user_email_data");
-    userTextRecordContainer.appendChild(userEmailElem);
-    userContactNumElem.classList.add("user_profile_data");
-    userContactNumElem.setAttribute("id", "user_contactNumber_data");
-    userTextRecordContainer.appendChild(userContactNumElem);
-
-    // Individual buttons for each row
-    ProfileBtnOpsContainer.classList.add("profile_btns_container");
-    userDataContainer.appendChild(ProfileBtnOpsContainer);
-    profileReadBtn.classList.add("Ops_Buttons");
-    profileReadBtn.setAttribute("id", "read_btn");
-    profileReadBtn.innerHTML = "Read";
-    ProfileBtnOpsContainer.appendChild(profileReadBtn);
-    profileUpdateBtn.classList.add("Ops_Buttons");
-    profileUpdateBtn.setAttribute("id", "update_btn");
-    profileUpdateBtn.innerHTML = "Update";
-    ProfileBtnOpsContainer.appendChild(profileUpdateBtn);
-    profileDelBtn.classList.add("Ops_Buttons");
-    profileDelBtn.setAttribute("id", "delete_btn");
-    profileDelBtn.innerHTML = "Delete";
-    ProfileBtnOpsContainer.appendChild(profileDelBtn);
-    // Putting Values in Them
-    userProfilePicImgTag.src = `${data.userPicture}`;
-    userFullNameElem.innerHTML = `${data.FirstName} ${data.LastName}`;
-    userEmailElem.innerHTML = `${data.Email}`;
-    userContactNumElem.innerHTML = `${data.Contact}`;
-    console.log(usersDataArray);
+    recordFunc(
+      `${data.userPicture}`,
+      `${data.FirstName} ${data.LastName}`,
+      `${data.Email}`,
+      `${data.Contact}`,
+      `prof00${index + 1}`
+    );
   });
 });
 // Character limit functionality
