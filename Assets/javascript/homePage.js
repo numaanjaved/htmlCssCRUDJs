@@ -144,32 +144,11 @@ let recordFunc = (
       console.log(`Modal not found`);
     }
   });
-  profileDelBtn.addEventListener("click", () => {
-    let recordContainer = document.querySelector(`#prof00${id}`);
+  profileDelBtn.addEventListener("click", (e) => {
+    profileDelBtn.parentElement.parentElement.remove();
     let modal = document.querySelector(`#prof00${id}`);
-    if (recordContainer && modal) {
-      recordContainer.remove();
+    if (modal) {
       modal.remove();
-      usersDataArray.splice(id - 1, 1);
-      usersDataMainContainer.innerHTML = ``;
-      usersDataArray.forEach((data, index) => {
-        recordFunc(
-          `${data.userPicture}`,
-          `${data.FirstName} ${data.LastName}`,
-          `${data.Email}`,
-          `${data.Contact}`,
-          index + 1
-        );
-        readModalFunc(
-          `${data.userPicture}`,
-          `${data.FirstName} ${data.LastName}`,
-          `${data.Email}`,
-          `${data.Contact}`,
-          `${data.Address}`,
-          `${data.Bio}`,
-          index + 1
-        );
-      });
     } else {
       console.log(`No record found with ID: prof00${id}`);
     }
