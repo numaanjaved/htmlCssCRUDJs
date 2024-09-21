@@ -130,27 +130,7 @@ let formValidationFunc = () => {
         "http://127.0.0.1:5500/Assets/images/default_profile.png";
     }
   }
-
-  usersDataMainContainer.innerHTML = ``;
-  usersDataArray.forEach((data, index) => {
-    recordFunc(
-      `${data.userPicture}`,
-      `${data.FirstName} ${data.LastName}`,
-      `${data.Email}`,
-      `${data.Contact}`,
-      index + 1
-    );
-
-    readModalFunc(
-      `${data.userPicture}`,
-      `${data.FirstName} ${data.LastName}`,
-      `${data.Email}`,
-      `${data.Contact}`,
-      `${data.Address}`,
-      `${data.Bio}`,
-      index + 1
-    );
-  });
+  refreshRecords();
 };
 
 let charLimitCheck = () => {
