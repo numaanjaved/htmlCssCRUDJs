@@ -7,6 +7,9 @@
 html {
   font-size: 62.5%;
 }
+body {
+  scroll-behavior: smooth;
+}
 :root {
   --primary-font-color: #2b2b2b;
   --sky-blue: #90c5cf;

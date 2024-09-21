@@ -20,37 +20,13 @@ imgUploadBtn.addEventListener("mouseleave", () => {
 
 // Adding form Validation=>
 
-// Error messages
-let FnameErr = document.querySelector(".Fname_error");
-let LnameErr = document.querySelector(".Lname_error");
-let emailErr = document.querySelector(".email_error");
-let contactErr = document.querySelector(".contact_error");
-let addressErr = document.querySelector(".address_error");
-let bioErr = document.querySelector(".bio_error");
-let image_error_msg = document.getElementById("img_error");
-
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   formValidationFunc();
-  usersDataMainContainer.innerHTML = ``;
-  usersDataArray.forEach((data, index) => {
-    recordFunc(
-      `${data.userPicture}`,
-      `${data.FirstName} ${data.LastName}`,
-      `${data.Email}`,
-      `${data.Contact}`,
-      index + 1
-    );
-    readModalFunc(
-      `${data.userPicture}`,
-      `${data.FirstName} ${data.LastName}`,
-      `${data.Email}`,
-      `${data.Contact}`,
-      `${data.Address}`,
-      `${data.Bio}`,
-      index + 1
-    );
-  });
+
+  // console.log(userDataContainer.id);
+
+  // console.log(usersDataArray);
 });
 charLimitCheck();
 // Character limit functionality

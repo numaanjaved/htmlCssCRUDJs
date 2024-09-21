@@ -14,6 +14,14 @@ let bioLimitExceed = document.querySelector(".limit_exceed_text");
 let emptyRecord_msg = document.createElement("p");
 emptyRecord_msg.classList.add("empty_msg");
 usersDataMainContainer.appendChild(emptyRecord_msg);
+// Error messages
+let FnameErr = document.querySelector(".Fname_error");
+let LnameErr = document.querySelector(".Lname_error");
+let emailErr = document.querySelector(".email_error");
+let contactErr = document.querySelector(".contact_error");
+let addressErr = document.querySelector(".address_error");
+let bioErr = document.querySelector(".bio_error");
+let image_error_msg = document.getElementById("img_error");
 if (usersDataArray.length == 0) {
   emptyRecord_msg.style.display = "block";
   emptyRecord_msg.innerHTML = `No Record Found!`;
@@ -57,31 +65,18 @@ let recordFunc = (
       console.log(`No record found with ID: prof00${id}`);
     }
   });
+
   profileUpdateBtn.addEventListener("click", () => {
-    let UserData = document.querySelector(`#prof00${id}`);
-    console.log(`selected element have id: ${UserData.id}`);
-    usersDataArray[id - 1].FirstName = "Kahout";
-    console.log(usersDataArray[id - 1].FirstName);
-    console.log(usersDataArray[id - 1]);
-    usersDataMainContainer.innerHTML = ``;
-    usersDataArray.forEach((data, index) => {
-      recordFunc(
-        `${data.userPicture}`,
-        `${data.FirstName} ${data.LastName}`,
-        `${data.Email}`,
-        `${data.Contact}`,
-        index + 1
-      );
-      readModalFunc(
-        `${data.userPicture}`,
-        `${data.FirstName} ${data.LastName}`,
-        `${data.Email}`,
-        `${data.Contact}`,
-        `${data.Address}`,
-        `${data.Bio}`,
-        index + 1
-      );
-    });
+    window.scrollTo(200, 0);
+    userIndexCheck = id - 1;
+    let selectedUser = usersDataArray[id - 1];
+    userFirstName.value = selectedUser.FirstName;
+    userLastName.value = selectedUser.LastName;
+    userEmail.value = selectedUser.Email;
+    userContactNumber.value = selectedUser.Contact;
+    userAddress.value = selectedUser.Address;
+    userBio.value = selectedUser.Bio;
+    console.log(`Editing record at index: ${selectedUser}`);
   });
   //   Adding Classes and appending
   userDataContainer.classList.add("individual_user_data");
