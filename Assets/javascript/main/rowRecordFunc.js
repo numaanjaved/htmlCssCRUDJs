@@ -67,6 +67,8 @@ let recordFunc = (
   });
 
   profileUpdateBtn.addEventListener("click", () => {
+    let formSubmitBtn = document.getElementById(`submit_btn`);
+    formSubmitBtn.innerHTML = `Update`;
     window.scrollTo(200, 0);
     userIndexCheck = id - 1;
     let selectedUser = usersDataArray[id - 1];
