@@ -140,7 +140,6 @@ let formValidationFunc = () => {
       `${data.Contact}`,
       index + 1
     );
-    // let recordContainer = document.getElementById(`${index + 1}`);
 
     readModalFunc(
       `${data.userPicture}`,
@@ -152,7 +151,6 @@ let formValidationFunc = () => {
       index + 1
     );
   });
-  // console.log(`${userDataContainer.id}`);
 };
 
 let charLimitCheck = () => {

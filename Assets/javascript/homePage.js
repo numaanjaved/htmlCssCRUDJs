@@ -15,18 +15,8 @@ imgUploadBtn.addEventListener("mouseleave", () => {
   imgInfoMsg.style.opacity = 0;
 });
 
-// Each user record elements:=>
-// Main container:
-
-// Adding form Validation=>
-
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   formValidationFunc();
-
-  // console.log(userDataContainer.id);
-
-  // console.log(usersDataArray);
 });
 charLimitCheck();
-// Character limit functionality
