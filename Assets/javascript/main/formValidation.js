@@ -1,7 +1,6 @@
 let userIndexCheck = null;
 let formValidationFunc = () => {
   let validationCheck = true;
-  //   First Name Validation
   if (userFirstName.value == "" || userFirstName == null) {
     FnameErr.innerHTML = `Please fill the First Name field`;
     FnameErr.style.display = "block";
@@ -16,7 +15,6 @@ let formValidationFunc = () => {
       FnameErr.style.display = "none";
     }
   }
-  // Last Name Validation
   if (userLastName.value == "" || userLastName == null) {
     LnameErr.innerHTML = `Please fill the Last Name field`;
     LnameErr.style.display = "block";
@@ -31,7 +29,6 @@ let formValidationFunc = () => {
       LnameErr.style.display = "none";
     }
   }
-  //   Email Validation
   if (userEmail.value == "" || userEmail == null) {
     emailErr.innerHTML = `Please fill the Email field`;
     emailErr.style.display = "block";
@@ -50,7 +47,6 @@ let formValidationFunc = () => {
       emailErr.style.display = "none";
     }
   }
-  //   Contact Number Validation
   if (userContactNumber.value == "" || userContactNumber == null) {
     contactErr.innerHTML = `Please fill the Contact Number field`;
     contactErr.style.display = "block";
@@ -65,7 +61,6 @@ let formValidationFunc = () => {
       contactErr.style.display = "none";
     }
   }
-  //   Address Validation
   if (userAddress.value == "" || userAddress == null) {
     addressErr.innerHTML = `Please fill the Address field`;
     addressErr.style.display = "block";
@@ -80,7 +75,6 @@ let formValidationFunc = () => {
       addressErr.style.display = "none";
     }
   }
-  //   Bio Validation
   if (userBio.value == "" || userBio == null) {
     bioErr.innerHTML = `Please fill the Profile description field`;
     bioErr.style.display = "block";
@@ -94,9 +88,7 @@ let formValidationFunc = () => {
     bioErr.innerHTML = ``;
     bioErr.style.display = "none";
   }
-
-  // creating img src:
-
+  // creating img src:=>
   if (
     imgDisplay.src == "http://127.0.0.1:5500/Assets/images/default_profile.png"
   ) {
