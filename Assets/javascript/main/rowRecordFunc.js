@@ -33,53 +33,62 @@ let recordFunc = (
   userContactNum,
   id = null
 ) => {
-  // Defining Elements
-  let userDataContainer = document.createElement("div");
-  let userTextRecordContainer = document.createElement("div");
-  let userProfilePicContainer = document.createElement("div");
-  let userProfilePicFigureTag = document.createElement("figure");
-  let userProfilePicImgTag = document.createElement("img");
-  let userFullNameElem = document.createElement("p");
-  let userEmailElem = document.createElement("p");
-  let userContactNumElem = document.createElement("p");
-  let ProfileBtnOpsContainer = document.createElement("div");
-  userDataContainer.appendChild(ProfileBtnOpsContainer);
-
-  //   Adding Classes and appending
-  userDataContainer.classList.add("individual_user_data");
-  userDataContainer.setAttribute("id", `${id}`);
-  usersDataMainContainer.appendChild(userDataContainer);
-  userTextRecordContainer.classList.add("text_record");
-  userDataContainer.appendChild(userTextRecordContainer);
-
-  userProfilePicContainer.classList.add("user_profile_data");
-  userTextRecordContainer.appendChild(userProfilePicContainer);
-
-  userProfilePicFigureTag.classList.add("profile_img_container");
-  userProfilePicContainer.appendChild(userProfilePicFigureTag);
-
-  userProfilePicImgTag.classList.add("user_profile_img");
-  userProfilePicImgTag.setAttribute("alt", "Profile_img");
-  userProfilePicImgTag.setAttribute("src", `${profilePic}`);
-  userProfilePicFigureTag.appendChild(userProfilePicImgTag);
-
-  userFullNameElem.classList.add("user_profile_data");
-  userFullNameElem.setAttribute("id", "user_fullName_data");
-  userFullNameElem.innerHTML = `${userName}`;
-  userTextRecordContainer.appendChild(userFullNameElem);
-
-  userEmailElem.classList.add("user_profile_data");
-  userEmailElem.setAttribute("id", "user_email_data");
-  userEmailElem.innerHTML = `${userEmail}`;
-  userTextRecordContainer.appendChild(userEmailElem);
-
-  userContactNumElem.classList.add("user_profile_data");
-  userContactNumElem.setAttribute("id", "user_contactNumber_data");
-  userContactNumElem.innerHTML = `${userContactNum}`;
-  userTextRecordContainer.appendChild(userContactNumElem);
-
-  // Individual buttons for each row
-  ProfileBtnOpsContainer.classList.add("profile_btns_container");
-  userDataContainer.appendChild(ProfileBtnOpsContainer);
+  let userDataContainer = createNewElement([
+    "div",
+    "individual_user_data",
+    usersDataMainContainer,
+    null,
+    { id: `${id}` },
+  ]);
+  let userTextRecordContainer = createNewElement([
+    "div",
+    "text_record",
+    userDataContainer,
+  ]);
+  let userProfilePicContainer = createNewElement([
+    "div",
+    "user_profile_data",
+    userTextRecordContainer,
+  ]);
+  let userProfilePicFigureTag = createNewElement([
+    "figure",
+    "profile_img_container",
+    userProfilePicContainer,
+  ]);
+  createNewElement([
+    "img",
+    "user_profile_img",
+    userProfilePicFigureTag,
+    null,
+    { src: `${profilePic}`, alt: "Profile Picture" },
+  ]);
+  createNewElement([
+    "p",
+    "user_profile_data",
+    userTextRecordContainer,
+    `${userName}`,
+    { id: "user_fullName_data" },
+  ]);
+  createNewElement([
+    "p",
+    "user_profile_data",
+    userTextRecordContainer,
+    `${userEmail}`,
+    { id: "user_email_data" },
+  ]);
+  createNewElement([
+    "p",
+    "user_profile_data",
+    userTextRecordContainer,
+    `${userContactNum}`,
+    {
+      id: "user_contactNumber_data",
+    },
+  ]);
+  let ProfileBtnOpsContainer = createNewElement([
+    "div",
+    "profile_btns_container",
+    userDataContainer,
+  ]);
   ReadUpdateDeleteFunc(userDataContainer, ProfileBtnOpsContainer, id);
 };
