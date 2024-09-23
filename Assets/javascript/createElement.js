@@ -14,17 +14,14 @@ let createNewElement = ([
   } else if (typeof elemClass === "string") {
     newElement.classList.add(elemClass);
   }
-
   if (elemContent != null) {
     newElement.innerHTML = elemContent;
   }
-
   if (attributes && typeof attributes === "object") {
     for (const attrKey in attributes) {
       newElement.setAttribute(attrKey, attributes[attrKey]);
     }
   }
-
   if (typeof elemParent === "string") {
     let selectedParent = document.querySelector(elemParent);
     if (selectedParent) {

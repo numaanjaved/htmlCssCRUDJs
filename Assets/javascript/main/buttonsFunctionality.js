@@ -1,22 +1,26 @@
 let ReadUpdateDeleteFunc = (userDataContainer, ProfileBtnOpsContainer, id) => {
-  let profileReadBtn = document.createElement("button");
-  let profileUpdateBtn = document.createElement("button");
-  let profileDelBtn = document.createElement("button");
+  let profileReadBtn = createNewElement([
+    "button",
+    "Ops_Buttons",
+    ProfileBtnOpsContainer,
+    `Read`,
+    { id: "read_btn" },
+  ]);
 
-  profileReadBtn.classList.add("Ops_Buttons");
-  profileReadBtn.setAttribute("id", "read_btn");
-  profileReadBtn.innerHTML = "Read";
-  ProfileBtnOpsContainer.appendChild(profileReadBtn);
-
-  profileUpdateBtn.classList.add("Ops_Buttons");
-  profileUpdateBtn.setAttribute("id", "update_btn");
-  profileUpdateBtn.innerHTML = "Update";
-  ProfileBtnOpsContainer.appendChild(profileUpdateBtn);
-
-  profileDelBtn.classList.add("Ops_Buttons");
-  profileDelBtn.setAttribute("id", "delete_btn");
-  profileDelBtn.innerHTML = "Delete";
-  ProfileBtnOpsContainer.appendChild(profileDelBtn);
+  let profileUpdateBtn = createNewElement([
+    "button",
+    "Ops_Buttons",
+    ProfileBtnOpsContainer,
+    `Update`,
+    { id: "update_btn" },
+  ]);
+  let profileDelBtn = createNewElement([
+    "button",
+    "Ops_Buttons",
+    ProfileBtnOpsContainer,
+    `Delete`,
+    { id: "delete_btn" },
+  ]);
 
   // Buttons functionality:
   profileReadBtn.addEventListener("click", () => {
