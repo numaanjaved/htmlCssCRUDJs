@@ -55,6 +55,5 @@ let ReadUpdateDeleteFunc = (userDataContainer, ProfileBtnOpsContainer, id) => {
     userContactNumber.value = selectedUser.Contact;
     userAddress.value = selectedUser.Address;
     userBio.value = selectedUser.Bio;
-    console.log(`Editing record at index: ${selectedUser}`);
   });
 };
