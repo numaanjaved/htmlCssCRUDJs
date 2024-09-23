@@ -1,3 +1,4 @@
+let inputSection = createNewElement(["section", "data_input_section", ".main"]);
 let form = createNewElement([
   "form",
   "data_form",
