@@ -98,9 +98,17 @@ let Validation = () => {
     image_error_msg.innerHTML = ``;
     image_error_msg.style.display = "none";
   }
-
+  let userData = [
+    userFirstName.value,
+    userLastName.value,
+    userEmail.value,
+    userContactNumber.value,
+    userAddress.value,
+    userBio.value,
+    URL.createObjectURL(imgInput.files[0]),
+  ];
   if (validationCheck) {
-    validData();
+    validateData(userData);
   }
   refreshRecords();
 };
@@ -117,3 +125,11 @@ charLimitCheck();
 //   Bio: userBio.value,
 //   userPicture: URL.createObjectURL(imgInput.files[0]),
 // };
+
+// `Ahmed`,
+// `Ali`,
+// `ahmed12@gmail.com`,
+// `0333333333`,
+// `Lahore`,
+// `Developer`,
+// `src`,
