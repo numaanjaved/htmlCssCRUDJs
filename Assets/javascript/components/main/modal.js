@@ -1,4 +1,4 @@
-let readModalFunc = (
+let readModal = (
   profilePic,
   userName,
   userEmail,

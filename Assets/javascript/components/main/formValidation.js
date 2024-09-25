@@ -1,5 +1,5 @@
 let userIndexCheck = null;
-let formValidationFunc = () => {
+let Validation = () => {
   let validationCheck = true;
   if (userFirstName.value == "" || userFirstName == null) {
     FnameErr.innerHTML = `Please fill the First Name field`;

@@ -28,5 +28,5 @@ imgUploadBtn.addEventListener("mouseleave", () => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  formValidationFunc();
+  Validation();
 });

@@ -1,4 +1,4 @@
-let ReadUpdateDeleteFunc = (userDataContainer, ProfileBtnOpsContainer, id) => {
+let readUpdateDelete = (userDataContainer, ProfileBtnOpsContainer, id) => {
   console.log(`I'm from buttons Id: ${id}`);
   let profileReadBtn = createNewElement([
     "button",

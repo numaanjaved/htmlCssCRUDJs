@@ -25,7 +25,7 @@ if (usersDataArray.length == 0) {
   emptyRecord_msg.style.display = "block";
   emptyRecord_msg.innerHTML = `No Record Found!`;
 }
-let recordFunc = (
+let recordRow = (
   profilePic,
   userName,
   userEmail,
@@ -89,5 +89,5 @@ let recordFunc = (
     "profile_btns_container",
     userDataContainer,
   ]);
-  ReadUpdateDeleteFunc(userDataContainer, ProfileBtnOpsContainer, id);
+  readUpdateDelete(userDataContainer, ProfileBtnOpsContainer, id);
 };

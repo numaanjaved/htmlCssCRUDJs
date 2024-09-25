@@ -1,7 +1,7 @@
 let refreshRecords = () => {
   usersDataMainContainer.innerHTML = ``;
   usersDataArray.forEach((data, index) => {
-    recordFunc(
+    recordRow(
       `${data.getProfilePic()}`,
       `${data.getFirstName()} ${data.getLastName()}`,
       `${data.getEmail()}`,
@@ -9,7 +9,7 @@ let refreshRecords = () => {
       index + 1
     );
 
-    readModalFunc(
+    readModal(
       `${data.getProfilePic()}`,
       `${data.getFirstName()} ${data.getLastName()}`,
       `${data.getEmail()}`,
