@@ -16,7 +16,7 @@ let refreshRecords = () => {
       `${data.getContactNum()}`,
       `${data.getAddress()}`,
       `${data.getBio()}`,
-      `${data.id}`
+      `${data.getID()}`
     );
   });
 };
