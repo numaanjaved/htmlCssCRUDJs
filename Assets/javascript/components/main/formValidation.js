@@ -1,4 +1,5 @@
 class User {
+  static id = 1;
   #FirstName;
   #LastName;
   #Email;
@@ -14,6 +15,9 @@ class User {
     this.#Address = Address;
     this.#Bio = Bio;
     this.#userPicture = userPicture;
+    if (!this.id) {
+      this.id = `prof00${User.id++}`;
+    }
   }
 
   setFirstName(FName) {
@@ -167,6 +171,8 @@ let formValidationFunc = () => {
   userDataObj.setAddress(userAddress.value);
   userDataObj.setBio(userBio.value);
   userDataObj.setProfilePic(URL.createObjectURL(imgInput.files[0]));
+
+  // console.log();
   // {
   //   FirstName: userFirstName.value,
   //   LastName: userLastName.value,
@@ -181,7 +187,6 @@ let formValidationFunc = () => {
       usersDataArray[userIndexCheck] = userDataObj;
     } else {
       usersDataArray.push(userDataObj);
-      console.log(usersDataArray);
     }
     form.reset();
     if (

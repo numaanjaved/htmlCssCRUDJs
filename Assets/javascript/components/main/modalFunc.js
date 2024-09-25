@@ -12,7 +12,7 @@ let readModalFunc = (
     "modal_container",
     usersDataMainContainer,
     null,
-    { id: `prof00${id}` },
+    { id: `${id}` },
   ]);
   let modalContentContainer = createNewElement([
     "div",
@@ -47,7 +47,7 @@ let readModalFunc = (
     modalTextContainer,
     `Profile ID:`,
   ]);
-  createNewElement(["p", "modal_data", modalTextContainer, `prof00${id}`]);
+  createNewElement(["p", "modal_data", modalTextContainer, `${id}`]);
   createNewElement([
     "p",
     "modal_data_headings",
