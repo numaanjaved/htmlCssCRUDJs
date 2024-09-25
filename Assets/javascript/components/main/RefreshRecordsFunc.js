@@ -2,20 +2,20 @@ let refreshRecords = () => {
   usersDataMainContainer.innerHTML = ``;
   usersDataArray.forEach((data, index) => {
     recordFunc(
-      `${data.userPicture}`,
-      `${data.FirstName} ${data.LastName}`,
-      `${data.Email}`,
-      `${data.Contact}`,
+      `${data.getProfilePic()}`,
+      `${data.getFirstName()} ${data.getLastName()}`,
+      `${data.getEmail()}`,
+      `${data.getContactNum()}`,
       index + 1
     );
 
     readModalFunc(
-      `${data.userPicture}`,
-      `${data.FirstName} ${data.LastName}`,
-      `${data.Email}`,
-      `${data.Contact}`,
-      `${data.Address}`,
-      `${data.Bio}`,
+      `${data.getProfilePic()}`,
+      `${data.getFirstName()} ${data.getLastName()}`,
+      `${data.getEmail()}`,
+      `${data.getContactNum()}`,
+      `${data.getAddress()}`,
+      `${data.getBio()}`,
       index + 1
     );
   });

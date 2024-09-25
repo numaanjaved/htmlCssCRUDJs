@@ -49,11 +49,12 @@ let ReadUpdateDeleteFunc = (userDataContainer, ProfileBtnOpsContainer, id) => {
     window.scrollTo(200, 0);
     userIndexCheck = id - 1;
     let selectedUser = usersDataArray[id - 1];
-    userFirstName.value = selectedUser.FirstName;
-    userLastName.value = selectedUser.LastName;
-    userEmail.value = selectedUser.Email;
-    userContactNumber.value = selectedUser.Contact;
-    userAddress.value = selectedUser.Address;
-    userBio.value = selectedUser.Bio;
+    userFirstName.value = selectedUser.getFirstName();
+    userLastName.value = selectedUser.getLastName();
+    userEmail.value = selectedUser.getEmail();
+    userContactNumber.value = selectedUser.getContactNum();
+    userAddress.value = selectedUser.getAddress();
+    userBio.value = selectedUser.getBio();
+    imgDisplay.src = selectedUser.getProfilePic();
   });
 };

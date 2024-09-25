@@ -1,3 +1,64 @@
+class User {
+  #FirstName;
+  #LastName;
+  #Email;
+  #Contact;
+  #Address;
+  #Bio;
+  #userPicture;
+  constructor(FirstName, LastName, Email, Contact, Address, Bio, userPicture) {
+    this.#FirstName = FirstName;
+    this.#LastName = LastName;
+    this.#Email = Email;
+    this.#Contact = Contact;
+    this.#Address = Address;
+    this.#Bio = Bio;
+    this.#userPicture = userPicture;
+  }
+
+  setFirstName(FName) {
+    this.#FirstName = FName;
+  }
+  getFirstName() {
+    return this.#FirstName;
+  }
+  setLastName(LName) {
+    this.#LastName = LName;
+  }
+  getLastName() {
+    return this.#LastName;
+  }
+  setEmail(email) {
+    this.#Email = email;
+  }
+  getEmail() {
+    return this.#Email;
+  }
+  setContactNum(contact) {
+    this.#Contact = contact;
+  }
+  getContactNum() {
+    return this.#Contact;
+  }
+  setAddress(address) {
+    this.#Address = address;
+  }
+  getAddress() {
+    return this.#Address;
+  }
+  setBio(bio) {
+    this.#Bio = bio;
+  }
+  getBio() {
+    return this.#Bio;
+  }
+  setProfilePic(picture) {
+    this.#userPicture = picture;
+  }
+  getProfilePic() {
+    return this.#userPicture;
+  }
+}
 let userIndexCheck = null;
 let formValidationFunc = () => {
   let validationCheck = true;
@@ -98,20 +159,29 @@ let formValidationFunc = () => {
     image_error_msg.innerHTML = ``;
     image_error_msg.style.display = "none";
   }
-  let userDataObj = {
-    FirstName: userFirstName.value,
-    LastName: userLastName.value,
-    Email: userEmail.value,
-    Contact: userContactNumber.value,
-    Address: userAddress.value,
-    Bio: userBio.value,
-    userPicture: URL.createObjectURL(imgInput.files[0]),
-  };
+  let userDataObj = new User();
+  userDataObj.setFirstName(userFirstName.value);
+  userDataObj.setLastName(userLastName.value);
+  userDataObj.setEmail(userEmail.value);
+  userDataObj.setContactNum(userContactNumber.value);
+  userDataObj.setAddress(userAddress.value);
+  userDataObj.setBio(userBio.value);
+  userDataObj.setProfilePic(URL.createObjectURL(imgInput.files[0]));
+  // {
+  //   FirstName: userFirstName.value,
+  //   LastName: userLastName.value,
+  //   Email: userEmail.value,
+  //   Contact: userContactNumber.value,
+  //   Address: userAddress.value,
+  //   Bio: userBio.value,
+  //   userPicture: URL.createObjectURL(imgInput.files[0]),
+  // };
   if (validationCheck) {
     if (userIndexCheck !== null) {
       usersDataArray[userIndexCheck] = userDataObj;
     } else {
       usersDataArray.push(userDataObj);
+      console.log(usersDataArray);
     }
     form.reset();
     if (
