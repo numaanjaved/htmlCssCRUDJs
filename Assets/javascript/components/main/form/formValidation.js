@@ -29,88 +29,32 @@ let Validation = () => {
   let validationCheck = true;
 
   let FNameValidation = elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/);
-
   errorMsg(FNameValidation, FnameErr, `Please fill in a valid first name`);
-  let lNameValidation = () => {
-    let lNameCheck = true;
-    let lNameMatch = true;
-    if (userLastName.value == "" || userLastName == null) {
-      lNameCheck = false;
-    } else {
-      if (!userLastName.value.match(/^[a-zA-Z\s]+$/)) {
-        lNameMatch = false;
-      }
-    }
-    if (lNameCheck && lNameMatch) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  errorMsg(lNameValidation(), LnameErr, `Please fill in a valid first name`);
+  let LNameValidation = elemValidationCheck(userLastName, /^[a-zA-Z\s]+$/);
+  errorMsg(LNameValidation, LnameErr, `Please fill in a valid first name`);
+  let emailValidation = elemValidationCheck(
+    userEmail,
+    /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/
+  );
 
-  let emailValidation = () => {
-    let emailCheck = true;
-    let emailMatch = true;
-    if (userEmail.value == "" || userEmail == null) {
-      emailCheck = false;
-    } else {
-      if (
-        !userEmail.value.match(
-          /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/
-        )
-      ) {
-        emailMatch = false;
-      }
-    }
-    if (emailCheck && emailMatch) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-
-  errorMsg(emailValidation(), emailErr, `Please fill in a valid email`);
-  let contactNumValidation = () => {
-    let contactCheck = true;
-    let contactMatch = true;
-    if (userContactNumber.value == "" || userContactNumber == null) {
-      contactCheck = false;
-    } else {
-      if (!userContactNumber.value.match(/^[0-9]{2,}[0-9]{7,}$/)) {
-        contactMatch = false;
-      }
-    }
-    if (contactCheck && contactMatch) {
-      return true;
-    } else {
-      return false;
-    }
-  };
+  errorMsg(emailValidation, emailErr, `Please fill in a valid email`);
+  let contactNumValidation = elemValidationCheck(
+    userContactNumber,
+    /^[0-9]{2,}[0-9]{7,}$/
+  );
 
   errorMsg(
-    contactNumValidation(),
+    contactNumValidation,
     contactErr,
     `Please fill in a valid contact number`
   );
-  let addressValidation = () => {
-    let addressCheck = true;
-    let addressMatch = true;
-    if (userAddress.value == "" || userAddress == null) {
-      addressCheck = false;
-    } else {
-      if (!userAddress.value.match(/^[a-zA-Z0-9\s,.'-]{3,}$/)) {
-        addressMatch = false;
-      }
-    }
-    if (addressCheck && addressMatch) {
-      return true;
-    } else {
-      return false;
-    }
-  };
 
-  errorMsg(addressValidation(), addressErr, `Please fill in a valid address`);
+  let addressValidation = elemValidationCheck(
+    userAddress,
+    /^[a-zA-Z0-9\s,.'-]{3,}$/
+  );
+
+  errorMsg(addressValidation, addressErr, `Please fill in a valid address`);
   let bioValidation = () => {
     let bioCheck = true;
     let bioLimit = true;
@@ -192,3 +136,75 @@ charLimitCheck();
 // `Lahore`,
 // `Developer`,
 // `src`,
+
+// let lNameValidation = () => {
+//   let lNameCheck = true;
+//   let lNameMatch = true;
+//   if (userLastName.value == "" || userLastName == null) {
+//     lNameCheck = false;
+//   } else {
+//     if (!userLastName.value.match(/^[a-zA-Z\s]+$/)) {
+//       lNameMatch = false;
+//     }
+//   }
+//   if (lNameCheck && lNameMatch) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
+
+// let emailValidation = () => {
+//   let emailCheck = true;
+//   let emailMatch = true;
+//   if (userEmail.value == "" || userEmail == null) {
+//     emailCheck = false;
+//   } else {
+//     if (
+//       !userEmail.value.match(
+//         /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/
+//       )
+//     ) {
+//       emailMatch = false;
+//     }
+//   }
+//   if (emailCheck && emailMatch) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
+
+// let contactNumValidation = () => {
+//   let contactCheck = true;
+//   let contactMatch = true;
+//   if (userContactNumber.value == "" || userContactNumber == null) {
+//     contactCheck = false;
+//   } else {
+//     if (!userContactNumber.value.match(/^[0-9]{2,}[0-9]{7,}$/)) {
+//       contactMatch = false;
+//     }
+//   }
+//   if (contactCheck && contactMatch) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
+
+// let addressValidation = () => {
+//   let addressCheck = true;
+//   let addressMatch = true;
+//   if (userAddress.value == "" || userAddress == null) {
+//     addressCheck = false;
+//   } else {
+//     if (!userAddress.value.match(/^[a-zA-Z0-9\s,.'-]{3,}$/)) {
+//       addressMatch = false;
+//     }
+//   }
+//   if (addressCheck && addressMatch) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// };
