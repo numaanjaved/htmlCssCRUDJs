@@ -7,25 +7,27 @@ let errorMsg = (errorMsgElem, errorMsg_) => {
 	errorMsgElem.innerHTML = errorMsg_;
 	errorMsgElem.style.display = "block";
 };
+
 let charLengthCheck = (attr) => {
 	let check = true;
 	if (attr.value.length > 300) {
+		console.log(`limit exceeded`);
 		check = false;
-		console.log(`character Limit exceeded`);
 	}
 	return check;
 };
-let limitMsg = (msg) => { };
+
 let attrVal = (attribute, regex) => {
 	let check = true;
 	if (attribute.value == "" || attribute == null) {
 		check = false;
 	} else {
 		if (!attribute.value.match(regex)) {
+
 			check = false;
-			if (!charLengthCheck(attribute)) {
-				check = false;
-			}
+		} else if (!charLengthCheck(attribute)) {
+			check = false;
+
 		}
 	}
 	return check;
@@ -36,6 +38,7 @@ let elemValidationCheck = (attribute, regex, errorMsgElem, _errorMsg) => {
 		ValidationCheck = true;
 		successMsg(errorMsgElem);
 	} else {
+		console.log(attribute.value.length)
 		errorMsg(errorMsgElem, _errorMsg);
 	}
 	return ValidationCheck;
@@ -50,41 +53,43 @@ let Validation = () => {
 	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, contactErr, `Please fill in a valid contact number`);
 	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]{3,}$/, addressErr, `Please fill in a valid address`);
 
-	// let bioValidation = elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]$/);
+	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]+$/, bioErr, `Please fill in profile description or bio`);
 
 	// let bioValidation = () => {
-	//   let bioCheck = true;
-	//   let bioLimit = true;
-	//   if (userBio.value == "" || userBio == null) {
-	//     bioCheck = false;
-	//   } else {
-	//     if (userBio.value.length > 300) {
-	//       bioLimit = false;
-	//     }
-	//   }
-	//   if (bioCheck && bioLimit) {
-	//     return true;
-	//   } else {
-	//     return false;
-	//   }
+	// 	let bioCheck = true;
+	// 	let bioLimit = true;
+	// 	if (userBio.value == "" || userBio == null) {
+	// 		bioCheck = false;
+	// 	} else {
+	// 		if (userBio.value.length > 300) {
+	// 			bioLimit = false;
+	// 		}
+	// 	}
+	// 	if (bioCheck && bioLimit) {
+	// 		return true;
+	// 	} else {
+	// 		return false;
+	// 	}
 	// };
+
 	// validationResult(
-	//   bioValidation,
-	//   bioErr,
-	//   `Your bio exceeds the 300 character limit`
+	// 	bioValidation,
+	// 	bioErr,
+	// 	`Your bio exceeds the 300 character limit`
 	// );
+
 	// if (bioValidation()) {
-	//   bioErr.innerHTML = ``;
-	//   bioErr.style.display = "none";
+	// 	bioErr.innerHTML = ``;
+	// 	bioErr.style.display = "none";
 	// } else {
-	//   if (userBio.value.length > 300) {
-	//     bioErr.innerHTML = `Your bio exceeds the 300 character limit`;
-	//     bioErr.style.display = "block";
-	//     bioLimitExceed.innerHTML = `Characters Limit Exceeded`;
-	//   } else {
-	//     bioErr.innerHTML = `Please fill in profile description or bio`;
-	//     bioErr.style.display = "block";
-	//   }
+	// 	if (userBio.value.length > 300) {
+	// 		bioErr.innerHTML = `Your bio exceeds the 300 character limit`;
+	// 		bioErr.style.display = "block";
+	// 		bioLimitExceed.innerHTML = `Characters Limit Exceeded`;
+	// 	} else {
+	// 		bioErr.innerHTML = `Please fill in profile description or bio`;
+	// 		bioErr.style.display = "block";
+	// 	}
 	// }
 
 	// let profilePicValidation = () => {
