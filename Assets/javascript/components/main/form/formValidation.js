@@ -36,6 +36,11 @@ let Validation = () => {
         lNameMatch = false;
       }
     }
+    if (lNameCheck && lNameMatch) {
+      return true;
+    } else {
+      return false;
+    }
   };
   if (lNameValidation()) {
     LnameErr.innerHTML = "";
