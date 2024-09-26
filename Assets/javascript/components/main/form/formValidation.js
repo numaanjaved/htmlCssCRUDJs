@@ -3,8 +3,8 @@ let successMsg = (errorMsgElem) => {
   errorMsgElem.innerHTML = "";
   errorMsgElem.style.display = "none";
 };
-let errorMsg = (errorMsgElem, errorMsg) => {
-  errorMsgElem.innerHTML = errorMsg;
+let errorMsg = (errorMsgElem, errorMsg_) => {
+  errorMsgElem.innerHTML = errorMsg_;
   errorMsgElem.style.display = "block";
 };
 let charLengthCheck = (attr) => {
@@ -30,60 +30,55 @@ let attrVal = (attribute, regex) => {
   }
   return check;
 };
-let elemValidationCheck = (attribute, regex) => {
+let elemValidationCheck = (attribute, regex, errorMsgElem, _errorMsg) => {
+  let ValidationCheck = true;
   if (attrVal(attribute, regex)) {
-    return true;
-  }
-};
-let validationResult = (valCheck, errorMsgElem, errorMsg) => {
-  if (valCheck) {
+    ValidationCheck = true;
     successMsg(errorMsgElem);
   } else {
-    errorMsg(errorMsgElem, errorMsg);
+    errorMsg(errorMsgElem, _errorMsg);
   }
+  return ValidationCheck;
 };
+
 let Validation = () => {
   let validationCheck = true;
 
-  let FNameValidation = elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/);
-  validationResult(
-    FNameValidation,
+  elemValidationCheck(
+    userFirstName,
+    /^[a-zA-Z\s]+$/,
     FnameErr,
     `Please fill in a valid first name`
   );
-  let LNameValidation = elemValidationCheck(userLastName, /^[a-zA-Z\s]+$/);
-  validationResult(
-    LNameValidation,
+
+  elemValidationCheck(
+    userLastName,
+    /^[a-zA-Z\s]+$/,
     LnameErr,
-    `Please fill in a valid first name`
+    `Please fill in a valid last name`
   );
-  let emailValidation = elemValidationCheck(
+
+  elemValidationCheck(
     userEmail,
-    /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/
+    /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/,
+    emailErr,
+    `Please fill in a valid email`
   );
 
-  validationResult(emailValidation, emailErr, `Please fill in a valid email`);
-  let contactNumValidation = elemValidationCheck(
+  elemValidationCheck(
     userContactNumber,
-    /^[0-9]{2,}[0-9]{7,}$/
-  );
-
-  validationResult(
-    contactNumValidation,
+    /^[0-9]{2,}[0-9]{7,}$/,
     contactErr,
     `Please fill in a valid contact number`
   );
 
-  let addressValidation = elemValidationCheck(
+  elemValidationCheck(
     userAddress,
-    /^[a-zA-Z0-9\s,.'-]{3,}$/
-  );
-
-  validationResult(
-    addressValidation,
+    /^[a-zA-Z0-9\s,.'-]{3,}$/,
     addressErr,
     `Please fill in a valid address`
   );
+
   // let bioValidation = elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]$/);
 
   // let bioValidation = () => {
