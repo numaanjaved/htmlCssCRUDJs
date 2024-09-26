@@ -1,38 +1,34 @@
 let userIndexCheck = null;
+
+let attrVal = (attribute, regex) => {
+  let check = true;
+  if (attribute.value == "" || attribute == null) {
+    check = false;
+  } else {
+    if (!attribute.value.match(regex)) {
+      check = false;
+    }
+  }
+  return check;
+};
+let elemValidationCheck = (attribute, regex) => {
+  if (attrVal(attribute, regex)) {
+    return true;
+  }
+};
+let errorMsg = (valCheck, errorMsgElem, errorMsg) => {
+  if (valCheck) {
+    errorMsgElem.innerHTML = "";
+    errorMsgElem.style.display = "none";
+  } else {
+    errorMsgElem.innerHTML = errorMsg;
+    errorMsgElem.style.display = "block";
+  }
+};
 let Validation = () => {
   let validationCheck = true;
-  let check;
-  let errorMsg = (valCheck, errorMsgElem, errorMsg) => {
-    if (valCheck) {
-      errorMsgElem.innerHTML = "";
-      errorMsgElem.style.display = "none";
-    } else {
-      errorMsgElem.innerHTML = errorMsg;
-      errorMsgElem.style.display = "block";
-    }
-  };
-  let elemValidationCheck = ([AttrValCheck, attribute, regex]) => {
-    AttrValCheck = true;
-    AttrValCheck = true;
-    if (attribute.value == "" || attribute == null) {
-      AttrValCheck = false;
-    } else {
-      if (!attribute.value.match(regex)) {
-        AttrValCheck = false;
-      }
-    }
 
-    if (AttrValCheck) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  let FNameValidation = elemValidationCheck([
-    check,
-    userFirstName,
-    /^[a-zA-Z\s]+$/,
-  ]);
+  let FNameValidation = elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/);
 
   errorMsg(FNameValidation, FnameErr, `Please fill in a valid first name`);
   let lNameValidation = () => {
@@ -140,7 +136,7 @@ let Validation = () => {
       bioErr.style.display = "block";
       bioLimitExceed.innerHTML = `Characters Limit Exceeded`;
     } else {
-      bioErr.innerHTML = `Please fill in a valid address`;
+      bioErr.innerHTML = `Please fill in profile description or bio`;
       bioErr.style.display = "block";
     }
   }
