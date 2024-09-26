@@ -1,7 +1,15 @@
 let userIndexCheck = null;
 let Validation = () => {
   let validationCheck = true;
-
+  let errorMsg = (valCheck, errorMsgElem, errorMsg) => {
+    if (valCheck) {
+      errorMsgElem.innerHTML = "";
+      errorMsgElem.style.display = "none";
+    } else {
+      errorMsgElem.innerHTML = errorMsg;
+      errorMsgElem.style.display = "block";
+    }
+  };
   let FNameValidation = () => {
     let fNameCheck = true;
     let fNameMatch = true;
@@ -19,13 +27,8 @@ let Validation = () => {
       return false;
     }
   };
-  if (FNameValidation()) {
-    FnameErr.innerHTML = "";
-    FnameErr.style.display = "none";
-  } else {
-    FnameErr.innerHTML = `Please fill in a valid first name`;
-    FnameErr.style.display = "block";
-  }
+
+  errorMsg(FNameValidation(), FnameErr, `Please fill in a valid first name`);
   let lNameValidation = () => {
     let lNameCheck = true;
     let lNameMatch = true;
@@ -42,13 +45,7 @@ let Validation = () => {
       return false;
     }
   };
-  if (lNameValidation()) {
-    LnameErr.innerHTML = "";
-    LnameErr.style.display = "none";
-  } else {
-    LnameErr.innerHTML = `Please fill in a valid last name`;
-    LnameErr.style.display = "block";
-  }
+  errorMsg(lNameValidation(), LnameErr, `Please fill in a valid first name`);
 
   let emailValidation = () => {
     let emailCheck = true;
@@ -70,13 +67,8 @@ let Validation = () => {
       return false;
     }
   };
-  if (emailValidation()) {
-    emailErr.innerHTML = "";
-    emailErr.style.display = "none";
-  } else {
-    emailErr.innerHTML = `Please fill in a valid email`;
-    emailErr.style.display = "block";
-  }
+
+  errorMsg(emailValidation(), emailErr, `Please fill in a valid email`);
   let contactNumValidation = () => {
     let contactCheck = true;
     let contactMatch = true;
@@ -93,13 +85,12 @@ let Validation = () => {
       return false;
     }
   };
-  if (contactNumValidation()) {
-    contactErr.innerHTML = "";
-    contactErr.style.display = "none";
-  } else {
-    contactErr.innerHTML = `Please fill in a valid contact number`;
-    contactErr.style.display = "block";
-  }
+
+  errorMsg(
+    contactNumValidation(),
+    contactErr,
+    `Please fill in a valid contact number`
+  );
   let addressValidation = () => {
     let addressCheck = true;
     let addressMatch = true;
@@ -116,13 +107,8 @@ let Validation = () => {
       return false;
     }
   };
-  if (addressValidation()) {
-    addressErr.innerHTML = "";
-    addressErr.style.display = "none";
-  } else {
-    addressErr.innerHTML = `Please fill in a valid address`;
-    addressErr.style.display = "block";
-  }
+
+  errorMsg(addressValidation(), addressErr, `Please fill in a valid address`);
   let bioValidation = () => {
     let bioCheck = true;
     let bioLimit = true;
@@ -167,13 +153,8 @@ let Validation = () => {
       return false;
     }
   };
-  if (profilePicValidation()) {
-    image_error_msg.innerHTML = ``;
-    image_error_msg.style.display = "none";
-  } else {
-    image_error_msg.innerHTML = `Please upload an image`;
-    image_error_msg.style.display = "block";
-  }
+
+  errorMsg(profilePicValidation(), image_error_msg, `Please upload an image`);
   let userData = [
     userFirstName.value,
     userLastName.value,
