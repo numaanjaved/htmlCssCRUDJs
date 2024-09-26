@@ -14,7 +14,11 @@ let imgInput = createNewElement([
 
 let imgDisplay = document.querySelector("#form_img");
 imgInput.addEventListener("change", () => {
-  imgDisplay.src = URL.createObjectURL(imgInput.files[0]);
+  let file = imgInput.files[0];
+  if (file) {
+    imgDisplay.src = URL.createObjectURL(file);
+    image_error_msg.style.display = "none";
+  }
 });
 // Image information msg
 let imgUploadBtn = document.querySelector(".choose_img_label");
