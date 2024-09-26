@@ -1,6 +1,7 @@
 let userIndexCheck = null;
 let Validation = () => {
   let validationCheck = true;
+  let check;
   let errorMsg = (valCheck, errorMsgElem, errorMsg) => {
     if (valCheck) {
       errorMsgElem.innerHTML = "";
@@ -10,25 +11,30 @@ let Validation = () => {
       errorMsgElem.style.display = "block";
     }
   };
-  let FNameValidation = () => {
-    let fNameCheck = true;
-    let fNameMatch = true;
-    if (userFirstName.value == "" || userFirstName == null) {
-      fNameCheck = false;
+  let elemValidationCheck = ([AttrValCheck, attribute, regex]) => {
+    AttrValCheck = true;
+    AttrValCheck = true;
+    if (attribute.value == "" || attribute == null) {
+      AttrValCheck = false;
     } else {
-      if (!userFirstName.value.match(/^[a-zA-Z\s]+$/)) {
-        fNameMatch = false;
+      if (!attribute.value.match(regex)) {
+        AttrValCheck = false;
       }
     }
 
-    if (fNameCheck && fNameMatch) {
+    if (AttrValCheck) {
       return true;
     } else {
       return false;
     }
   };
+  let FNameValidation = elemValidationCheck([
+    check,
+    userFirstName,
+    /^[a-zA-Z\s]+$/,
+  ]);
 
-  errorMsg(FNameValidation(), FnameErr, `Please fill in a valid first name`);
+  errorMsg(FNameValidation, FnameErr, `Please fill in a valid first name`);
   let lNameValidation = () => {
     let lNameCheck = true;
     let lNameMatch = true;
