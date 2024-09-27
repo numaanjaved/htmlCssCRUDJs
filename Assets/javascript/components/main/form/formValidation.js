@@ -63,15 +63,15 @@ let elemValidationCheck = (attribute, regex, len, errorMsgElem) => {
 		successMsg(errorMsgElem);
 	}
 	if (!isNull(attribute)) {
-		errorMsg(errorMsgElem, error[0][1])
+		errorMsg(errorMsgElem, error[0][1]);
 		checkVal = false;
 	}
 	if (!matchRegex(attribute, regex)) {
-		errorMsg(errorMsgElem, error[1][1])
+		errorMsg(errorMsgElem, error[1][1]);
 		checkVal = false;
 	}
 	if (!checkLength(attribute, maxLen)) {
-		errorMsg(errorMsgElem, error[2][1])
+		errorMsg(errorMsgElem, error[2][1]);
 		checkVal = false;
 	}
 	return checkVal;
