@@ -29,21 +29,18 @@ let attrVal = (attribute, regex) => {
 		if (!attribute.value.match(regex)) {
 			check = false;
 		} else if (!charLengthCheck(attribute)) {
-			errorMsg(attribute, `Character Limit Increased`)
 			check = false;
 		}
 	}
 	return check;
 };
 
-let elemValidationCheck = (attribute, regex, errorMsgElem, _errorMsg) => {
+let elemValidationCheck = (attribute, regex) => {
 	let validationCheck = true;
 	if (attrVal(attribute, regex)) {
 		validationCheck = true;
-		successMsg(errorMsgElem);
 	} else {
 		validationCheck = false;
-		errorMsg(errorMsgElem, _errorMsg);
 	}
 	return validationCheck;
 };
@@ -52,12 +49,24 @@ let elemValidationCheck = (attribute, regex, errorMsgElem, _errorMsg) => {
 let Validation = () => {
 	let validationCheck = true;
 
-	elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/, FnameErr, `Please fill in a valid first name`);
-	elemValidationCheck(userLastName, /^[a-zA-Z\s]+$/, LnameErr, `Please fill in a valid last name`);
+	elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/);
+	elemValidationCheck(userLastName, /^[a-zA-Z\s]+$/,);
 	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, emailErr, `Please fill in a valid email`);
-	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, contactErr, `Please fill in a valid contact number`);
-	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]{3,}$/, addressErr, `Please fill in a valid address`);
-	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]+$/, bioErr, `Please fill in profile description or bio`);
+	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/);
+	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]{3,}$/);
+	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]+$/);
+
+	// FnameErr, `Please fill in a valid first name`
+	//  LnameErr, `Please fill in a valid last name`
+	//  contactErr, `Please fill in a valid contact number`
+	//  addressErr, `Please fill in a valid address`
+	//  bioErr, `Please fill in profile description or bio`
+
+
+	// jab values 2 hain 
+	// errors are diff
+	// enum
+
 
 
 
@@ -80,19 +89,19 @@ let Validation = () => {
 	// };
 
 
-	// if (bioValidation()) {
-	// 	bioErr.innerHTML = ``;
-	// 	bioErr.style.display = "none";
-	// } else {
-	// 	if (userBio.value.length > 300) {
-	// 		bioErr.innerHTML = `Your bio exceeds the 300 character limit`;
-	// 		bioErr.style.display = "block";
-	// 		bioLimitExceed.innerHTML = `Characters Limit Exceeded`;
-	// 	} else {
-	// 		bioErr.innerHTML = `Please fill in profile description or bio`;
-	// 		bioErr.style.display = "block";
-	// 	}
-	// }
+	if (bioValidation()) {
+		bioErr.innerHTML = ``;
+		bioErr.style.display = "none";
+	} else {
+		if (userBio.value.length > 300) {
+			bioErr.innerHTML = `Your bio exceeds the 300 character limit`;
+			bioErr.style.display = "block";
+			bioLimitExceed.innerHTML = `Characters Limit Exceeded`;
+		} else {
+			bioErr.innerHTML = `Please fill in profile description or bio`;
+			bioErr.style.display = "block";
+		}
+	}
 
 	let profilePicValidation = (errorMsgElem, errorMsg_) => {
 		let imgCheck = true;
