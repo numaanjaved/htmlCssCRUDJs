@@ -30,21 +30,21 @@ let isNull = (attribute) => {
 	}
 	return check;
 };
-let profilePicValidation = (errorMsgElem, errorMsg_) => {
+let profilePicValidation = (errorMsgElem) => {
 	let imgCheck = true;
 	if (
 		!imgInput.files.length ||
 		imgDisplay.src.includes("default_profile.png")
 	) {
 		imgCheck = false;
-		errorMsg(errorMsgElem, errorMsg_);
+		errorMsg(errorMsgElem, `Please upload an image`);
 	} else {
 		successMsg(errorMsgElem);
 		imgCheck = true;
 	}
 	return imgCheck;
 };
-let elemValidationCheck = (attribute, regex, len) => {
+let elemValidationCheck = (attribute, regex, len, errorMsgElem) => {
 	let checkVal = true;
 	let maxLen=len;
 	if (isNull(attribute)) {
@@ -56,8 +56,8 @@ let elemValidationCheck = (attribute, regex, len) => {
 	if (checkLength(attribute)) {
 		successMsg(errorMsgElem);
 	}
-	if (!isNull(attribute) && !matchRegex(attribute, regex)) {
-		errorMsg(errorMsgElem, errorMsg_)
+	if (!isNull(attribute) || !matchRegex(attribute, regex)) {
+		errorMsg(errorMsgElem, `Please fill in a valid data`)
 		checkVal = false;
 	}
 	if (!checkLength(attribute,maxLen)) {
@@ -70,18 +70,14 @@ let elemValidationCheck = (attribute, regex, len) => {
 // errorMsgElem, errorMsg_
 let Validation = () => {
 	let validationCheck = true;
-	profilePicValidation(image_error_msg, `Please upload an image`);
-	elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/, 50 );
-	elemValidationCheck(userLastName, /^[a-zA-Z\s]+$/, 50);
-	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, emailErr, `Please fill in a valid email`,100);
-	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20);
-	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]{3,}$/,150);
-	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]+$/,300);
-// FnameErr, `Please fill in a valid first name`
-// LnameErr, `Please fill in a valid last name`
-// contactErr, `Please fill in a valid contact number`
-//  addressErr, `Please fill in a valid address`
-//  bioErr, `Please fill in profile description or bio`
+	profilePicValidation(image_error_msg);
+	elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/, 50, FnameErr );
+	elemValidationCheck(userLastName, /^[a-zA-Z\s]+$/, 50,LnameErr);
+	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/,100,emailErr);
+	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20, contactErr);
+	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]{3,}$/,150,addressErr);
+	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]+$/,300,bioErr);
+
 	let userData = [
 		userFirstName.value,
 		userLastName.value,
