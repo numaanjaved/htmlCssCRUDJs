@@ -125,7 +125,6 @@ let Validation = () => {
 	}
 	refreshRecords();
 };
-
 charLimitCheck();
 
 // console.log();
