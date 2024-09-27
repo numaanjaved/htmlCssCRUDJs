@@ -12,34 +12,44 @@ let errorMsg = (errorMsgElem, errorMsg_) => {
 
 };
 
-let charLengthCheck = (attr) => {
+let charLength = (attribute) => {
 	let check = true;
-	if (attr.value.length > 300) {
+	if (attribute.value.length > 300) {
 		console.log(`limit exceeded`);
 		check = false;
 	}
 	return check;
 };
 
-let attrVal = (attribute, regex) => {
+let matchRegex = (attribute, regexSyn) => {
+	let check = true
+	if (!attribute.value.match(regexSyn)) {
+		check = false;
+		console.log(`please match example`)
+	}
+	return check;
+}
+let isNull = (attribute) => {
 	let check = true;
 	if (attribute.value == "" || attribute == null) {
 		check = false;
-	} else {
-		if (!attribute.value.match(regex)) {
-			check = false;
-		} else if (!charLengthCheck(attribute)) {
-			check = false;
-		}
+		console.log(`please fill data`);
 	}
 	return check;
 };
 
 let elemValidationCheck = (attribute, regex) => {
 	let validationCheck = true;
-	if (attrVal(attribute, regex)) {
+	if (isNull(attribute)) {
 		validationCheck = true;
-	} else {
+	}
+	if (charLength(attribute)) {
+		validationCheck = true
+	}
+	if (matchRegex(attribute, regex)) {
+		validationCheck = true;
+	}
+	else {
 		validationCheck = false;
 	}
 	return validationCheck;
@@ -51,13 +61,14 @@ let Validation = () => {
 
 	elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/);
 	elemValidationCheck(userLastName, /^[a-zA-Z\s]+$/,);
-	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, emailErr, `Please fill in a valid email`);
+	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/);
 	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/);
 	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]{3,}$/);
 	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]+$/);
 
 	// FnameErr, `Please fill in a valid first name`
 	//  LnameErr, `Please fill in a valid last name`
+	// emailErr, `Please fill in a valid email`
 	//  contactErr, `Please fill in a valid contact number`
 	//  addressErr, `Please fill in a valid address`
 	//  bioErr, `Please fill in profile description or bio`
@@ -89,19 +100,19 @@ let Validation = () => {
 	// };
 
 
-	if (bioValidation()) {
-		bioErr.innerHTML = ``;
-		bioErr.style.display = "none";
-	} else {
-		if (userBio.value.length > 300) {
-			bioErr.innerHTML = `Your bio exceeds the 300 character limit`;
-			bioErr.style.display = "block";
-			bioLimitExceed.innerHTML = `Characters Limit Exceeded`;
-		} else {
-			bioErr.innerHTML = `Please fill in profile description or bio`;
-			bioErr.style.display = "block";
-		}
-	}
+	// if (bioValidation()) {
+	// 	bioErr.innerHTML = ``;
+	// 	bioErr.style.display = "none";
+	// } else {
+	// 	if (userBio.value.length > 300) {
+	// 		bioErr.innerHTML = `Your bio exceeds the 300 character limit`;
+	// 		bioErr.style.display = "block";
+	// 		bioLimitExceed.innerHTML = `Characters Limit Exceeded`;
+	// 	} else {
+	// 		bioErr.innerHTML = `Please fill in profile description or bio`;
+	// 		bioErr.style.display = "block";
+	// 	}
+	// }
 
 	let profilePicValidation = (errorMsgElem, errorMsg_) => {
 		let imgCheck = true;
