@@ -5,9 +5,6 @@ let error = [
 	[3, "Characters limit exceeded"]
 ];
 let errorContainer = [FnameErr, LnameErr, emailErr, contactErr, addressErr, bioErr];
-errorContainer.forEach((cont) => {
-	console.log(cont)
-})
 let successMsg = (errorMsgElem) => {
 	errorMsgElem.innerHTML = "";
 	errorMsgElem.style.display = "none";
@@ -65,12 +62,16 @@ let elemValidationCheck = (attribute, regex, len, errorMsgElem) => {
 	if (checkLength(attribute)) {
 		successMsg(errorMsgElem);
 	}
-	if (!isNull(attribute) || !matchRegex(attribute, regex)) {
-		errorMsg(errorMsgElem, `Please fill in a valid data`)
+	if (!isNull(attribute)) {
+		errorMsg(errorMsgElem, error[0][1])
+		checkVal = false;
+	}
+	if (!matchRegex(attribute, regex)) {
+		errorMsg(errorMsgElem, error[1][1])
 		checkVal = false;
 	}
 	if (!checkLength(attribute, maxLen)) {
-		errorMsg(errorMsgElem, `Your bio exceeds the ${maxLen} character limit`);
+		errorMsg(errorMsgElem, error[2][1])
 		checkVal = false;
 	}
 	return checkVal;
@@ -79,12 +80,12 @@ let elemValidationCheck = (attribute, regex, len, errorMsgElem) => {
 let Validation = () => {
 	let validationCheck = true;
 	profilePicValidation(image_error_msg);
-	elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/, 50, FnameErr);
-	elemValidationCheck(userLastName, /^[a-zA-Z\s]+$/, 50, LnameErr);
+	elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 50, FnameErr);
+	elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 50, LnameErr);
 	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100, emailErr);
 	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20, contactErr);
-	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]{3,}$/, 150, addressErr);
-	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]+$/, 300, bioErr);
+	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]*$/, 150, addressErr);
+	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]*$/, 300, bioErr);
 
 	let userData = [
 		userFirstName.value,
