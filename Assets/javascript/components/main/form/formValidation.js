@@ -4,18 +4,13 @@ let successMsg = (errorMsgElem) => {
 	errorMsgElem.style.display = "none";
 };
 let errorMsg = (errorMsgElem, errorMsg_) => {
-	console.log(errorMsg_);
-
 	errorMsgElem.innerHTML = errorMsg_;
 	errorMsgElem.style.display = "block";
-
-
 };
 
 let checkLength = (attribute) => {
 	let check = true;
 	if (attribute.value.length > 300) {
-		console.log(`limit exceeded`);
 		check = false;
 	}
 	return check;
@@ -25,7 +20,6 @@ let matchRegex = (attribute, regexSyn) => {
 	let check = true
 	if (!attribute.value.match(regexSyn)) {
 		check = false;
-		console.log(`please match example`)
 	}
 	return check;
 }
@@ -33,39 +27,93 @@ let isNull = (attribute) => {
 	let check = true;
 	if (attribute.value == "" || attribute == null) {
 		check = false;
-		console.log(`please fill data`);
 	}
 	return check;
 };
-
-let elemValidationCheck = (attribute, regex) => {
-	let validationCheck = true;
-	if (isNull(attribute)) {
-		validationCheck = true;
+let profilePicValidation = (errorMsgElem, errorMsg_) => {
+	let imgCheck = true;
+	if (
+		!imgInput.files.length ||
+		imgDisplay.src.includes("default_profile.png")
+	) {
+		imgCheck = false;
+		errorMsg(errorMsgElem, errorMsg_);
+	} else {
+		successMsg(errorMsgElem);
+		imgCheck = true;
 	}
-	if (checkLength(attribute)) {
-		validationCheck = true
+	return imgCheck;
+};
+let elemValidationCheck = (attribute, regex, errorMsgElem, errorMsg_) => {
+	let checkVal = true;
+	if (isNull(attribute)) {
+		successMsg(errorMsgElem);
 	}
 	if (matchRegex(attribute, regex)) {
-		validationCheck = true;
+		successMsg(errorMsgElem);
 	}
-	else {
-		validationCheck = false;
+	if (checkLength(attribute)) {
+		successMsg(errorMsgElem);
 	}
-	return validationCheck;
+	if (!isNull(attribute) && !matchRegex(attribute, regex)) {
+		errorMsg(errorMsgElem, errorMsg_)
+		checkVal = false;
+	}
+	if (!checkLength(attribute)) {
+		errorMsg(errorMsgElem, `Your bio exceeds the 300 character limit`);
+		checkVal = false;
+	}
+	return checkVal;
 };
 
 
 let Validation = () => {
 	let validationCheck = true;
+	profilePicValidation(image_error_msg, `Please upload an image`);
+	elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/, FnameErr, `Please fill in a valid first name`);
+	elemValidationCheck(userLastName, /^[a-zA-Z\s]+$/, LnameErr, `Please fill in a valid last name`);
+	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, emailErr, `Please fill in a valid email`);
+	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, contactErr, `Please fill in a valid contact number`);
+	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]{3,}$/, addressErr, `Please fill in a valid address`);
+	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]+$/, bioErr, `Please fill in profile description or bio`);
 
-	elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/);
-	elemValidationCheck(userLastName, /^[a-zA-Z\s]+$/,);
-	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/);
-	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/);
-	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]{3,}$/);
-	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]+$/);
+	let userData = [
+		userFirstName.value,
+		userLastName.value,
+		userEmail.value,
+		userContactNumber.value,
+		userAddress.value,
+		userBio.value,
+		URL.createObjectURL(imgInput.files[0]),
+	];
+	if (validationCheck) {
+		validateData(userData);
+	}
+	refreshRecords();
+};
+charLimitCheck();
 
+// console.log();
+// {
+//   FirstName: userFirstName.value,
+//   LastName: userLastName.value,
+//   Email: userEmail.value,
+//   Contact: userContactNumber.value,
+//   Address: userAddress.value,
+//   Bio: userBio.value,
+//   userPicture: URL.createObjectURL(imgInput.files[0]),
+// };
+
+
+
+
+
+
+
+
+	// let result = elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/);
+	// console.log(result)
+	// elemValidationCheck()
 	// FnameErr, `Please fill in a valid first name`
 	//  LnameErr, `Please fill in a valid last name`
 	// emailErr, `Please fill in a valid email`
@@ -114,45 +162,5 @@ let Validation = () => {
 	// 	}
 	// }
 
-	let profilePicValidation = (errorMsgElem, errorMsg_) => {
-		let imgCheck = true;
-		if (
-			!imgInput.files.length ||
-			imgDisplay.src.includes("default_profile.png")
-		) {
-			imgCheck = false;
-			errorMsg(errorMsgElem, errorMsg_);
-		} else {
-			successMsg(errorMsgElem);
-			imgCheck = true;
-		}
-		return imgCheck;
-	};
-	profilePicValidation(image_error_msg, `Please upload an image`)
-	// errorMsg(profilePicValidation(), image_error_msg, `Please upload an image`);
-	let userData = [
-		userFirstName.value,
-		userLastName.value,
-		userEmail.value,
-		userContactNumber.value,
-		userAddress.value,
-		userBio.value,
-		URL.createObjectURL(imgInput.files[0]),
-	];
-	if (validationCheck) {
-		validateData(userData);
-	}
-	refreshRecords();
-};
-charLimitCheck();
 
-// console.log();
-// {
-//   FirstName: userFirstName.value,
-//   LastName: userLastName.value,
-//   Email: userEmail.value,
-//   Contact: userContactNumber.value,
-//   Address: userAddress.value,
-//   Bio: userBio.value,
-//   userPicture: URL.createObjectURL(imgInput.files[0]),
-// };
+	// errorMsg(profilePicValidation(), image_error_msg, `Please upload an image`);
