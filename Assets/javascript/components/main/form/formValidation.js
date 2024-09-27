@@ -44,9 +44,9 @@ let profilePicValidation = (errorMsgElem, errorMsg_) => {
 	}
 	return imgCheck;
 };
-let elemValidationCheck = (attribute, regex, errorMsgElem, errorMsg_) => {
+let elemValidationCheck = (attribute, regex, len) => {
 	let checkVal = true;
-	let maxLen=300;
+	let maxLen=len;
 	if (isNull(attribute)) {
 		successMsg(errorMsgElem);
 	}
@@ -67,17 +67,21 @@ let elemValidationCheck = (attribute, regex, errorMsgElem, errorMsg_) => {
 	return checkVal;
 };
 
-
+// errorMsgElem, errorMsg_
 let Validation = () => {
 	let validationCheck = true;
 	profilePicValidation(image_error_msg, `Please upload an image`);
-	elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/, FnameErr, `Please fill in a valid first name`);
-	elemValidationCheck(userLastName, /^[a-zA-Z\s]+$/, LnameErr, `Please fill in a valid last name`);
-	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, emailErr, `Please fill in a valid email`);
-	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, contactErr, `Please fill in a valid contact number`);
-	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]{3,}$/, addressErr, `Please fill in a valid address`);
-	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]+$/, bioErr, `Please fill in profile description or bio`);
-
+	elemValidationCheck(userFirstName, /^[a-zA-Z\s]+$/, 50 );
+	elemValidationCheck(userLastName, /^[a-zA-Z\s]+$/, 50);
+	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, emailErr, `Please fill in a valid email`,100);
+	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20);
+	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]{3,}$/,150);
+	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]+$/,300);
+// FnameErr, `Please fill in a valid first name`
+// LnameErr, `Please fill in a valid last name`
+// contactErr, `Please fill in a valid contact number`
+//  addressErr, `Please fill in a valid address`
+//  bioErr, `Please fill in profile description or bio`
 	let userData = [
 		userFirstName.value,
 		userLastName.value,
