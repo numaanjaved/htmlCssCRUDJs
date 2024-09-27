@@ -1,4 +1,10 @@
 let userIndexCheck = null;
+let error = [
+	[1, "Please fill data in the field"],
+	[2, "Please match the given example"],
+	[3, "Characters limit exceeded"]
+];
+console.log(error[1][1]);
 let successMsg = (errorMsgElem) => {
 	errorMsgElem.innerHTML = "";
 	errorMsgElem.style.display = "none";
