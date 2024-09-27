@@ -8,9 +8,9 @@ let errorMsg = (errorMsgElem, errorMsg_) => {
 	errorMsgElem.style.display = "block";
 };
 
-let checkLength = (attribute) => {
+let checkLength = (attribute, maxLen) => {
 	let check = true;
-	if (attribute.value.length > 300) {
+	if (attribute.value.length > maxLen) {
 		check = false;
 	}
 	return check;
@@ -59,7 +59,7 @@ let elemValidationCheck = (attribute, regex, errorMsgElem, errorMsg_) => {
 		errorMsg(errorMsgElem, errorMsg_)
 		checkVal = false;
 	}
-	if (!checkLength(attribute)) {
+	if (!checkLength(attribute,300)) {
 		errorMsg(errorMsgElem, `Your bio exceeds the 300 character limit`);
 		checkVal = false;
 	}
