@@ -4,7 +4,10 @@ let error = [
 	[2, "Please match the given example"],
 	[3, "Characters limit exceeded"]
 ];
-console.log(error[1][1]);
+let errorContainer = [FnameErr, LnameErr, emailErr, contactErr, addressErr, bioErr];
+errorContainer.forEach((cont) => {
+	console.log(cont)
+})
 let successMsg = (errorMsgElem) => {
 	errorMsgElem.innerHTML = "";
 	errorMsgElem.style.display = "none";
