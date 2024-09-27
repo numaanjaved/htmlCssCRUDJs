@@ -37,15 +37,17 @@ let attrVal = (attribute, regex) => {
 };
 
 let elemValidationCheck = (attribute, regex, errorMsgElem, _errorMsg) => {
-	let ValidationCheck = true;
+	let validationCheck = true;
 	if (attrVal(attribute, regex)) {
-		ValidationCheck = true;
+		validationCheck = true;
 		successMsg(errorMsgElem);
 	} else {
+		validationCheck = false;
 		errorMsg(errorMsgElem, _errorMsg);
 	}
-	return ValidationCheck;
+	return validationCheck;
 };
+
 
 let Validation = () => {
 	let validationCheck = true;
@@ -56,6 +58,8 @@ let Validation = () => {
 	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, contactErr, `Please fill in a valid contact number`);
 	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]{3,}$/, addressErr, `Please fill in a valid address`);
 	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]+$/, bioErr, `Please fill in profile description or bio`);
+
+
 
 	// , `Your bio exceeds the 300 character limit`
 	// let bioValidation = () => {
