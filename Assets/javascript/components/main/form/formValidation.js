@@ -12,7 +12,7 @@ let errorMsg = (errorMsgElem, errorMsg_) => {
 
 };
 
-let charLength = (attribute) => {
+let checkLength = (attribute) => {
 	let check = true;
 	if (attribute.value.length > 300) {
 		console.log(`limit exceeded`);
@@ -43,7 +43,7 @@ let elemValidationCheck = (attribute, regex) => {
 	if (isNull(attribute)) {
 		validationCheck = true;
 	}
-	if (charLength(attribute)) {
+	if (checkLength(attribute)) {
 		validationCheck = true
 	}
 	if (matchRegex(attribute, regex)) {
