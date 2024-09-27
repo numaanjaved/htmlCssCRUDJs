@@ -46,6 +46,7 @@ let profilePicValidation = (errorMsgElem, errorMsg_) => {
 };
 let elemValidationCheck = (attribute, regex, errorMsgElem, errorMsg_) => {
 	let checkVal = true;
+	let maxLen=300;
 	if (isNull(attribute)) {
 		successMsg(errorMsgElem);
 	}
@@ -59,8 +60,8 @@ let elemValidationCheck = (attribute, regex, errorMsgElem, errorMsg_) => {
 		errorMsg(errorMsgElem, errorMsg_)
 		checkVal = false;
 	}
-	if (!checkLength(attribute,300)) {
-		errorMsg(errorMsgElem, `Your bio exceeds the 300 character limit`);
+	if (!checkLength(attribute,maxLen)) {
+		errorMsg(errorMsgElem, `Your bio exceeds the ${maxLen} character limit`);
 		checkVal = false;
 	}
 	return checkVal;
