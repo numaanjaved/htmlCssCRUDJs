@@ -15,7 +15,7 @@ let errorContainer = {
 	user_bio: bioErr,
 	image: image_error_msg
 };
-
+// validation={}
 
 let successMsg = (statusMsgElem) => {
 	let error = errorContainer[statusMsgElem.name];
@@ -27,40 +27,29 @@ let errorMsg = (statusMsgElem, errorMsg_) => {
 	error.style.display = "block";
 	error.innerHTML = errorMsg_;
 };
-let validation = [
 
-	{
-		isNull: (attribute) => {
-			let check = true;
-			if (attribute.value == "" || attribute == null) {
-				check = false;
-			}
-			return check;
-		}
-	},
-	{
-		matchRegex: (attribute, regexSyn) => {
-			let check = true
-			if (!attribute.value.match(regexSyn)) {
-				check = false;
-			}
-			return check;
-		}
-	},
-	{
-		checkLength: (attribute, maxLen) => {
-			let check = true;
-			if (attribute.value.length > maxLen) {
-				check = false;
-			}
-			return check;
-		}
+let checkLength = (attribute, maxLen) => {
+	let check = true;
+	if (attribute.value.length > maxLen) {
+		check = false;
 	}
+	return check;
+};
 
-
-];
-
-
+let matchRegex = (attribute, regexSyn) => {
+	let check = true
+	if (!attribute.value.match(regexSyn)) {
+		check = false;
+	}
+	return check;
+}
+let isNull = (attribute) => {
+	let check = true;
+	if (attribute.value == "" || attribute == null) {
+		check = false;
+	}
+	return check;
+};
 let profilePicValidation = (attribute) => {
 	let imgCheck = true;
 
@@ -69,7 +58,7 @@ let profilePicValidation = (attribute) => {
 		imgDisplay.src.includes("default_profile.png")
 	) {
 		imgCheck = false;
-		errorMsg(attribute, `${error[3].errorName}: ${error[3].errorMessage}`);
+		errorMsg(attribute, `${error[3].errorName}: ${error[3].errorMessage}`)
 	} else {
 		successMsg(attribute);
 		imgCheck = true;
@@ -79,31 +68,28 @@ let profilePicValidation = (attribute) => {
 let elemValidationCheck = (attribute, regex, len) => {
 	let checkVal = true;
 	let maxLen = len;
+	if (isNull(attribute)) {
+		successMsg(attribute);
+	}
+	if (matchRegex(attribute, regex)) {
+		successMsg(attribute);
+	}
+	if (checkLength(attribute)) {
+		successMsg(attribute);
+	}
+	if (!isNull(attribute)) {
 
-	for (let validationName of validation) {
-		if (validationName.isNull && !validationName.isNull(attribute)) {
-			errorMsg(attribute, `${error[0].errorName}: ${error[0].errorMessage}`);
-			checkVal = false;
-			break;
-		} else {
-			successMsg(attribute)
-		}
-		if (validationName.matchRegex && !validationName.matchRegex(attribute, regex)) {
-			errorMsg(attribute, `${error[1].errorName}: ${error[1].errorMessage}`);
-			checkVal = false;
-			break;
-		} else {
-			successMsg(attribute)
+		errorMsg(attribute, `${error[0].errorName}: ${error[0].errorMessage}`);
+		checkVal = false;
 
-		}
-		if (validationName.checkLength && !validationName.checkLength(attribute, maxLen)) {
-			errorMsg(attribute, `${error[2].errorName}: ${error[2].errorMessage}`);
-			checkVal = false;
-			break;
-		} else {
-			successMsg(attribute)
-
-		}
+	}
+	if (!matchRegex(attribute, regex)) {
+		errorMsg(attribute, `${error[1].errorName}: ${error[1].errorMessage}`);
+		checkVal = false;
+	}
+	if (!checkLength(attribute, maxLen)) {
+		errorMsg(attribute, `${error[2].errorName}: ${error[2].errorMessage}`);
+		checkVal = false;
 	}
 	return checkVal;
 };
