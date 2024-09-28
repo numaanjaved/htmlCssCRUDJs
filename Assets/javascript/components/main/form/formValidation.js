@@ -66,32 +66,29 @@ let profilePicValidation = (attribute) => {
 	return imgCheck;
 };
 let elemValidationCheck = (attribute, regex, len) => {
-	let checkVal = true;
+
 	let maxLen = len;
-	if (isNull(attribute)) {
-		successMsg(attribute);
-	}
-	if (matchRegex(attribute, regex)) {
-		successMsg(attribute);
-	}
-	if (checkLength(attribute)) {
-		successMsg(attribute);
-	}
+
 	if (!isNull(attribute)) {
-
 		errorMsg(attribute, `${error[0].errorName}: ${error[0].errorMessage}`);
-		checkVal = false;
-
+		return false;
+	} else {
+		successMsg(attribute);
+		console.log(`not null`)
 	}
 	if (!matchRegex(attribute, regex)) {
 		errorMsg(attribute, `${error[1].errorName}: ${error[1].errorMessage}`);
-		checkVal = false;
+		return false;
+	} else {
+		successMsg(attribute);
 	}
 	if (!checkLength(attribute, maxLen)) {
 		errorMsg(attribute, `${error[2].errorName}: ${error[2].errorMessage}`);
-		checkVal = false;
+		return false;
+	} else {
+		successMsg(attribute);
 	}
-	return checkVal;
+
 };
 
 let Validation = () => {
@@ -119,3 +116,16 @@ let Validation = () => {
 	refreshRecords();
 };
 charLimitCheck();
+
+
+
+
+// if (isNull(attribute)) {
+// 	successMsg(attribute);
+// }
+// if (matchRegex(attribute, regex)) {
+// 	successMsg(attribute);
+// }
+// if (checkLength(attribute)) {
+// 	successMsg(attribute);
+// }
