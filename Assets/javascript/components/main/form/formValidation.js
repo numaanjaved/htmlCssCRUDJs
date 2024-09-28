@@ -1,10 +1,10 @@
 let userIndexCheck = null;
 let error = [
-	[1, "Please fill data in the field"],
-	[2, "Please match the given example"],
-	[3, "Characters limit exceeded"]
+	{ errorName: "Null Error", errorMessage: "Please fill data in the field" },
+	{ errorName: "Regex Error", errorMessage: "Please match the requested format" },
+	{ errorName: "Limit Exceed", errorMessage: "Characters limit exceeded" }
 ];
-// let errorContainer = [FnameErr, LnameErr, emailErr, contactErr, addressErr, bioErr];
+
 let errorContainer = {
 	user_Fname: FnameErr,
 	user_Lname: LnameErr,
@@ -13,14 +13,15 @@ let errorContainer = {
 	user_address: addressErr,
 	user_bio: bioErr,
 };
+// validation={}
 
-let successMsg = (errorMsgElem) => {
-	let error = errorContainer[errorMsgElem.name];
+let successMsg = (statusMsgElem) => {
+	let error = errorContainer[statusMsgElem.name];
 	error.innerHTML = "";
 	error.style.display = "none";
 };
-let errorMsg = (errorMsgElem, errorMsg_) => {
-	let error = errorContainer[errorMsgElem.name];
+let errorMsg = (statusMsgElem, errorMsg_) => {
+	let error = errorContainer[statusMsgElem.name];
 	error.style.display = "block";
 	error.innerHTML = errorMsg_;
 };
@@ -75,16 +76,16 @@ let elemValidationCheck = (attribute, regex, len) => {
 	}
 	if (!isNull(attribute)) {
 
-		errorMsg(attribute, error[0][1]);
+		errorMsg(attribute, `${error[0].errorName}: ${error[0].errorMessage}`);
 		checkVal = false;
 
 	}
 	if (!matchRegex(attribute, regex)) {
-		errorMsg(attribute, error[1][1]);
+		errorMsg(attribute, `${error[1].errorName}: ${error[1].errorMessage}`);
 		checkVal = false;
 	}
 	if (!checkLength(attribute, maxLen)) {
-		errorMsg(attribute, error[2][1]);
+		errorMsg(attribute, `${error[2].errorName}: ${error[2].errorMessage}`);
 		checkVal = false;
 	}
 	return checkVal;
@@ -92,10 +93,10 @@ let elemValidationCheck = (attribute, regex, len) => {
 
 let Validation = () => {
 	let validationCheck = true;
-	// profilePicValidation(image_error_msg);
+	// profilePicValidation(image_error_msg); 
 	elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 50);
 	elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 50);
-	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100, emailErr);
+	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100);
 	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20);
 	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]*$/, 150);
 	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]*$/, 300);
