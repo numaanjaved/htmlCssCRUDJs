@@ -2,7 +2,8 @@ let userIndexCheck = null;
 let error = [
 	{ errorName: "Null Error", errorMessage: "Please fill data in the field" },
 	{ errorName: "Format Error", errorMessage: "Please match the requested format" },
-	{ errorName: "Limit Exceed", errorMessage: "Characters limit exceeded" }
+	{ errorName: "Limit Exceed", errorMessage: "Characters limit exceeded" },
+	{ errorName: "No picture", errorMessage: "Please Upload an Image" }
 ];
 
 let errorContainer = {
@@ -12,10 +13,10 @@ let errorContainer = {
 	user_contact: contactErr,
 	user_address: addressErr,
 	user_bio: bioErr,
-	user_profile: image_error_msg
+	image: image_error_msg
 };
 // validation={}
-console.log(errorContainer.user_profile)
+
 let successMsg = (statusMsgElem) => {
 	let error = errorContainer[statusMsgElem.name];
 	error.innerHTML = "";
@@ -49,16 +50,17 @@ let isNull = (attribute) => {
 	}
 	return check;
 };
-let profilePicValidation = (errorMsgElem) => {
+let profilePicValidation = (attribute) => {
 	let imgCheck = true;
+
 	if (
-		!imgInput.files.length ||
+		!attribute.files.length ||
 		imgDisplay.src.includes("default_profile.png")
 	) {
 		imgCheck = false;
-		errorMsg(errorMsgElem, `Please upload an image`);
+		errorMsg(attribute, `${error[3].errorName}: ${error[3].errorMessage}`)
 	} else {
-		successMsg(errorMsgElem);
+		successMsg(attribute);
 		imgCheck = true;
 	}
 	return imgCheck;
@@ -94,7 +96,7 @@ let elemValidationCheck = (attribute, regex, len) => {
 
 let Validation = () => {
 	let validationCheck = true;
-	profilePicValidation(image_error_msg);
+	profilePicValidation(imgInput);
 	elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 50);
 	elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 50);
 	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100);
