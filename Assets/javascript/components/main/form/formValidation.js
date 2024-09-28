@@ -60,9 +60,7 @@ let validation = [
 
 ];
 
-// let checkLength =
-// let matchRegex =
-// let isNull = 
+
 let profilePicValidation = (attribute) => {
 	let imgCheck = true;
 
@@ -81,29 +79,28 @@ let profilePicValidation = (attribute) => {
 let elemValidationCheck = (attribute, regex, len) => {
 	let checkVal = true;
 	let maxLen = len;
-	if (isNull(attribute)) {
-		successMsg(attribute);
-	}
-	if (matchRegex(attribute, regex)) {
-		successMsg(attribute);
-	}
-	if (checkLength(attribute)) {
-		successMsg(attribute);
-	}
-	if (!isNull(attribute)) {
 
-		errorMsg(attribute, `${error[0].errorName}: ${error[0].errorMessage}`);
-		checkVal = false;
+	validation.forEach((validationName) => {
+		if (validationName.isNull && !validationName.isNull(attribute)) {
+			errorMsg(attribute, `${error[0].errorName}: ${error[0].errorMessage}`);
+			checkVal = false;
+			console.log(`Null`)
+		}
+		if (validationName.matchRegex && !validationName.matchRegex(attribute, regex)) {
+			errorMsg(attribute, `${error[1].errorName}: ${error[1].errorMessage}`);
+			checkVal = false;
+		}
+		if (validationName.checkLength && !validationName.checkLength(attribute, maxLen)) {
+			errorMsg(attribute, `${error[2].errorName}: ${error[2].errorMessage}`);
+			checkVal = false;
+		}
 
-	}
-	if (!matchRegex(attribute, regex)) {
-		errorMsg(attribute, `${error[1].errorName}: ${error[1].errorMessage}`);
-		checkVal = false;
-	}
-	if (!checkLength(attribute, maxLen)) {
-		errorMsg(attribute, `${error[2].errorName}: ${error[2].errorMessage}`);
-		checkVal = false;
-	}
+	})
+
+
+
+
+
 	return checkVal;
 };
 
@@ -132,3 +129,32 @@ let Validation = () => {
 	refreshRecords();
 };
 charLimitCheck();
+
+
+
+
+// if (isNull(attribute)) {
+// 	successMsg(attribute);
+// }
+// if (matchRegex(attribute, regex)) {
+// 	successMsg(attribute);
+// }
+// if (checkLength(attribute)) {
+// 	successMsg(attribute);
+// }
+
+
+// if (!isNull(attribute)) {
+
+// 	errorMsg(attribute, `${error[0].errorName}: ${error[0].errorMessage}`);
+// 	checkVal = false;
+
+// }
+// if (!matchRegex(attribute, regex)) {
+// 	errorMsg(attribute, `${error[1].errorName}: ${error[1].errorMessage}`);
+// 	checkVal = false;
+// }
+// if (!checkLength(attribute, maxLen)) {
+// 	errorMsg(attribute, `${error[2].errorName}: ${error[2].errorMessage}`);
+// 	checkVal = false;
+// }
