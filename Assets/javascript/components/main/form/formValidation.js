@@ -82,7 +82,6 @@ let createUser = (userDataArr) => {
 let updateUser = (userDataArr) => {
 	if (userIndexCheck !== null) {
 		usersDataArray[userIndexCheck].update(userDataArr);
-		console.log(usersDataArray);
 		userIndexCheck = null;
 	}
 }
