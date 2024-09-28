@@ -18,6 +18,16 @@ class User {
     this.setProfilePic(userPicture);
     this.setID();
   }
+  read() {
+    const id = this.getID();
+    let modal = document.getElementById(id);
+    if (modal) {
+      modal.style.display = "block";
+      usersDataMainContainer.style.minHeight = "600px";
+    } else {
+      console.log(`Modal not found with the id: ${id}`);
+    }
+  }
   setID() {
     User.#id += 1;
     this.#UserID = `prof00${User.#id}`;
