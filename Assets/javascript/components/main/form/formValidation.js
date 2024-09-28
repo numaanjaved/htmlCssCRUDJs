@@ -5,7 +5,7 @@ let error = [
 	[3, "Characters limit exceeded"]
 ];
 // let errorContainer = [FnameErr, LnameErr, emailErr, contactErr, addressErr, bioErr];
-let formElements = {
+let errorContainer = {
 	user_Fname: FnameErr,
 	user_Lname: LnameErr,
 	user_email: emailErr,
@@ -15,12 +15,12 @@ let formElements = {
 };
 
 let successMsg = (errorMsgElem) => {
-	let error = formElements[errorMsgElem.name];
+	let error = errorContainer[errorMsgElem.name];
 	error.innerHTML = "";
 	error.style.display = "none";
 };
 let errorMsg = (errorMsgElem, errorMsg_) => {
-	let error = formElements[errorMsgElem.name];
+	let error = errorContainer[errorMsgElem.name];
 	error.style.display = "block";
 	error.innerHTML = errorMsg_;
 };
