@@ -4,14 +4,25 @@ let error = [
 	[2, "Please match the given example"],
 	[3, "Characters limit exceeded"]
 ];
-let errorContainer = [FnameErr, LnameErr, emailErr, contactErr, addressErr, bioErr];
+// let errorContainer = [FnameErr, LnameErr, emailErr, contactErr, addressErr, bioErr];
+let formElements = {
+	user_Fname: FnameErr,
+	user_Lname: LnameErr,
+	user_email: emailErr,
+	user_contact: contactErr,
+	user_address: addressErr,
+	user_bio: bioErr,
+};
+
 let successMsg = (errorMsgElem) => {
-	errorMsgElem.innerHTML = "";
-	errorMsgElem.style.display = "none";
+	let error = formElements[errorMsgElem.name];
+	error.innerHTML = "";
+	error.style.display = "none";
 };
 let errorMsg = (errorMsgElem, errorMsg_) => {
-	errorMsgElem.innerHTML = errorMsg_;
-	errorMsgElem.style.display = "block";
+	let error = formElements[errorMsgElem.name];
+	error.style.display = "block";
+	error.innerHTML = errorMsg_;
 };
 
 let checkLength = (attribute, maxLen) => {
@@ -36,42 +47,44 @@ let isNull = (attribute) => {
 	}
 	return check;
 };
-let profilePicValidation = (errorMsgElem) => {
-	let imgCheck = true;
-	if (
-		!imgInput.files.length ||
-		imgDisplay.src.includes("default_profile.png")
-	) {
-		imgCheck = false;
-		errorMsg(errorMsgElem, `Please upload an image`);
-	} else {
-		successMsg(errorMsgElem);
-		imgCheck = true;
-	}
-	return imgCheck;
-};
-let elemValidationCheck = (attribute, regex, len, errorMsgElem) => {
+// let profilePicValidation = (errorMsgElem) => {
+// 	let imgCheck = true;
+// 	if (
+// 		!imgInput.files.length ||
+// 		imgDisplay.src.includes("default_profile.png")
+// 	) {
+// 		imgCheck = false;
+// 		errorMsg(errorMsgElem, `Please upload an image`);
+// 	} else {
+// 		successMsg(errorMsgElem);
+// 		imgCheck = true;
+// 	}
+// 	return imgCheck;
+// };
+let elemValidationCheck = (attribute, regex, len) => {
 	let checkVal = true;
 	let maxLen = len;
 	if (isNull(attribute)) {
-		successMsg(errorMsgElem);
+		successMsg(attribute);
 	}
 	if (matchRegex(attribute, regex)) {
-		successMsg(errorMsgElem);
+		successMsg(attribute);
 	}
 	if (checkLength(attribute)) {
-		successMsg(errorMsgElem);
+		successMsg(attribute);
 	}
 	if (!isNull(attribute)) {
-		errorMsg(errorMsgElem, error[0][1]);
+
+		errorMsg(attribute, error[0][1]);
 		checkVal = false;
+
 	}
 	if (!matchRegex(attribute, regex)) {
-		errorMsg(errorMsgElem, error[1][1]);
+		errorMsg(attribute, error[1][1]);
 		checkVal = false;
 	}
 	if (!checkLength(attribute, maxLen)) {
-		errorMsg(errorMsgElem, error[2][1]);
+		errorMsg(attribute, error[2][1]);
 		checkVal = false;
 	}
 	return checkVal;
@@ -79,13 +92,13 @@ let elemValidationCheck = (attribute, regex, len, errorMsgElem) => {
 
 let Validation = () => {
 	let validationCheck = true;
-	profilePicValidation(image_error_msg);
-	elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 50, FnameErr);
-	elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 50, LnameErr);
+	// profilePicValidation(image_error_msg);
+	elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 50);
+	elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 50);
 	elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100, emailErr);
-	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20, contactErr);
-	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]*$/, 150, addressErr);
-	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]*$/, 300, bioErr);
+	elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20);
+	elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]*$/, 150);
+	elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]*$/, 300);
 
 	let userData = [
 		userFirstName.value,
