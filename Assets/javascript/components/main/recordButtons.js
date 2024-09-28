@@ -16,18 +16,16 @@ let readUpdateDelete = (userDataContainer, ProfileBtnOpsContainer, id) => {
 	});
 
 	profileUpdateBtn.addEventListener("click", () => {
-		let formSubmitBtn = document.getElementById(`submit_btn`);
-		formSubmitBtn.innerHTML = `Update`;
 		window.scrollTo(200, 0);
-		userIndexCheck = id - 1;
-		console.log(userIndexCheck);
-		let selectedUser = usersDataArray[id - 1];
-		userFirstName.value = selectedUser.getFirstName();
-		userLastName.value = selectedUser.getLastName();
-		userEmail.value = selectedUser.getEmail();
-		userContactNumber.value = selectedUser.getContactNum();
-		userAddress.value = selectedUser.getAddress();
-		userBio.value = selectedUser.getBio();
-		imgDisplay.src = selectedUser.getProfilePic();
+		let clickedBtnId = profileDelBtn.parentElement.parentElement.nextSibling.id;
+		let selectedUser = usersDataArray.findIndex((user) => user.getID() === clickedBtnId);
+		userIndexCheck = selectedUser;
+		userFirstName.value = usersDataArray[selectedUser].getFirstName();
+		userLastName.value = usersDataArray[selectedUser].getLastName();
+		userEmail.value = usersDataArray[selectedUser].getEmail();
+		userContactNumber.value = usersDataArray[selectedUser].getContactNum();
+		userAddress.value = usersDataArray[selectedUser].getAddress();
+		userBio.value = usersDataArray[selectedUser].getBio();
+		imgDisplay.src = usersDataArray[selectedUser].getProfilePic();
 	});
 };

@@ -26,7 +26,18 @@ class User {
       usersDataMainContainer.style.minHeight = "600px";
     } else { console.log(`Modal not found with the ID: ${id}`); }
   }
-
+  update([firstName, lastName, email, contact, address, bio, userPicture]) {
+    let userIndex = usersDataArray.findIndex((user) => user.getID() === this.getID());
+    console.log(userIndex)
+    this.setFirstName(firstName);
+    this.setLastName(lastName);
+    this.setEmail(email);
+    this.setContactNum(contact);
+    this.setAddress(address);
+    this.setBio(bio);
+    this.setProfilePic(userPicture);
+    refreshRecords();
+  }
   delete() {
     let userIndex = usersDataArray.findIndex((user) => user.getID() === this.getID());
     if (userIndex !== -1) {

@@ -30,14 +30,11 @@ let recordRow = (
   userName,
   userEmail,
   userContactNum,
-  id = null
 ) => {
   let userDataContainer = createNewElement([
     "div",
     "individual_user_data",
     usersDataMainContainer,
-    null,
-    { id: `${id}` },
   ]);
   let userTextRecordContainer = createNewElement([
     "div",
@@ -89,5 +86,5 @@ let recordRow = (
     "profile_btns_container",
     userDataContainer,
   ]);
-  readUpdateDelete(userDataContainer, ProfileBtnOpsContainer, id);
+  readUpdateDelete(userDataContainer, ProfileBtnOpsContainer);
 };

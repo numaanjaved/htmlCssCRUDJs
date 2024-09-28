@@ -75,13 +75,21 @@ let elemValidationCheck = (attribute, regex, len) => {
 let createUser = (userDataArr) => {
 	let userDataObj = new User();
 	userDataObj.create(userDataArr);
-
-	if (userIndexCheck !== null) {
-		usersDataArray[userIndexCheck] = userDataObj;
-	} else {
+	if (userIndexCheck === null) {
 		usersDataArray.push(userDataObj);
 	}
 };
+let updateUser = (userDataArr) => {
+	if (userIndexCheck !== null) {
+		usersDataArray[userIndexCheck].update(userDataArr);
+		console.log(usersDataArray);
+		userIndexCheck = null;
+	}
+}
+// let updateUserData = (userDataArr) => {
+
+// }
+
 let Validation = () => {
 	let validationCheck = true;
 	if (!profilePicValidation(imgInput)) { validationCheck = false; }
@@ -103,6 +111,8 @@ let Validation = () => {
 	];
 	if (validationCheck) {
 		createUser(userData);
+		console.log(usersDataArray);
+		updateUser(userData);
 		form.reset();
 		imgDisplay.src = "./Assets/images/default_profile.png";
 	}
