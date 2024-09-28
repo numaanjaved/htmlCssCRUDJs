@@ -15,7 +15,7 @@ let errorContainer = {
 	user_bio: bioErr,
 	image: image_error_msg
 };
-// validation={}
+
 
 let successMsg = (statusMsgElem) => {
 	let error = errorContainer[statusMsgElem.name];
@@ -27,29 +27,42 @@ let errorMsg = (statusMsgElem, errorMsg_) => {
 	error.style.display = "block";
 	error.innerHTML = errorMsg_;
 };
+let validation = [
 
-let checkLength = (attribute, maxLen) => {
-	let check = true;
-	if (attribute.value.length > maxLen) {
-		check = false;
+	{
+		isNull: (attribute) => {
+			let check = true;
+			if (attribute.value == "" || attribute == null) {
+				check = false;
+			}
+			return check;
+		}
+	},
+	{
+		matchRegex: (attribute, regexSyn) => {
+			let check = true
+			if (!attribute.value.match(regexSyn)) {
+				check = false;
+			}
+			return check;
+		}
+	},
+	{
+		checkLength: (attribute, maxLen) => {
+			let check = true;
+			if (attribute.value.length > maxLen) {
+				check = false;
+			}
+			return check;
+		}
 	}
-	return check;
-};
 
-let matchRegex = (attribute, regexSyn) => {
-	let check = true
-	if (!attribute.value.match(regexSyn)) {
-		check = false;
-	}
-	return check;
-}
-let isNull = (attribute) => {
-	let check = true;
-	if (attribute.value == "" || attribute == null) {
-		check = false;
-	}
-	return check;
-};
+
+];
+
+// let checkLength =
+// let matchRegex =
+// let isNull = 
 let profilePicValidation = (attribute) => {
 	let imgCheck = true;
 
@@ -58,7 +71,7 @@ let profilePicValidation = (attribute) => {
 		imgDisplay.src.includes("default_profile.png")
 	) {
 		imgCheck = false;
-		errorMsg(attribute, `${error[3].errorName}: ${error[3].errorMessage}`)
+		errorMsg(attribute, `${error[3].errorName}: ${error[3].errorMessage}`);
 	} else {
 		successMsg(attribute);
 		imgCheck = true;
