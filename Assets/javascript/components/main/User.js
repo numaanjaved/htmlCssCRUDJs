@@ -24,10 +24,18 @@ class User {
     if (modal) {
       modal.style.display = "block";
       usersDataMainContainer.style.minHeight = "600px";
-    } else {
-      console.log(`Modal not found with the id: ${id}`);
-    }
+    } else { console.log(`Modal not found with the ID: ${id}`); }
   }
+
+  delete() {
+    let userIndex = usersDataArray.findIndex((user) => user.getID() === this.getID());
+    if (userIndex !== -1) {
+      usersDataArray.splice(userIndex, 1);
+      console.log(`User with ID ${this.getID()} has been deleted.`);
+      refreshRecords();
+    } else { console.log(`User with ID ${this.getID()} not found.`); }
+  }
+
   setID() {
     User.#id += 1;
     this.#UserID = `prof00${User.#id}`;

@@ -5,21 +5,14 @@ let readUpdateDelete = (userDataContainer, ProfileBtnOpsContainer, id) => {
 
 	profileReadBtn.addEventListener("click", (e) => {
 		let clickedBtnId = profileReadBtn.parentElement.parentElement.nextSibling.id;
-		let currentModal = usersDataArray.find((user) => user.getID() === clickedBtnId);
-		console.log(currentModal)
-		if (currentModal) {
-			currentModal.read();
-		}
+		let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
+		if (modal) { currentModal.read() }
 	});
 
 	profileDelBtn.addEventListener("click", () => {
-		profileDelBtn.parentElement.parentElement.remove();
-		let modal = document.getElementById(`${id}`);
-		if (modal) {
-			modal.remove();
-		} else {
-			console.log(`No record found with ID: prof00${id}`);
-		}
+		let clickedBtnId = profileDelBtn.parentElement.parentElement.nextSibling.id;
+		let user = usersDataArray.find((user) => user.getID() === clickedBtnId);
+		if (user) { user.delete(); }
 	});
 
 	profileUpdateBtn.addEventListener("click", () => {
