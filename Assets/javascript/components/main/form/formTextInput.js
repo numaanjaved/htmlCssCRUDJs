@@ -90,5 +90,15 @@ textAreaAttributes = {
 };
 createNewElement(["textArea", "user_bio_input", textAreaTypeContainer, null, textAreaAttributes]);
 let textAreaInfoMsgContainer = createNewElement(["div", "textArea_Info_msg_container", textAreaTypeContainer]);
+let userTypeMainContainer = createNewElement(["div", "user_type_container", textAreaTypeContainer]);
+let userTypeSubContainer = createNewElement(["div", "user_type_sub_container", userTypeMainContainer]);
+createNewElement(["h3", "choose_user_text", userTypeSubContainer, `Choose User Type`]);
+let chooseUserContainer = createNewElement(["div", "choose_user_container", userTypeSubContainer]);
+let userRadioContainer = createNewElement(["div", "radio_container", chooseUserContainer]);
+createNewElement(["input", "user_type", userRadioContainer, null, { type: "radio", id: "user_radio", name: "user_Check" }]);
+createNewElement(["label", "user_type_label", userRadioContainer, `User`, { for: `user_radio` }]);
+let adminRadioContainer = createNewElement(["div", "radio_container", chooseUserContainer]);
+createNewElement(["input", "user_type", adminRadioContainer, null, { type: "radio", id: "admin_radio", name: "user_Check" }]);
+createNewElement(["label", "user_type_label", adminRadioContainer, `Admin`, { for: "admin_radio" }]);
 createNewElement(["span", "limit_exceed_text", textAreaInfoMsgContainer]);
 createNewElement(["span", "limit_text", textAreaInfoMsgContainer, `0/300`]);
