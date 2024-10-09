@@ -4,7 +4,6 @@ let readProfile = (readProfileBtn) => {
 	if (modal) { modal.read(); }
 };
 let delProfile = (delProfileBtn) => {
-
 	let clickedBtnId = delProfileBtn.parentElement.parentElement.nextSibling.id;
 	let user = usersDataArray.find((user) => user.getID() === clickedBtnId);
 	if (user) { user.delete(); }
