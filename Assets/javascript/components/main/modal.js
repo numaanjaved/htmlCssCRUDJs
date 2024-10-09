@@ -1,11 +1,4 @@
-let readModal = (
-  profilePic,
-  userName,
-  userEmail,
-  userContactNum,
-  userAddress,
-  userBio,
-  id = null
+let modal = (profilePic, userName, userEmail, userContactNum, userAddress, userBio, id = null
 ) => {
   let modalMainContainer = createNewElement([
     "div",

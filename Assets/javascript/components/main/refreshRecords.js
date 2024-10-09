@@ -9,7 +9,7 @@ let refreshRecords = () => {
       `${data.getContactNum()}`,
     );
 
-    readModal(
+    modal(
       `${data.getProfilePic()}`,
       `${data.getFirstName()} ${data.getLastName()}`,
       `${data.getEmail()}`,
