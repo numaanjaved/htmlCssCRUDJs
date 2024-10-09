@@ -1,6 +1,4 @@
-let usersDataMainContainer = document.querySelector(
-  ".individual_user_data_container"
-);
+let usersDataMainContainer = document.querySelector(".individual_user_data_container");
 let usersDataArray = [];
 let userFirstName = document.getElementById("user_Fname");
 let userLastName = document.getElementById("user_Lname");
