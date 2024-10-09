@@ -6,7 +6,7 @@ let readUpdateDelete = (userDataContainer, ProfileBtnOpsContainer, id) => {
 	profileReadBtn.addEventListener("click", (e) => {
 		let clickedBtnId = profileReadBtn.parentElement.parentElement.nextSibling.id;
 		let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
-		if (modal) { currentModal.read() }
+		if (modal) { modal.read(); }
 	});
 
 	profileDelBtn.addEventListener("click", () => {
