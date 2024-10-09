@@ -17,6 +17,7 @@ class User {
     this.setBio(bio);
     this.setProfilePic(userPicture);
     this.setID();
+    console.log(`This is from create Method: ${this.getID()}`);
   }
   read() {
     const id = this.getID();
@@ -36,6 +37,7 @@ class User {
     this.setBio(bio);
     this.setProfilePic(userPicture);
     refreshRecords();
+    console.log(`This is from update Method: ${this.getID()}`);
   }
   delete() {
     let userIndex = usersDataArray.findIndex((user) => user.getID() === this.getID());

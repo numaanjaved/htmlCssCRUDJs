@@ -85,9 +85,6 @@ let updateUser = (userDataArr) => {
 		userIndexCheck = null;
 	}
 }
-// let updateUserData = (userDataArr) => {
-
-// }
 
 let Validation = () => {
 	let validationCheck = true;
@@ -109,9 +106,9 @@ let Validation = () => {
 		URL.createObjectURL(imgInput.files[0]),
 	];
 	if (validationCheck) {
-		createUser(userData);
-		console.log(usersDataArray);
-		updateUser(userData);
+		if (userIndexCheck === null) {
+			createUser(userData);
+		} else { updateUser(userData); }
 		form.reset();
 		imgDisplay.src = "./Assets/images/default_profile.png";
 	}
