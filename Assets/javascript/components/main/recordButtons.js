@@ -2,7 +2,14 @@ let readProfile = (readProfileBtn) => {
 	let clickedBtnId = readProfileBtn.parentElement.parentElement.nextSibling.id;
 	let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
 	if (modal) { modal.read(); }
-}
+};
+let delProfile = (delProfileBtn) => {
+
+	let clickedBtnId = delProfileBtn.parentElement.parentElement.nextSibling.id;
+	let user = usersDataArray.find((user) => user.getID() === clickedBtnId);
+	if (user) { user.delete(); }
+
+};
 
 let readUpdateDelete = (userDataContainer, ProfileBtnOpsContainer, id) => {
 	let profileReadBtn = createNewElement(["button", "Ops_Buttons", ProfileBtnOpsContainer, `Read`, { id: "read_btn" }]);
@@ -11,11 +18,7 @@ let readUpdateDelete = (userDataContainer, ProfileBtnOpsContainer, id) => {
 
 	profileReadBtn.addEventListener("click", e => readProfile(profileReadBtn));
 
-	profileDelBtn.addEventListener("click", () => {
-		let clickedBtnId = profileDelBtn.parentElement.parentElement.nextSibling.id;
-		let user = usersDataArray.find((user) => user.getID() === clickedBtnId);
-		if (user) { user.delete(); }
-	});
+	profileDelBtn.addEventListener("click", e => delProfile(profileDelBtn));
 
 	profileUpdateBtn.addEventListener("click", () => {
 		window.scrollTo(200, 0);
