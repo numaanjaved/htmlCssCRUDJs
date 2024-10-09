@@ -1,12 +1,5 @@
-let createNewElement = ([
-  elemName,
-  elemClass = null,
-  elemParent,
-  elemContent = null,
-  attributes = {},
-]) => {
+let createNewElement = ([elemName, elemClass = null, elemParent, elemContent = null, attributes = {}]) => {
   let newElement = document.createElement(`${elemName}`);
-
   if (Array.isArray(elemClass)) {
     elemClass.forEach((className) => {
       newElement.classList.add(className);
@@ -36,6 +29,5 @@ let createNewElement = ([
   } else {
     console.log("Error: Invalid parent element.");
   }
-
   return newElement;
 };

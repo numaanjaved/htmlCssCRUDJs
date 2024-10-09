@@ -28,7 +28,6 @@ class User {
   }
   update([firstName, lastName, email, contact, address, bio, userPicture]) {
     let userIndex = usersDataArray.findIndex((user) => user.getID() === this.getID());
-    console.log(userIndex)
     this.setFirstName(firstName);
     this.setLastName(lastName);
     this.setEmail(email);
@@ -97,4 +96,4 @@ class User {
   getProfilePic() {
     return this.#userPicture;
   }
-}
+};

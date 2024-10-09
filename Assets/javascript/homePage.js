@@ -1,16 +1,11 @@
 //Form Image display function
-let imgInput = createNewElement([
-  "input",
-  null,
-  ".image_input",
-  null,
+let imgInput = createNewElement(["input", null, ".image_input", null,
   {
     type: "file",
     name: "image",
     accept: "image/png,image/webp, image/jpeg, image/jpg",
     id: "imageUpload",
-  },
-]);
+  }]);
 
 let imgDisplay = document.querySelector("#form_img");
 imgInput.addEventListener("change", () => {

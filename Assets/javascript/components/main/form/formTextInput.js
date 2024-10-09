@@ -1,19 +1,6 @@
-let formTextInputContent = createNewElement([
-  "div",
-  "form_input_content",
-  form,
-]);
-let formTextContentContainer = createNewElement([
-  "div",
-  "form_text_content_container",
-  formTextInputContent,
-]);
-let inputTypeContainer = createNewElement([
-  "div",
-  "type_input_container",
-  formTextContentContainer,
-]);
-
+let formTextInputContent = createNewElement(["div", "form_input_content", form]);
+let formTextContentContainer = createNewElement(["div", "form_text_content_container", formTextInputContent]);
+let inputTypeContainer = createNewElement(["div", "type_input_container", formTextContentContainer]);
 let inputArrayData = [
   {
     labelHeading: "First Name",
@@ -87,39 +74,12 @@ let inputArrayData = [
   },
 ];
 inputArrayData.forEach((data, index) => {
-  createNewElement([
-    "label",
-    "text_form_labels",
-    inputTypeContainer,
-    data.labelHeading,
-    data.forAttr,
-  ]);
-  createNewElement([
-    "span",
-    ["error_msg", `${data.errorClass}`],
-    inputTypeContainer,
-  ]);
-  createNewElement([
-    "input",
-    "user_inputs",
-    inputTypeContainer,
-    null,
-    data.inputAttr,
-  ]);
+  createNewElement(["label", "text_form_labels", inputTypeContainer, data.labelHeading, data.forAttr]);
+  createNewElement(["span", ["error_msg", `${data.errorClass}`], inputTypeContainer]);
+  createNewElement(["input", "user_inputs", inputTypeContainer, null, data.inputAttr]);
 });
-
-let textAreaTypeContainer = createNewElement([
-  "div",
-  "type_textArea_container",
-  formTextContentContainer,
-]);
-createNewElement([
-  "label",
-  "text_form_labels",
-  textAreaTypeContainer,
-  `Profile Description`,
-  { for: "user_bio" },
-]);
+let textAreaTypeContainer = createNewElement(["div", "type_textArea_container", formTextContentContainer,]);
+createNewElement(["label", "text_form_labels", textAreaTypeContainer, `Profile Description`, { for: "user_bio" }]);
 createNewElement(["span", ["error_msg", "bio_error"], textAreaTypeContainer]);
 textAreaAttributes = {
   id: "user_bio",
@@ -128,17 +88,7 @@ textAreaAttributes = {
   autocomplete: "off",
   placeholder: "Write 250-300 characters.....",
 };
-createNewElement([
-  "textArea",
-  "user_bio_input",
-  textAreaTypeContainer,
-  null,
-  textAreaAttributes,
-]);
-let textAreaInfoMsgContainer = createNewElement([
-  "div",
-  "textArea_Info_msg_container",
-  textAreaTypeContainer,
-]);
+createNewElement(["textArea", "user_bio_input", textAreaTypeContainer, null, textAreaAttributes]);
+let textAreaInfoMsgContainer = createNewElement(["div", "textArea_Info_msg_container", textAreaTypeContainer]);
 createNewElement(["span", "limit_exceed_text", textAreaInfoMsgContainer]);
 createNewElement(["span", "limit_text", textAreaInfoMsgContainer, `0/300`]);
