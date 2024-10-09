@@ -1,13 +1,15 @@
+let readProfile = (readProfileBtn) => {
+	let clickedBtnId = readProfileBtn.parentElement.parentElement.nextSibling.id;
+	let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
+	if (modal) { modal.read(); }
+}
+
 let readUpdateDelete = (userDataContainer, ProfileBtnOpsContainer, id) => {
 	let profileReadBtn = createNewElement(["button", "Ops_Buttons", ProfileBtnOpsContainer, `Read`, { id: "read_btn" }]);
 	let profileUpdateBtn = createNewElement(["button", "Ops_Buttons", ProfileBtnOpsContainer, `Update`, { id: "update_btn" }]);
 	let profileDelBtn = createNewElement(["button", "Ops_Buttons", ProfileBtnOpsContainer, `Delete`, { id: "delete_btn" }]);
 
-	profileReadBtn.addEventListener("click", (e) => {
-		let clickedBtnId = profileReadBtn.parentElement.parentElement.nextSibling.id;
-		let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
-		if (modal) { modal.read(); }
-	});
+	profileReadBtn.addEventListener("click", e => readProfile(profileReadBtn));
 
 	profileDelBtn.addEventListener("click", () => {
 		let clickedBtnId = profileDelBtn.parentElement.parentElement.nextSibling.id;
