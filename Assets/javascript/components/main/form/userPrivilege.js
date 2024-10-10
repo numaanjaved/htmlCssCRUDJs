@@ -1,14 +1,7 @@
 let userTypeMainContainer = createNewElement(["div", "user_type_container", textAreaTypeContainer]);
 let userTypeSubContainer = createNewElement(["div", "user_type_sub_container", userTypeMainContainer]);
-createNewElement(["h3", "choose_user_text", userTypeSubContainer, `Choose User Type`]);
 let chooseUserContainer = createNewElement(["div", "choose_user_container", userTypeSubContainer]);
-let userRadioContainer = createNewElement(["div", "radio_container", chooseUserContainer]);
-let userRadioBtn = createNewElement(["input", "user_type", userRadioContainer, null, { type: "radio", id: "user_radio", name: "user_Check" }]);
-let radioBtnLabel = createNewElement(["label", "user_type_label", userRadioContainer, `User`, { for: `user_radio` }]);
-let adminRadioContainer = createNewElement(["div", "radio_container", chooseUserContainer]);
-let adminRadioBtn = createNewElement(["input", "user_type", adminRadioContainer, null, { type: "radio", id: "admin_radio", name: "user_Check" }]);
-createNewElement(["label", "user_type_label", adminRadioContainer, `Admin`, { for: "admin_radio" }]);
-let adminAttContainer = createNewElement(["div", "admin_attr_container", userTypeSubContainer]);
+let adminAttContainer = createNewElement(["div", "admin_attr_container", chooseUserContainer]);
 createNewElement(["label", "admin_label", adminAttContainer, `Username`, { for: "admin_name" }]);
 let userName = createNewElement(["input", "admin_input", adminAttContainer, null, {
     type: "text",
@@ -27,13 +20,3 @@ let userPassword = createNewElement(["input", "admin_input", adminAttContainer, 
 }]);
 
 
-userRadioBtn.addEventListener("click", () => {
-    adminAttContainer.style.display = "none";
-});
-adminRadioBtn.addEventListener("click", () => {
-    adminAttContainer.style.display = "flex";
-});
-let fillData = (attr) => {
-    attr.style.outlineColor = "#a31b1b";
-    attr.style.border = "2px solid #a31b1b";
-};

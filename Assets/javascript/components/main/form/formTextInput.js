@@ -72,12 +72,25 @@ let inputArrayData = [
       placeholder: "e.g., 123 Elm St, Springfield, IL",
     },
   },
+
 ];
 inputArrayData.forEach((data, index) => {
   createNewElement(["label", "text_form_labels", inputTypeContainer, data.labelHeading, data.forAttr]);
   createNewElement(["span", ["error_msg", `${data.errorClass}`], inputTypeContainer]);
   createNewElement(["input", "user_inputs", inputTypeContainer, null, data.inputAttr]);
 });
+
+
+
+createNewElement(["label", "text_form_labels", inputTypeContainer, `Choose User Type`, { for: `select_user` }]);
+createNewElement(["span", ["error_msg", "choose_user"], inputTypeContainer]);
+let selectUserType = createNewElement(["select", "select_user_type", inputTypeContainer, null,
+  { name: "select_user", id: "select_user" }]);
+let userBtn = createNewElement(["option", "userOption", selectUserType, `User`, { value: "User", id: "user_option", selected: "selected" }]);
+let adminBtn = createNewElement(["option", "userOption", selectUserType, `Admin`, { value: "Admin", id: "admin_option" }]);
+
+
+
 let textAreaTypeContainer = createNewElement(["div", "type_textArea_container", formTextContentContainer,]);
 createNewElement(["label", "text_form_labels", textAreaTypeContainer, `Profile Description`, { for: "user_bio" }]);
 createNewElement(["span", ["error_msg", "bio_error"], textAreaTypeContainer]);
@@ -92,3 +105,27 @@ createNewElement(["textArea", "user_bio_input", textAreaTypeContainer, null, tex
 let textAreaInfoMsgContainer = createNewElement(["div", "textArea_Info_msg_container", textAreaTypeContainer]);
 createNewElement(["span", "limit_text", textAreaInfoMsgContainer, `0/300`]);
 createNewElement(["span", "limit_exceed_text", textAreaInfoMsgContainer]);
+
+
+
+selectUserType.addEventListener("change", () => {
+
+  if (selectUserType.value === "User") {
+    adminAttContainer.style.display = "none";
+  } else if (selectUserType.value === "Admin") {
+    adminAttContainer.style.display = "flex";
+  }
+
+})
+
+// userBtn.addEventListener("click", () => {
+//   adminAttContainer.style.display = "none";
+// });
+// adminBtn.addEventListener("click", () => {
+//   adminAttContainer.style.display = "flex";
+//   console.log(`Haji`)
+// });
+// let fillData = (attr) => {
+//   attr.style.outlineColor = "#a31b1b";
+//   attr.style.border = "2px solid #a31b1b";
+// };
