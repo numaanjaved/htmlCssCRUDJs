@@ -1,6 +1,7 @@
 let userTypeMainContainer = createNewElement(["div", "user_type_container", textAreaTypeContainer]);
 let userTypeSubContainer = createNewElement(["div", "user_type_sub_container", userTypeMainContainer]);
 let chooseUserContainer = createNewElement(["div", "choose_user_container", userTypeSubContainer]);
+let admin_heading = createNewElement(["h3", "admin_heading", chooseUserContainer, `User Name and password for Admin`]);
 let adminAttContainer = createNewElement(["div", "admin_attr_container", chooseUserContainer]);
 createNewElement(["label", "admin_label", adminAttContainer, `Username`, { for: "admin_name" }]);
 let userName = createNewElement(["input", "admin_input", adminAttContainer, null, {

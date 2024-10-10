@@ -112,20 +112,9 @@ selectUserType.addEventListener("change", () => {
 
   if (selectUserType.value === "User") {
     adminAttContainer.style.display = "none";
+    admin_heading.style.display = "none";
   } else if (selectUserType.value === "Admin") {
     adminAttContainer.style.display = "flex";
+    admin_heading.style.display = "block";
   }
-
-})
-
-// userBtn.addEventListener("click", () => {
-//   adminAttContainer.style.display = "none";
-// });
-// adminBtn.addEventListener("click", () => {
-//   adminAttContainer.style.display = "flex";
-//   console.log(`Haji`)
-// });
-// let fillData = (attr) => {
-//   attr.style.outlineColor = "#a31b1b";
-//   attr.style.border = "2px solid #a31b1b";
-// };
+});
