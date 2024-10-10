@@ -18,6 +18,13 @@ class FormValidation {
 		}
 		return check;
 	};
+	matchRegex(attribute, regexSyn) {
+		let check = true
+		if (!attribute.value.match(regexSyn)) {
+			check = false;
+		}
+		return check;
+	};
 	elemValidationCheck(attribute, regex, len) {
 		this.setAttribute(attribute);
 		this.setRegex(regex);
@@ -26,7 +33,7 @@ class FormValidation {
 			errorMsg(this.getAttribute(), `${error[0].errorName}: ${error[0].errorMessage}`);
 			return false;
 		} else { successMsg(this.getAttribute()); }
-		if (!matchRegex(this.getAttribute(), this.getRegex())) {
+		if (!this.matchRegex(this.getAttribute(), this.getRegex())) {
 			errorMsg(this.getAttribute(), `${error[1].errorName}: ${error[1].errorMessage}`);
 			return false;
 		} else { successMsg(this.getAttribute()); }
@@ -80,13 +87,6 @@ let errorMsg = (statusMsgElem, errorMsg_) => {
 let checkLength = (attribute, maxLen) => {
 	let check = true;
 	if (attribute.value.length > maxLen) {
-		check = false;
-	}
-	return check;
-};
-let matchRegex = (attribute, regexSyn) => {
-	let check = true
-	if (!attribute.value.match(regexSyn)) {
 		check = false;
 	}
 	return check;
