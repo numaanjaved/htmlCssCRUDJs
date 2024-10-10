@@ -103,7 +103,7 @@ let Validation = () => {
 		userContactNumber.value,
 		userAddress.value,
 		userBio.value,
-		URL.createObjectURL(imgInput.files[0]),
+		URL.createObjectURL(imgInput.files[0])
 	];
 	if (validationCheck) {
 		if (userIndexCheck === null) {
