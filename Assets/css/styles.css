@@ -323,7 +323,7 @@ body {
               }
               > .admin_attr_container {
                 width: 100%;
-                display: flex;
+                display: none;
                 flex-direction: column;
                 > .admin_label {
                   font-family: "poppins", sans-serif;
