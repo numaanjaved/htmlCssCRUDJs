@@ -1,4 +1,50 @@
 let userIndexCheck = null;
+class FormValidation {
+	#attribute;
+	#regex;
+	#len;
+	constructor() { console.log(`constructor called`); }
+	setAttribute(attr) { this.#attribute = attr; };
+	getAttribute() { return this.#attribute; };
+	setRegex(reg) { this.#regex = reg; };
+	getRegex() { return this.#regex; };
+	setLength(length) { this.#len = length; };
+	getLength() { return this.#len; };
+
+	elemValidationCheck(attribute, regex, len) {
+		this.setAttribute(attribute);
+		this.setRegex(regex);
+		this.setLength(len);
+		if (!isNull(this.getAttribute())) {
+			errorMsg(this.getAttribute(), `${error[0].errorName}: ${error[0].errorMessage}`);
+			return false;
+		} else { successMsg(this.getAttribute()); }
+		if (!matchRegex(this.getAttribute(), this.getRegex())) {
+			errorMsg(this.getAttribute(), `${error[1].errorName}: ${error[1].errorMessage}`);
+			return false;
+		} else { successMsg(this.getAttribute()); }
+		if (!checkLength(this.getAttribute(), this.getLength())) {
+			errorMsg(this.getAttribute(), `${error[2].errorName}: ${error[2].errorMessage}`);
+			return false;
+		} else { successMsg(this.getAttribute()); }
+		return true;
+	};
+
+	createUser(userDataArr) {
+		let userDataObj = new User();
+		userDataObj.create(userDataArr);
+		if (userIndexCheck === null) {
+			usersDataArray.push(userDataObj);
+		}
+	};
+	updateUser(userDataArr) {
+		if (userIndexCheck !== null) {
+			usersDataArray[userIndexCheck].update(userDataArr);
+			userIndexCheck = null;
+		}
+	};
+
+};
 let error = [
 	{ errorName: "Null Error", errorMessage: "Please fill data in the field" },
 	{ errorName: "Format Error", errorMessage: "Please match the requested format" },
@@ -37,7 +83,7 @@ let matchRegex = (attribute, regexSyn) => {
 		check = false;
 	}
 	return check;
-}
+};
 let isNull = (attribute) => {
 	let check = true;
 	if (attribute.value == "" || attribute == null) {
@@ -56,46 +102,18 @@ let profilePicValidation = (attribute) => {
 	}
 	return imgCheck;
 };
-let elemValidationCheck = (attribute, regex, len) => {
-	let maxLen = len;
-	if (!isNull(attribute)) {
-		errorMsg(attribute, `${error[0].errorName}: ${error[0].errorMessage}`);
-		return false;
-	} else { successMsg(attribute); }
-	if (!matchRegex(attribute, regex)) {
-		errorMsg(attribute, `${error[1].errorName}: ${error[1].errorMessage}`);
-		return false;
-	} else { successMsg(attribute); }
-	if (!checkLength(attribute, maxLen)) {
-		errorMsg(attribute, `${error[2].errorName}: ${error[2].errorMessage}`);
-		return false;
-	} else { successMsg(attribute); }
-	return true;
-};
-let createUser = (userDataArr) => {
-	let userDataObj = new User();
-	userDataObj.create(userDataArr);
-	if (userIndexCheck === null) {
-		usersDataArray.push(userDataObj);
-	}
-};
-let updateUser = (userDataArr) => {
-	if (userIndexCheck !== null) {
-		usersDataArray[userIndexCheck].update(userDataArr);
-		userIndexCheck = null;
-	}
-}
+
 
 let Validation = () => {
 	let validationCheck = true;
+	let newForm = new FormValidation();
+	if (!newForm.elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 50)) { validationCheck = false; }
 	if (!profilePicValidation(imgInput)) { validationCheck = false; }
-	if (!elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 50)) { validationCheck = false; }
-	if (!elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 50)) { validationCheck = false; }
-	if (!elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100)) { validationCheck = false; }
-	if (!elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20)) { validationCheck = false; }
-	if (!elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]*$/, 150)) { validationCheck = false; }
-	if (!elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]*$/, 300)) { validationCheck = false; }
-
+	if (!newForm.elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 50)) { validationCheck = false; }
+	if (!newForm.elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100)) { validationCheck = false; }
+	if (!newForm.elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20)) { validationCheck = false; }
+	if (!newForm.elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]*$/, 150)) { validationCheck = false; }
+	if (!newForm.elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]*$/, 300)) { validationCheck = false; }
 	let userData = [
 		userFirstName.value,
 		userLastName.value,
@@ -107,11 +125,16 @@ let Validation = () => {
 	];
 	if (validationCheck) {
 		if (userIndexCheck === null) {
-			createUser(userData);
-		} else { updateUser(userData); }
+			newForm.createUser(userData);
+		} else { newForm.updateUser(userData); }
 		form.reset();
 		imgDisplay.src = "./Assets/images/default_profile.png";
 	}
 	refreshRecords();
 };
 charLimitCheck();
+
+
+
+
+// if (!elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 50)) { validationCheck = false; }

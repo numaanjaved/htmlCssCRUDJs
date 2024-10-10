@@ -10,7 +10,7 @@ let adminRadioBtn = createNewElement(["input", "user_type", adminRadioContainer,
 createNewElement(["label", "user_type_label", adminRadioContainer, `Admin`, { for: "admin_radio" }]);
 let adminAttContainer = createNewElement(["div", "admin_attr_container", userTypeSubContainer]);
 createNewElement(["label", "admin_label", adminAttContainer, `Username`, { for: "admin_name" }]);
-createNewElement(["input", "admin_input", adminAttContainer, null, {
+let userName = createNewElement(["input", "admin_input", adminAttContainer, null, {
     type: "text",
     id: "admin_name_input",
     name: "admin_name",
@@ -18,7 +18,7 @@ createNewElement(["input", "admin_input", adminAttContainer, null, {
     placeholder: "e.g., john_smith",
 }]);
 createNewElement(["label", "admin_label", adminAttContainer, `Password`, { for: "admin_password" }]);
-createNewElement(["input", "admin_input", adminAttContainer, null, {
+let userPassword = createNewElement(["input", "admin_input", adminAttContainer, null, {
     type: "password",
     id: "admin_password_input",
     name: "admin_password",
@@ -33,3 +33,7 @@ userRadioBtn.addEventListener("click", () => {
 adminRadioBtn.addEventListener("click", () => {
     adminAttContainer.style.display = "flex";
 });
+let fillData = (attr) => {
+    attr.style.outlineColor = "#a31b1b";
+    attr.style.border = "2px solid #a31b1b";
+};
