@@ -11,11 +11,18 @@ class FormValidation {
 	setLength(length) { this.#len = length; };
 	getLength() { return this.#len; };
 
+	isNull(attribute) {
+		let check = true;
+		if (attribute.value == "" || attribute == null) {
+			check = false;
+		}
+		return check;
+	};
 	elemValidationCheck(attribute, regex, len) {
 		this.setAttribute(attribute);
 		this.setRegex(regex);
 		this.setLength(len);
-		if (!isNull(this.getAttribute())) {
+		if (!this.isNull(this.getAttribute())) {
 			errorMsg(this.getAttribute(), `${error[0].errorName}: ${error[0].errorMessage}`);
 			return false;
 		} else { successMsg(this.getAttribute()); }
@@ -84,13 +91,7 @@ let matchRegex = (attribute, regexSyn) => {
 	}
 	return check;
 };
-let isNull = (attribute) => {
-	let check = true;
-	if (attribute.value == "" || attribute == null) {
-		check = false;
-	}
-	return check;
-};
+
 let profilePicValidation = (attribute) => {
 	let imgCheck = true;
 	if (!attribute.files.length || imgDisplay.src.includes("default_profile.png")) {
