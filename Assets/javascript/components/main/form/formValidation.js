@@ -25,6 +25,14 @@ class FormValidation {
 		}
 		return check;
 	};
+	checkLength(attribute, maxLen) {
+		let check = true;
+		if (attribute.value.length > maxLen) {
+			check = false;
+		}
+		return check;
+	};
+
 	elemValidationCheck(attribute, regex, len) {
 		this.setAttribute(attribute);
 		this.setRegex(regex);
@@ -37,7 +45,7 @@ class FormValidation {
 			errorMsg(this.getAttribute(), `${error[1].errorName}: ${error[1].errorMessage}`);
 			return false;
 		} else { successMsg(this.getAttribute()); }
-		if (!checkLength(this.getAttribute(), this.getLength())) {
+		if (!this.checkLength(this.getAttribute(), this.getLength())) {
 			errorMsg(this.getAttribute(), `${error[2].errorName}: ${error[2].errorMessage}`);
 			return false;
 		} else { successMsg(this.getAttribute()); }
@@ -84,13 +92,6 @@ let errorMsg = (statusMsgElem, errorMsg_) => {
 	error.style.display = "block";
 	error.innerHTML = errorMsg_;
 };
-let checkLength = (attribute, maxLen) => {
-	let check = true;
-	if (attribute.value.length > maxLen) {
-		check = false;
-	}
-	return check;
-};
 
 let profilePicValidation = (attribute) => {
 	let imgCheck = true;
@@ -108,9 +109,9 @@ let profilePicValidation = (attribute) => {
 let Validation = () => {
 	let validationCheck = true;
 	let newForm = new FormValidation();
-	if (!newForm.elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 50)) { validationCheck = false; }
 	if (!profilePicValidation(imgInput)) { validationCheck = false; }
-	if (!newForm.elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 50)) { validationCheck = false; }
+	if (!newForm.elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
+	if (!newForm.elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]*$/, 150)) { validationCheck = false; }
