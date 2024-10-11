@@ -21,31 +21,63 @@ let errorContainer = {
 let Validation = () => {
 	let validationCheck = true;
 	let newForm = new FormValidation();
-	if (!newForm.profilePicValidation(imgInput)) { validationCheck = false; }
+	let userData;
+
+
 	if (!newForm.elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]*$/, 150)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]*$/, 300)) { validationCheck = false; }
+	if (!newForm.profilePicValidation(imgInput)) { validationCheck = false; }
+
 	if (selectUserType.value === "Admin") {
 		if (!newForm.elemValidationCheck(userName, /^[a-zA-Z0-9_]*$/, 30)) { validationCheck = false; }
 		if (!newForm.elemValidationCheck(userPassword, /^[0-9]*$/, 30)) { validationCheck = false; }
 	}
-	let userData = [
-		userFirstName.value,
-		userLastName.value,
-		userEmail.value,
-		userContactNumber.value,
-		userAddress.value,
-		userBio.value,
-		URL.createObjectURL(imgInput.files[0])
-	];
+	if (selectUserType.value === "Admin") {
+		userData = [
+			userFirstName.value,
+			userLastName.value,
+			userEmail.value,
+			userContactNumber.value,
+			userAddress.value,
+			userBio.value,
+			URL.createObjectURL(imgInput.files[0]),
+			userName.value,
+			userPassword.value
+		];
+	} else {
+		userData = [
+			userFirstName.value,
+			userLastName.value,
+			userEmail.value,
+			userContactNumber.value,
+			userAddress.value,
+			userBio.value,
+			URL.createObjectURL(imgInput.files[0])
+		];
+	}
+
+
+	console.log(usersDataArray);
 	if (validationCheck) {
-		if (userIndexCheck === null) {
-			newForm.createUser(userData);
-		} else { newForm.updateUser(userData); }
+		if (selectUserType.value === "Admin") {
+			if (userIndexCheck === null) {
+				console.log(`Array before: ${userData}`)
+				newForm.createAdmin(userData);
+				console.log(`Array After: ${userData}`)
+			} else { newForm.updateUser(userData); }
+		} else {
+			if (userIndexCheck === null) {
+				newForm.createUser(userData);
+			} else { newForm.updateUser(userData); }
+		}
+		console.log(usersDataArray)
 		form.reset();
+		adminAttContainer.style.display = "none";
+		admin_heading.style.display = "none";
 		imgDisplay.src = "./Assets/images/default_profile.png";
 	}
 	refreshRecords();

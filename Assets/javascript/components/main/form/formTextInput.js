@@ -99,6 +99,7 @@ let selectUserType = createNewElement(["select", "select_user_type", inputTypeCo
   { name: "select_user", id: "select_user" }]);
 let userBtn = createNewElement(["option", "userOption", selectUserType, `User`, { value: "User", id: "user_option", selected: "selected" }]);
 let adminBtn = createNewElement(["option", "userOption", selectUserType, `Admin`, { value: "Admin", id: "admin_option" }]);
+
 selectUserType.addEventListener("change", () => {
   if (selectUserType.value === "User") {
     adminAttContainer.style.display = "none";
@@ -108,3 +109,4 @@ selectUserType.addEventListener("change", () => {
     admin_heading.style.display = "block";
   }
 });
+

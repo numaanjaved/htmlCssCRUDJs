@@ -85,5 +85,12 @@ class FormValidation {
             userIndexCheck = null;
         }
     };
+    createAdmin(userDataArr) {
+        let userDataObj = new Admin();
+        userDataObj.create(userDataArr);
+        if (userIndexCheck === null) {
+            usersDataArray.push(userDataObj);
+        }
+    }
 
 };
