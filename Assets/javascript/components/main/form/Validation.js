@@ -92,5 +92,11 @@ class FormValidation {
             usersDataArray.push(userDataObj);
         }
     }
+    updateAdmin(userDataArr) {
+        if (userIndexCheck !== null) {
+            usersDataArray[userIndexCheck].update(userDataArr);
+            userIndexCheck = null;
+        }
+    };
 
 };

@@ -60,7 +60,7 @@ let Validation = () => {
 		if (selectUserType.value === "Admin") {
 			if (userIndexCheck === null) {
 				newForm.createAdmin(userData);
-			} else { newForm.updateUser(userData); }
+			} else { newForm.updateAdmin(userData); }
 		} else {
 			if (userIndexCheck === null) {
 				newForm.createUser(userData);
@@ -71,6 +71,7 @@ let Validation = () => {
 		admin_heading.style.display = "none";
 		imgDisplay.src = "./Assets/images/default_profile.png";
 	}
+	console.log(usersDataArray);
 	refreshRecords();
 };
 charLimitCheck();
