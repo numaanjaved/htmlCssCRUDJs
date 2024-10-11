@@ -328,6 +328,13 @@ body {
                   width: 100%;
                   display: none;
                   flex-direction: column;
+                  > .error_msg {
+                    font-family: "poppins", sans-serif;
+                    font-weight: 500;
+                    font-size: 1.5rem;
+                    color: var(--error-color);
+                    display: none;
+                  }
                   > .admin_label {
                     font-family: "poppins", sans-serif;
                     font-weight: 500;
@@ -736,6 +743,9 @@ body {
 .contact_error {
   display: none;
 }
-.choose_user {
-  display: none;
+.user_admin {
+  display: block;
+}
+.user_admin_password {
+  display: block;
 }
