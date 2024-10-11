@@ -12,6 +12,8 @@ let errorContainer = {
 	user_contact: contactErr,
 	user_address: addressErr,
 	user_bio: bioErr,
+	admin_name: userNameErr,
+	admin_password: userPassErr,
 	image: image_error_msg
 };
 
@@ -26,6 +28,10 @@ let Validation = () => {
 	if (!newForm.elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]*$/, 150)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]*$/, 300)) { validationCheck = false; }
+	if (selectUserType.value === "Admin") {
+		if (!newForm.elemValidationCheck(userName, /^[a-zA-Z0-9_]*$/, 30)) { validationCheck = false; }
+		if (!newForm.elemValidationCheck(userPassword, /^[0-9]*$/, 30)) { validationCheck = false; }
+	}
 	let userData = [
 		userFirstName.value,
 		userLastName.value,
