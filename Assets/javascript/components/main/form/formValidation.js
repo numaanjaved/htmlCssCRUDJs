@@ -17,13 +17,10 @@ let errorContainer = {
 	image: image_error_msg
 };
 
-
 let Validation = () => {
 	let validationCheck = true;
 	let newForm = new FormValidation();
 	let userData;
-
-
 	if (!newForm.elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100)) { validationCheck = false; }
@@ -59,22 +56,16 @@ let Validation = () => {
 			URL.createObjectURL(imgInput.files[0])
 		];
 	}
-
-
-	console.log(usersDataArray);
 	if (validationCheck) {
 		if (selectUserType.value === "Admin") {
 			if (userIndexCheck === null) {
-				console.log(`Array before: ${userData}`)
 				newForm.createAdmin(userData);
-				console.log(`Array After: ${userData}`)
 			} else { newForm.updateUser(userData); }
 		} else {
 			if (userIndexCheck === null) {
 				newForm.createUser(userData);
 			} else { newForm.updateUser(userData); }
 		}
-		console.log(usersDataArray)
 		form.reset();
 		adminAttContainer.style.display = "none";
 		admin_heading.style.display = "none";
