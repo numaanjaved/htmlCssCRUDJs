@@ -17,9 +17,9 @@ let errorContainer = {
 	image: image_error_msg
 };
 
-let Validation = () => {
+let formValidation = () => {
 	let validationCheck = true;
-	let newForm = new FormValidation();
+	let newForm = new Validation();
 	let userData;
 	if (!newForm.elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
 	if (!newForm.elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }

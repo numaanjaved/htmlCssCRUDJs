@@ -1,4 +1,4 @@
-class FormValidation {
+class Validation {
     #attribute;
     #regex;
     #len;
