@@ -749,3 +749,6 @@ body {
 .user_admin_password {
   display: block;
 }
+.userType_error {
+  display: block;
+}

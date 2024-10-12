@@ -65,7 +65,7 @@ class Validation {
         let imgCheck = true;
         if (!this.getAttribute().files.length || imgDisplay.src.includes("default_profile.png")) {
             imgCheck = false;
-            this.errorMsg(attribute, `${error[3].errorName}: ${error[3].errorMessage}`)
+            this.errorMsg(attribute, `${error[3].errorName}: ${error[3].errorMessage}`);
         } else {
             this.successMsg(attribute);
             imgCheck = true;
@@ -75,6 +75,7 @@ class Validation {
     createUser(userDataArr) {
         let userDataObj = new User();
         userDataObj.create(userDataArr);
+        console.log(`This is from create user Validation: ${userDataObj.getUserType()}`);
         if (userIndexCheck === null) {
             usersDataArray.push(userDataObj);
         }
@@ -98,4 +99,14 @@ class Validation {
             userIndexCheck = null;
         }
     };
+    adminExists() {
+        let adminAccount = usersDataArray.find(usersData => usersData.getUserType() == "Admin");
+        if (adminAccount) {
+            this.errorMsg(selectUserType, `${error[4].errorName}: ${error[4].errorMessage}`);
+            return false;
+        } else {
+            this.successMsg(selectUserType);
+            return true;
+        }
+    }
 };

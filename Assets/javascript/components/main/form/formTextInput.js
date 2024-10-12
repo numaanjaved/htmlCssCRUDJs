@@ -95,6 +95,8 @@ createNewElement(["span", "limit_text", textAreaInfoMsgContainer, `0/300`]);
 createNewElement(["span", "limit_exceed_text", textAreaInfoMsgContainer]);
 
 createNewElement(["label", "text_form_labels", inputTypeContainer, `Choose User Type`, { for: `select_user` }]);
+
+createNewElement(["span", ["error_msg", "userType_error"], inputTypeContainer]);
 let selectUserType = createNewElement(["select", "select_user_type", inputTypeContainer, null,
   { name: "select_user", id: "select_user" }]);
 let userBtn = createNewElement(["option", "userOption", selectUserType, `User`, { value: "User", id: "user_option", selected: "selected" }]);
