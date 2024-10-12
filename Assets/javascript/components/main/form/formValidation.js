@@ -36,6 +36,11 @@ let formValidation = () => {
 	if (selectUserType.value === "Admin") {
 		if (!userInstance.validator.elemValidationCheck(userName, /^[a-zA-Z0-9_]*$/, 30)) { validationCheck = false; }
 		if (!userInstance.validator.elemValidationCheck(userPassword, /^[0-9]*$/, 30)) { validationCheck = false; }
+		if (!userInstance.validator.onlyAdmin()) {
+			validationCheck = false;
+			console.log(`Admin Account Found`);
+		}
+
 	}
 	let userData = [
 		userFirstName.value,
@@ -62,6 +67,7 @@ let formValidation = () => {
 		}
 		reset();
 	}
+	// userInstance.validator.onlyAdmin();
 	console.log(usersDataArray);
 	refreshRecords();
 };

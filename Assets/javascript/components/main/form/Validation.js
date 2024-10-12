@@ -75,6 +75,7 @@ class Validation {
     createUser(userDataArr) {
         let userDataObj = new User();
         userDataObj.create(userDataArr);
+        console.log(`This is from create user Validation: ${userDataObj.getUserType()}`);
         if (userIndexCheck === null) {
             usersDataArray.push(userDataObj);
         }
@@ -98,4 +99,14 @@ class Validation {
             userIndexCheck = null;
         }
     };
+    onlyAdmin() {
+        let findAdm = usersDataArray.find(usersData => usersData.getUserType() == "Admin");
+        if (findAdm) {
+            // console.log(`Admin Account found`);
+            return false;
+        } else {
+            // console.log(`No admin found New account Created`);
+            return true;
+        }
+    }
 };
