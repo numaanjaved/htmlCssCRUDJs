@@ -10,7 +10,6 @@ let delProfile = (delProfileBtn) => {
 };
 
 let updateProfile = (updateProfileBtn) => {
-
 	window.scrollTo(200, 0);
 	let clickedBtnId = updateProfileBtn.parentElement.parentElement.nextSibling.id;
 	let selectedUser = usersDataArray.findIndex((user) => user.getID() === clickedBtnId);
@@ -24,7 +23,6 @@ let updateProfile = (updateProfileBtn) => {
 	imgDisplay.src = usersDataArray[selectedUser].getProfilePic();
 	userName.value = usersDataArray[selectedUser].getAdminName();
 	userPassword.value = usersDataArray[selectedUser].getPassword();
-
 };
 
 let readUpdateDelete = (userDataContainer, ProfileBtnOpsContainer, id) => {

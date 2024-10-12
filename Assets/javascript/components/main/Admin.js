@@ -34,6 +34,4 @@ class Admin extends User {
         Password: ${this.getPassword()}`);
         console.log(`This Array is from update method ${usersDataArray}`);
     }
-
-
 };

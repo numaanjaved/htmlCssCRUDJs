@@ -21,5 +21,3 @@ let userPassword = createNewElement(["input", "admin_input", adminAttContainer, 
     autocomplete: "off",
     placeholder: "Enter password here.....",
 }]);
-
-

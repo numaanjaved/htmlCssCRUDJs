@@ -75,8 +75,3 @@ let Validation = () => {
 	refreshRecords();
 };
 charLimitCheck();
-
-
-
-
-// if (!elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 50)) { validationCheck = false; }

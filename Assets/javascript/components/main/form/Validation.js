@@ -98,5 +98,4 @@ class FormValidation {
             userIndexCheck = null;
         }
     };
-
 };
