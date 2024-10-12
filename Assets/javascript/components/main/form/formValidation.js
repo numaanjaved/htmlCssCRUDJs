@@ -16,7 +16,12 @@ let errorContainer = {
 	admin_password: userPassErr,
 	image: image_error_msg
 };
-
+let reset = () => {
+	form.reset();
+	adminAttContainer.style.display = "none";
+	admin_heading.style.display = "none";
+	imgDisplay.src = "./Assets/images/default_profile.png";
+};
 let formValidation = () => {
 	let validationCheck = true;
 	let userInstance = new User();
@@ -54,10 +59,7 @@ let formValidation = () => {
 				userInstance.validator.createUser(userData);
 			} else { userInstance.validator.updateUser(userData); }
 		}
-		form.reset();
-		adminAttContainer.style.display = "none";
-		admin_heading.style.display = "none";
-		imgDisplay.src = "./Assets/images/default_profile.png";
+		reset();
 	}
 	console.log(usersDataArray);
 	refreshRecords();
