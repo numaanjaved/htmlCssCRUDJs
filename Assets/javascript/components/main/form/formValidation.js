@@ -19,19 +19,20 @@ let errorContainer = {
 
 let formValidation = () => {
 	let validationCheck = true;
-	let newForm = new Validation();
+	let userInstance = new User();
+
 	let userData;
-	if (!newForm.elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
-	if (!newForm.elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
-	if (!newForm.elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100)) { validationCheck = false; }
-	if (!newForm.elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20)) { validationCheck = false; }
-	if (!newForm.elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]*$/, 150)) { validationCheck = false; }
-	if (!newForm.elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]*$/, 300)) { validationCheck = false; }
-	if (!newForm.profilePicValidation(imgInput)) { validationCheck = false; }
+	if (!userInstance.validator.elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
+	if (!userInstance.validator.elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
+	if (!userInstance.validator.elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100)) { validationCheck = false; }
+	if (!userInstance.validator.elemValidationCheck(userContactNumber, /^[0-9]{2,}[0-9]{7,}$/, 20)) { validationCheck = false; }
+	if (!userInstance.validator.elemValidationCheck(userAddress, /^[a-zA-Z0-9\s,.'-]*$/, 150)) { validationCheck = false; }
+	if (!userInstance.validator.elemValidationCheck(userBio, /^[a-zA-Z0-9,.!?'\s-]*$/, 300)) { validationCheck = false; }
+	if (!userInstance.validator.profilePicValidation(imgInput)) { validationCheck = false; }
 
 	if (selectUserType.value === "Admin") {
-		if (!newForm.elemValidationCheck(userName, /^[a-zA-Z0-9_]*$/, 30)) { validationCheck = false; }
-		if (!newForm.elemValidationCheck(userPassword, /^[0-9]*$/, 30)) { validationCheck = false; }
+		if (!userInstance.validator.elemValidationCheck(userName, /^[a-zA-Z0-9_]*$/, 30)) { validationCheck = false; }
+		if (!userInstance.validator.elemValidationCheck(userPassword, /^[0-9]*$/, 30)) { validationCheck = false; }
 	}
 	if (selectUserType.value === "Admin") {
 		userData = [

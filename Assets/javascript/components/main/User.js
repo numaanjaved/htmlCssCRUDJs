@@ -8,6 +8,8 @@ class User {
   #Bio;
   #userPicture;
   #UserID;
+  validator;
+  constructor() { this.validator = new Validation(); }
   create([firstName, lastName, email, contact, address, bio, userPicture]) {
     this.setFirstName(firstName);
     this.setLastName(lastName);
@@ -46,6 +48,14 @@ class User {
       console.log(`User with ID ${this.getID()} has been deleted.`);
       refreshRecords();
     } else { console.log(`User with ID ${this.getID()} not found.`); }
+  }
+  profilePicValidation() {
+    let validateProfilePic = new Validation();
+    return validateProfilePic.profilePicValidation();
+  }
+  elemValidationCheck() {
+    let checkVal = new Validation();
+    return checkVal.elemValidationCheck();
   }
   setID() {
     User.#id += 1;
