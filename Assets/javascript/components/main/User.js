@@ -8,6 +8,7 @@ class User {
   #Bio;
   #userPicture;
   #UserID;
+  #userType;
   validator;
   constructor() { this.validator = new Validation(); }
   create([firstName, lastName, email, contact, address, bio, userPicture]) {
@@ -18,6 +19,7 @@ class User {
     this.setAddress(address);
     this.setBio(bio);
     this.setProfilePic(userPicture);
+    this.setUserType("User");
     this.setID();
     console.log(`This is from create Method: ${this.getID()}`);
   }
@@ -49,13 +51,12 @@ class User {
       refreshRecords();
     } else { console.log(`User with ID ${this.getID()} not found.`); }
   }
-  profilePicValidation() {
-    let validateProfilePic = new Validation();
-    return validateProfilePic.profilePicValidation();
+
+  setUserType(userType) {
+    this.#userType = userType;
   }
-  elemValidationCheck() {
-    let checkVal = new Validation();
-    return checkVal.elemValidationCheck();
+  getUserType() {
+    return this.#userType;
   }
   setID() {
     User.#id += 1;

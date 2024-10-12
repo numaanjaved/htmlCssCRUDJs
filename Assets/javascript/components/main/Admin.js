@@ -20,7 +20,8 @@ class Admin extends User {
     create([firstName, lastName, email, contact, address, bio, userPicture, adminUserName, adminPass]) {
         super.create([firstName, lastName, email, contact, address, bio, userPicture]);
         this.setAdminName(adminUserName);
-        this.setPassword(adminPass)
+        this.setPassword(adminPass);
+        this.setUserType("Admin");
         console.log(`Admin Account is created....\n
         Admin Name: ${this.getAdminName()}\n
         Password: ${this.getPassword()}`);

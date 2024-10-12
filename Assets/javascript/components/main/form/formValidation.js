@@ -46,6 +46,7 @@ let formValidation = () => {
 		userBio.value,
 		URL.createObjectURL(imgInput.files[0])
 	];
+
 	if (selectUserType.value === "Admin") {
 		userData.push(userName.value, userPassword.value);
 	}
