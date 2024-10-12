@@ -20,8 +20,6 @@ let errorContainer = {
 let formValidation = () => {
 	let validationCheck = true;
 	let userInstance = new User();
-
-	let userData;
 	if (!userInstance.validator.elemValidationCheck(userFirstName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
 	if (!userInstance.validator.elemValidationCheck(userLastName, /^[a-zA-Z\s]*$/, 30)) { validationCheck = false; }
 	if (!userInstance.validator.elemValidationCheck(userEmail, /^[a-zA-Z0-9]+(?:[._][a-zA-Z0-9]+)*@[A-Za-z]+\.[A-Za-z]{2,}$/, 100)) { validationCheck = false; }
@@ -34,38 +32,27 @@ let formValidation = () => {
 		if (!userInstance.validator.elemValidationCheck(userName, /^[a-zA-Z0-9_]*$/, 30)) { validationCheck = false; }
 		if (!userInstance.validator.elemValidationCheck(userPassword, /^[0-9]*$/, 30)) { validationCheck = false; }
 	}
+	let userData = [
+		userFirstName.value,
+		userLastName.value,
+		userEmail.value,
+		userContactNumber.value,
+		userAddress.value,
+		userBio.value,
+		URL.createObjectURL(imgInput.files[0])
+	];
 	if (selectUserType.value === "Admin") {
-		userData = [
-			userFirstName.value,
-			userLastName.value,
-			userEmail.value,
-			userContactNumber.value,
-			userAddress.value,
-			userBio.value,
-			URL.createObjectURL(imgInput.files[0]),
-			userName.value,
-			userPassword.value
-		];
-	} else {
-		userData = [
-			userFirstName.value,
-			userLastName.value,
-			userEmail.value,
-			userContactNumber.value,
-			userAddress.value,
-			userBio.value,
-			URL.createObjectURL(imgInput.files[0])
-		];
+		userData.push(userName.value, userPassword.value);
 	}
 	if (validationCheck) {
 		if (selectUserType.value === "Admin") {
 			if (userIndexCheck === null) {
-				newForm.createAdmin(userData);
-			} else { newForm.updateAdmin(userData); }
+				userInstance.validator.createAdmin(userData);
+			} else { userInstance.validator.updateAdmin(userData); }
 		} else {
 			if (userIndexCheck === null) {
-				newForm.createUser(userData);
-			} else { newForm.updateUser(userData); }
+				userInstance.validator.createUser(userData);
+			} else { userInstance.validator.updateUser(userData); }
 		}
 		form.reset();
 		adminAttContainer.style.display = "none";
