@@ -3,7 +3,8 @@ let error = [
 	{ errorName: "Null Error", errorMessage: "Please fill data in the field" },
 	{ errorName: "Format Error", errorMessage: "Please match the requested format" },
 	{ errorName: "Limit Exceed", errorMessage: "Characters limit exceeded" },
-	{ errorName: "No picture", errorMessage: "Please Upload an Image" }
+	{ errorName: "No picture", errorMessage: "Please Upload an Image" },
+	{ errorName: "Admin Exists", errorMessage: "There is already an admin account" }
 ];
 let errorContainer = {
 	user_Fname: FnameErr,
@@ -14,6 +15,7 @@ let errorContainer = {
 	user_bio: bioErr,
 	admin_name: userNameErr,
 	admin_password: userPassErr,
+	select_user: userTypeErr,
 	image: image_error_msg
 };
 let reset = () => {
@@ -36,7 +38,7 @@ let formValidation = () => {
 	if (selectUserType.value === "Admin") {
 		if (!userInstance.validator.elemValidationCheck(userName, /^[a-zA-Z0-9_]*$/, 30)) { validationCheck = false; }
 		if (!userInstance.validator.elemValidationCheck(userPassword, /^[0-9]*$/, 30)) { validationCheck = false; }
-		if (!userInstance.validator.onlyAdmin()) {
+		if (!userInstance.validator.adminExists()) {
 			validationCheck = false;
 			console.log(`Admin Account Found`);
 		}
@@ -67,7 +69,6 @@ let formValidation = () => {
 		}
 		reset();
 	}
-	// userInstance.validator.onlyAdmin();
 	console.log(usersDataArray);
 	refreshRecords();
 };

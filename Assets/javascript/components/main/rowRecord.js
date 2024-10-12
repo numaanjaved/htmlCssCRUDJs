@@ -18,6 +18,7 @@ let emailErr = document.querySelector(".email_error");
 let contactErr = document.querySelector(".contact_error");
 let addressErr = document.querySelector(".address_error");
 let bioErr = document.querySelector(".bio_error");
+let userTypeErr = document.querySelector(".userType_error");
 let userNameErr = document.querySelector(".user_admin");
 let userPassErr = document.querySelector(".user_admin_password");
 let image_error_msg = document.getElementById("img_error");

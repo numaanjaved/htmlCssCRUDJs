@@ -65,7 +65,7 @@ class Validation {
         let imgCheck = true;
         if (!this.getAttribute().files.length || imgDisplay.src.includes("default_profile.png")) {
             imgCheck = false;
-            this.errorMsg(attribute, `${error[3].errorName}: ${error[3].errorMessage}`)
+            this.errorMsg(attribute, `${error[3].errorName}: ${error[3].errorMessage}`);
         } else {
             this.successMsg(attribute);
             imgCheck = true;
@@ -99,13 +99,13 @@ class Validation {
             userIndexCheck = null;
         }
     };
-    onlyAdmin() {
-        let findAdm = usersDataArray.find(usersData => usersData.getUserType() == "Admin");
-        if (findAdm) {
-            // console.log(`Admin Account found`);
+    adminExists() {
+        let adminAccount = usersDataArray.find(usersData => usersData.getUserType() == "Admin");
+        if (adminAccount) {
+            this.errorMsg(selectUserType, `${error[4].errorName}: ${error[4].errorMessage}`);
             return false;
         } else {
-            // console.log(`No admin found New account Created`);
+            this.successMsg(selectUserType);
             return true;
         }
     }
