@@ -21,8 +21,16 @@ let updateProfile = (updateProfileBtn) => {
 	userAddress.value = usersDataArray[selectedUser].getAddress();
 	userBio.value = usersDataArray[selectedUser].getBio();
 	imgDisplay.src = usersDataArray[selectedUser].getProfilePic();
-	userName.value = usersDataArray[selectedUser].getAdminName();
-	userPassword.value = usersDataArray[selectedUser].getPassword();
+	if (usersDataArray[selectedUser].getUserType() === "Admin") {
+		console.log(`Selected User is Admin`);
+		let adminOption = document.getElementById(`admin_option`);
+		adminOption.setAttribute("selected", "selected");
+		adminAttContainer.style.display = "flex";
+		admin_heading.style.display = "block";
+		userName.value = usersDataArray[selectedUser].getAdminName();
+		userPassword.value = usersDataArray[selectedUser].getPassword();
+	}
+
 };
 
 let readUpdateDelete = (userDataContainer, ProfileBtnOpsContainer, id) => {
