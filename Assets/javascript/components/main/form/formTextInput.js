@@ -94,7 +94,7 @@ let textAreaInfoMsgContainer = createNewElement(["div", "textArea_Info_msg_conta
 createNewElement(["span", "limit_text", textAreaInfoMsgContainer, `0/300`]);
 createNewElement(["span", "limit_exceed_text", textAreaInfoMsgContainer]);
 
-createNewElement(["label", "text_form_labels", inputTypeContainer, `Choose User Type`, { for: `select_user` }]);
+createNewElement(["label", "text_form_labels", inputTypeContainer, `Choose User Type`, { for: `select_user`, id: "choose_user_heading" }]);
 
 createNewElement(["span", ["error_msg", "userType_error"], inputTypeContainer]);
 let selectUserType = createNewElement(["select", "select_user_type", inputTypeContainer, null,
