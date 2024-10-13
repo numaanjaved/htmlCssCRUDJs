@@ -38,11 +38,6 @@ let formValidation = () => {
 	if (selectUserType.value === "Admin") {
 		if (!userInstance.validator.elemValidationCheck(userName, /^[a-zA-Z0-9_]*$/, 30)) { validationCheck = false; }
 		if (!userInstance.validator.elemValidationCheck(userPassword, /^[0-9]*$/, 30)) { validationCheck = false; }
-		if (!userInstance.validator.adminExists()) {
-			validationCheck = false;
-			console.log(`Admin Account Found`);
-		}
-
 	}
 	let userData = [
 		userFirstName.value,
@@ -53,15 +48,15 @@ let formValidation = () => {
 		userBio.value,
 		URL.createObjectURL(imgInput.files[0])
 	];
-
-	if (selectUserType.value === "Admin") {
-		userData.push(userName.value, userPassword.value);
-	}
 	if (validationCheck) {
 		if (selectUserType.value === "Admin") {
 			if (userIndexCheck === null) {
+				userData.push(userName.value, userPassword.value);
 				userInstance.validator.createAdmin(userData);
-			} else { userInstance.validator.updateAdmin(userData); }
+			} else {
+				userData.push(userName.value, userPassword.value);
+				userInstance.validator.updateAdmin(userData);
+			}
 		} else {
 			if (userIndexCheck === null) {
 				userInstance.validator.createUser(userData);

@@ -73,6 +73,7 @@ class Validation {
         return imgCheck;
     };
     createUser(userDataArr) {
+        this.successMsg(selectUserType);
         let userDataObj = new User();
         userDataObj.create(userDataArr);
         console.log(`This is from create user Validation: ${userDataObj.getUserType()}`);
@@ -87,12 +88,17 @@ class Validation {
         }
     };
     createAdmin(userDataArr) {
-        let userDataObj = new Admin();
-        userDataObj.create(userDataArr);
-        if (userIndexCheck === null) {
-            usersDataArray.push(userDataObj);
+        if (!this.adminExists()) {
+            this.errorMsg(selectUserType, `${error[4].errorName}: ${error[4].errorMessage}`);
+        } else {
+            let userDataObj = new Admin();
+            userDataObj.create(userDataArr);
+            if (userIndexCheck === null) {
+                usersDataArray.push(userDataObj);
+            }
+            this.successMsg(selectUserType);
         }
-    }
+    };
     updateAdmin(userDataArr) {
         if (userIndexCheck !== null) {
             usersDataArray[userIndexCheck].update(userDataArr);
@@ -101,12 +107,6 @@ class Validation {
     };
     adminExists() {
         let adminAccount = usersDataArray.find(usersData => usersData.getUserType() == "Admin");
-        if (adminAccount) {
-            this.errorMsg(selectUserType, `${error[4].errorName}: ${error[4].errorMessage}`);
-            return false;
-        } else {
-            this.successMsg(selectUserType);
-            return true;
-        }
+        return adminAccount ? false : true;
     }
 };
