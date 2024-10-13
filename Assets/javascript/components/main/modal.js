@@ -16,7 +16,7 @@ let modal = (profilePic, userName, userEmail, userContactNum, userAddress, userB
   createNewElement(["p", "modal_data_headings", modalTextContainer, `Address:`]);
   createNewElement(["p", "modal_data", modalTextContainer, `${userAddress}`]);
   createNewElement(["p", "modal_data_headings", modalTextContainer, `Profile Description or Bio:`]);
-  createNewElement(["p", "modal_data", modalTextContainer, `${userBio}`]);
+  createNewElement(["textarea", "modal_data", modalTextContainer, `${userBio}`, { disabled: "disabled" }]);
   let modalCloseBtn = createNewElement(["button", "modal_close_btn", modalContentContainer, `Close`]);
   modalCloseBtn.addEventListener("click", () => {
     modalMainContainer.style.display = "none";

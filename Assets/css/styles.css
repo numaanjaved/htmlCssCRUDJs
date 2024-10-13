@@ -608,7 +608,7 @@ body {
           }
         }
         > .modal_container {
-          display: none;
+          display: block;
           position: absolute;
           top: 0;
           left: 45rem;
@@ -673,6 +673,16 @@ body {
                 font-size: 1.7rem;
                 color: var(--primary-font-color);
                 font-weight: 500;
+              }
+              > .modal_data:last-child {
+                background-color: transparent;
+                border: none;
+                outline-color: transparent;
+                width: 100%;
+                min-height: 5rem;
+                height: 20rem;
+                overflow-y: scroll;
+                resize: none;
               }
             }
             > .modal_close_btn {
