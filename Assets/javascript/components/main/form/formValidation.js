@@ -41,7 +41,7 @@ let formValidation = () => {
 
 	if (selectUserType.value === "Admin") {
 		if (!userInstance.validator.elemValidationCheck(userName, /^[a-zA-Z0-9_]*$/, 30)) { validationCheck = false; }
-		if (!userInstance.validator.elemValidationCheck(userPassword, /^[0-9]*$/, 30)) { validationCheck = false; }
+		if (!userInstance.validator.elemValidationCheck(userPassword, /^[a-zA-Z0-9_#@.&]*$/, 30)) { validationCheck = false; }
 	}
 	let userData = [
 		userFirstName.value,
