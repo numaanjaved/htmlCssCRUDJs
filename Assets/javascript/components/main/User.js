@@ -9,8 +9,18 @@ class User {
   #userPicture;
   #UserID;
   #userType;
-  validator;
-  constructor() { this.validator = new Validation(); }
+  #validator;
+  // constructor() { this.validator = new Validation(); }
+  setElementValidation(attribute, regex, length) {
+    this.#validator = new Validation();
+    if (!this.#validator.elemValidationCheck(attribute, regex, length)) {
+      console.log(`User returns false`);
+      return false;
+    } else {
+      console.log(`User returns True`);
+      return true;
+    };
+  }
   create([firstName, lastName, email, contact, address, bio, userPicture]) {
     this.setFirstName(firstName);
     this.setLastName(lastName);
@@ -108,3 +118,8 @@ class User {
     return this.#userPicture;
   }
 };
+
+
+// let user = new User();
+// user.setElementValidation();
+// console.log(user.getElementValidation())

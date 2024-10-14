@@ -42,6 +42,7 @@ class Validation {
     };
 
     elemValidationCheck(attribute, regex, len) {
+        console.log(`i'm called`);
         this.setAttribute(attribute);
         this.setRegex(regex);
         this.setLength(len);
