@@ -27,6 +27,8 @@ let hideSelect = () => {
 let readProfile = (readProfileBtn) => {
 	let clickedBtnId = readProfileBtn.parentElement.parentElement.nextSibling.id;
 	let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
+	let records = document.querySelector(`.individual_user_data`);
+	records.style.filter = "blur(3px)";
 	let modalContainer = modal.read(clickedBtnId);
 	modalContainer.style.display = "block";
 	usersDataMainContainer.style.minHeight = "800px";

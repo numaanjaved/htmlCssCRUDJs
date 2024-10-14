@@ -19,6 +19,8 @@ let modal = (profilePic, userName, userEmail, userContactNum, userAddress, userB
   createNewElement(["textarea", "modal_data", modalTextContainer, `${userBio}`, { disabled: "disabled" }]);
   let modalCloseBtn = createNewElement(["button", "modal_close_btn", modalContentContainer, `Close`]);
   modalCloseBtn.addEventListener("click", () => {
+    let records = document.querySelector(`.individual_user_data`);
+    records.style.filter = "blur(0px)";
     modalMainContainer.style.display = "none";
     usersDataMainContainer.style.minHeight = "";
   });
