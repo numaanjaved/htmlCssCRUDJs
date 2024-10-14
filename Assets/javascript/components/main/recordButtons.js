@@ -18,17 +18,17 @@ let updateAdmin = (admin) => {
 		userPassword.value = usersDataArray[admin].getPassword();
 	}
 };
-let hideSelect = () => {
+let hideOptions = () => {
 	let select = document.getElementById(`select_user`);
 	let selectUserHeading = document.getElementById(`choose_user_heading`);
 	select.style.display = "none";
 	selectUserHeading.style.display = "none";
 };
 let readProfile = (readProfileBtn) => {
-	let clickedBtnId = readProfileBtn.parentElement.parentElement.nextSibling.id;
-	let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
 	let records = document.querySelector(`.individual_user_data`);
 	records.style.filter = "blur(3px)";
+	let clickedBtnId = readProfileBtn.parentElement.parentElement.nextSibling.id;
+	let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
 	let modalContainer = modal.read(clickedBtnId);
 	modalContainer.style.display = "block";
 	usersDataMainContainer.style.minHeight = "800px";
@@ -39,7 +39,7 @@ let delProfile = (delProfileBtn) => {
 	if (user) { user.delete(); }
 };
 let updateProfile = (updateProfileBtn) => {
-	hideSelect();
+	hideOptions();
 	window.scrollTo(200, 0);
 	let clickedBtnId = updateProfileBtn.parentElement.parentElement.nextSibling.id;
 	let selectedUser = usersDataArray.findIndex((user) => user.getID() === clickedBtnId);
