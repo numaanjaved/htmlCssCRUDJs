@@ -21,6 +21,14 @@ class User {
       return true;
     };
   }
+  setProfilePicValidation(attr) {
+    this.#validator = new Validation();
+    if (!this.#validator.profilePicValidation(attr)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
   create([firstName, lastName, email, contact, address, bio, userPicture]) {
     this.setFirstName(firstName);
     this.setLastName(lastName);
