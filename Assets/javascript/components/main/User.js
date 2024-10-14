@@ -11,24 +11,6 @@ class User {
   #userType;
   #validator;
   // constructor() { this.validator = new Validation(); }
-  setElementValidation(attribute, regex, length) {
-    this.#validator = new Validation();
-    if (!this.#validator.elemValidationCheck(attribute, regex, length)) {
-      console.log(`User returns false`);
-      return false;
-    } else {
-      console.log(`User returns True`);
-      return true;
-    };
-  }
-  setProfilePicValidation(attr) {
-    this.#validator = new Validation();
-    if (!this.#validator.profilePicValidation(attr)) {
-      return false;
-    } else {
-      return true;
-    }
-  }
   create([firstName, lastName, email, contact, address, bio, userPicture]) {
     this.setFirstName(firstName);
     this.setLastName(lastName);
@@ -68,7 +50,22 @@ class User {
       refreshRecords();
     } else { console.log(`User with ID ${this.getID()} not found.`); }
   }
-
+  setElementValidation(attribute, regex, length) {
+    this.#validator = new Validation();
+    if (!this.#validator.elemValidationCheck(attribute, regex, length)) { return false; } else { return true; };
+  }
+  setProfilePicValidation(attr) {
+    this.#validator = new Validation();
+    if (!this.#validator.profilePicValidation(attr)) { return false; } else { return true; }
+  }
+  createNewUser(newUserData) {
+    let newUser = new Validation();
+    newUser.createUser(newUserData);
+  }
+  updateExistingUser(updatedData) {
+    let updateUser = new Validation();
+    updateUser.updateUser(updatedData);
+  }
   setUserType(userType) {
     this.#userType = userType;
   }

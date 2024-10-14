@@ -64,8 +64,8 @@ let formValidation = () => {
 			}
 		} else {
 			if (userIndexCheck === null) {
-				userInstance.validator.createUser(userData);
-			} else { userInstance.validator.updateUser(userData); }
+				userInstance.createNewUser(userData);
+			} else { userInstance.updateExistingUser(userData); }
 		}
 		reset();
 	}
