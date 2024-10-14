@@ -33,6 +33,5 @@ class Admin extends User {
         console.log(`Admin Account is Updated....\n
         Admin Name: ${this.getAdminName()}\n
         Password: ${this.getPassword()}`);
-        console.log(`This Array is from update method ${usersDataArray}`);
     }
 };
