@@ -1,14 +1,15 @@
 let readProfile = (readProfileBtn) => {
 	let clickedBtnId = readProfileBtn.parentElement.parentElement.nextSibling.id;
 	let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
-	if (modal) { modal.read(); }
+	let modalContainer = modal.read(clickedBtnId);
+	modalContainer.style.display = "block";
+	usersDataMainContainer.style.minHeight = "600px";
 };
 let delProfile = (delProfileBtn) => {
 	let clickedBtnId = delProfileBtn.parentElement.parentElement.nextSibling.id;
 	let user = usersDataArray.find((user) => user.getID() === clickedBtnId);
 	if (user) { user.delete(); }
 };
-
 let updateProfile = (updateProfileBtn) => {
 	window.scrollTo(200, 0);
 	let clickedBtnId = updateProfileBtn.parentElement.parentElement.nextSibling.id;

@@ -23,13 +23,12 @@ class User {
     this.setID();
     console.log(`This is from create Method: ${this.getID()}`);
   }
-  read() {
-    const id = this.getID();
-    let modal = document.getElementById(id);
+  read(clickedBtnId) {
+    let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
+    let modalContainer = document.getElementById(clickedBtnId);
     if (modal) {
-      modal.style.display = "block";
-      usersDataMainContainer.style.minHeight = "600px";
-    } else { console.log(`Modal not found with the ID: ${id}`); }
+      return modalContainer;
+    } else { console.log(`Modal not found with the ID: ${clickedBtnId}`); }
   }
   update([firstName, lastName, email, contact, address, bio, userPicture]) {
     let userIndex = usersDataArray.findIndex((user) => user.getID() === this.getID());
