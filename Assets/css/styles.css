@@ -612,7 +612,7 @@ body {
           position: absolute;
           top: 0;
           left: 45rem;
-          margin: 2rem 0;
+          margin: 2rem 0 4rem;
           width: 40rem;
           background-color: var(--light-sky);
           border-radius: 2rem;

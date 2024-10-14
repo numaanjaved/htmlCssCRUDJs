@@ -29,7 +29,7 @@ let readProfile = (readProfileBtn) => {
 	let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
 	let modalContainer = modal.read(clickedBtnId);
 	modalContainer.style.display = "block";
-	usersDataMainContainer.style.minHeight = "600px";
+	usersDataMainContainer.style.minHeight = "800px";
 };
 let delProfile = (delProfileBtn) => {
 	let clickedBtnId = delProfileBtn.parentElement.parentElement.nextSibling.id;

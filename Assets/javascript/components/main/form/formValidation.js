@@ -57,10 +57,10 @@ let formValidation = () => {
 		if (selectUserType.value === "Admin") {
 			if (userIndexCheck === null) {
 				userData.push(userName.value, userPassword.value);
-				userInstance.validator.createAdmin(userData);
+				userInstance.createNewAdmin(userData);
 			} else {
 				userData.push(userName.value, userPassword.value);
-				userInstance.validator.updateAdmin(userData);
+				userInstance.updateExistingAdmin(userData);
 			}
 		} else {
 			if (userIndexCheck === null) {

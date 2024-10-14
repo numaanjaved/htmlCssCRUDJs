@@ -66,6 +66,14 @@ class User {
     let updateUser = new Validation();
     updateUser.updateUser(updatedData);
   }
+  createNewAdmin(newAdminData) {
+    let newAdmin = new Validation();
+    newAdmin.createAdmin(newAdminData);
+  }
+  updateExistingAdmin(updatedData) {
+    let updateAdmin = new Validation();
+    updateAdmin.updateAdmin(updatedData);
+  }
   setUserType(userType) {
     this.#userType = userType;
   }
@@ -123,8 +131,3 @@ class User {
     return this.#userPicture;
   }
 };
-
-
-// let user = new User();
-// user.setElementValidation();
-// console.log(user.getElementValidation())
