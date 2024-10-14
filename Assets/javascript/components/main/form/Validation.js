@@ -65,7 +65,6 @@ class Validation {
         successMsg(selectUserType);
         let userDataObj = new User();
         userDataObj.create(userDataArr);
-        console.log(`This is from create user Validation: ${userDataObj.getUserType()}`);
         if (userIndexCheck === null) {
             usersDataArray.push(userDataObj);
         }
