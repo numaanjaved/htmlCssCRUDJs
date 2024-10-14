@@ -7,7 +7,7 @@ let feedUpdateForm = (selectedRecord) => {
 	userBio.value = usersDataArray[selectedRecord].getBio();
 	imgDisplay.src = usersDataArray[selectedRecord].getProfilePic();
 	updateAdmin(selectedRecord);
-}
+};
 let updateAdmin = (admin) => {
 	if (usersDataArray[admin].getUserType() === "Admin") {
 		let adminOption = document.getElementById(`admin_option`);
@@ -17,13 +17,13 @@ let updateAdmin = (admin) => {
 		userName.value = usersDataArray[admin].getAdminName();
 		userPassword.value = usersDataArray[admin].getPassword();
 	}
-}
+};
 let hideSelect = () => {
 	let select = document.getElementById(`select_user`);
 	let selectUserHeading = document.getElementById(`choose_user_heading`);
 	select.style.display = "none";
 	selectUserHeading.style.display = "none";
-}
+};
 let readProfile = (readProfileBtn) => {
 	let clickedBtnId = readProfileBtn.parentElement.parentElement.nextSibling.id;
 	let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
