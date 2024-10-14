@@ -3,9 +3,9 @@ let refreshRecords = () => {
   usersDataArray.forEach((data, index) => {
     recordRow(
       `${data.getProfilePic()}`,
+      `${data.getID()}`,
       `${data.getFirstName()} ${data.getLastName()}`,
-      `${data.getEmail()}`,
-      `${data.getContactNum()}`);
+      `${data.getUserType()}`);
 
     modal(
       `${data.getProfilePic()}`,

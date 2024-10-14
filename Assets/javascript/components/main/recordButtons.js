@@ -25,8 +25,8 @@ let hideOptions = () => {
 	selectUserHeading.style.display = "none";
 };
 let readProfile = (readProfileBtn) => {
-	let records = document.querySelector(`.individual_user_data`);
-	records.style.filter = "blur(3px)";
+	let records = document.querySelectorAll(`.individual_user_data`);
+	records.forEach((record) => { record.style.filter = "blur(3px)"; });
 	let clickedBtnId = readProfileBtn.parentElement.parentElement.nextSibling.id;
 	let modal = usersDataArray.find((user) => user.getID() === clickedBtnId);
 	let modalContainer = modal.read(clickedBtnId);
