@@ -10,7 +10,6 @@ class User {
   #UserID;
   #userType;
   #validator;
-  // constructor() { this.validator = new Validation(); }
   create([firstName, lastName, email, contact, address, bio, userPicture]) {
     this.setFirstName(firstName);
     this.setLastName(lastName);
