@@ -1,3 +1,13 @@
+let successMsg = (statusMsgElem) => {
+    let error = errorContainer[statusMsgElem.name];
+    error.innerHTML = "";
+    error.style.display = "none";
+};
+let errorMsg = (statusMsgElem, errorMsg_) => {
+    let error = errorContainer[statusMsgElem.name];
+    error.style.display = "block";
+    error.innerHTML = errorMsg_;
+};
 let error = [
     { errorName: "Null Error", errorMessage: "Please fill data in the field" },
     { errorName: "Format Error", errorMessage: "Please match the requested format" },
