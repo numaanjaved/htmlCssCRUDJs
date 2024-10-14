@@ -26,7 +26,6 @@ let loadScript = async (src, scriptName, scriptLoadingTime) => {
 
 
 let runScript = async (src, scriptName, time) => {
-
     let scriptsArray = [];
     scriptsArray.push(loadScript(src, scriptName, time));
     for (let i = 0; i < scriptsArray.length; i++) {
@@ -35,7 +34,5 @@ let runScript = async (src, scriptName, time) => {
         }).catch((err) => {
             console.error(err);
         });
-
     }
-
 };
