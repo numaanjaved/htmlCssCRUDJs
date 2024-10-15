@@ -19,5 +19,6 @@ runScript('./Assets/javascript/views/form/formReset.js', 'form reset to default'
 runScript('./Assets/javascript/controllers/formValidation.js', 'Form Validation', 170);
 runScript('./Assets/javascript/controllers/loginValidation.js', 'Login Validation', 175);
 runScript('./Assets/javascript/views/modal.js', 'Modal Script', 180);
+runScript('./Assets/javascript/views/loginPage/loginPageDisplay.js', 'Login page UI script', 180);
 runScript('./Assets/javascript/homePage.js', 'Home Page script', 190);
 runScript('./Assets/javascript/views/footer.js', 'Footer Script', 200);
