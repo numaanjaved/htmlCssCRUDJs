@@ -23,7 +23,6 @@ let password_Container = createNewElement(["div", "password_container", ".login_
 let loginUserPassword = createNewElement(["input", "login_input", password_Container, null, userPasswordAttr]);
 let passwordBtn = createNewElement(["button", "password_btn", password_Container, `Show`, { id: "passwordBtn" }]);
 let loginBtn = createNewElement(["button", "login_btn", ".login_form", `Login`, { type: "submit", id: "login_form_btn" }]);
-loginForm.addEventListener("submit", (e) => { e.preventDefault(); });
 
 passwordBtn.addEventListener("click", (e) => {
     if (passwordBtn.innerHTML === `Show`) {
@@ -33,4 +32,22 @@ passwordBtn.addEventListener("click", (e) => {
         passwordBtn.innerHTML = `Show`;
         loginUserPassword.setAttribute("type", "password");
     }
-})
+});
+loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let adminObj = usersDataArray.find(userData => userData.getAdminName());
+    if (loginUserName.value != adminObj.getAdminName()) {
+        console.log(`Admin Username is: `, adminObj.getAdminName());
+        console.log(loginUserName.value);
+        console.log(`Check userName and try Again`);
+    } else {
+        console.log(`User Name login successful`)
+    }
+    if (loginUserPassword.value != adminObj.getPassword()) {
+        console.log(`Admin Password is:`, adminObj.getPassword());
+        console.log(loginUserPassword.value);
+        console.log(`Check Password and try Again`);
+    } else {
+        console.log(`User Password login successful`)
+    }
+});
