@@ -17,6 +17,7 @@ runScript('./Assets/javascript/views/dataDisplay/rowRecord.js', 'Each Row of rec
 runScript('./Assets/javascript/views/form/errorMessages.js', 'Error Messages Script', 150);
 runScript('./Assets/javascript/views/form/formReset.js', 'form reset to default', 160);
 runScript('./Assets/javascript/controllers/formValidation.js', 'Form Validation', 170);
+runScript('./Assets/javascript/controllers/loginValidation.js', 'Login Validation', 175);
 runScript('./Assets/javascript/views/modal.js', 'Modal Script', 180);
 runScript('./Assets/javascript/homePage.js', 'Home Page script', 190);
 runScript('./Assets/javascript/views/footer.js', 'Footer Script', 200);
