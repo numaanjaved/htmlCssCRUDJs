@@ -14,12 +14,12 @@ runScript('./Assets//javascript/views/form/charLimit.js', 'Characters Check Limi
 runScript('./Assets/javascript/views/dataDisplay/profilesDataDisplay.js', 'Profiles Data Display', 110);
 runScript('./Assets/javascript/views/refreshRecords.js', 'Refresh Record Script', 120);
 runScript('./Assets/javascript/views/recordButtons.js', 'Record Buttons Script', 130);
+runScript('./Assets/javascript/views/loginPage/loginPageDisplay.js', 'Login page UI script', 135);
 runScript('./Assets/javascript/views/dataDisplay/rowRecord.js', 'Each Row of record', 140);
 runScript('./Assets/javascript/views/form/errorMessages.js', 'Error Messages Script', 150);
 runScript('./Assets/javascript/views/form/formReset.js', 'form reset to default', 160);
-runScript('./Assets/javascript/controllers/formValidation.js', 'Form Validation', 170);
-runScript('./Assets/javascript/controllers/loginValidation.js', 'Login Validation', 175);
+runScript('./Assets/javascript/controllers/loginValidation.js', 'Login Validation', 170);
+runScript('./Assets/javascript/controllers/formValidation.js', 'Form Validation', 175);
 runScript('./Assets/javascript/views/modal.js', 'Modal Script', 180);
-runScript('./Assets/javascript/views/loginPage/loginPageDisplay.js', 'Login page UI script', 180);
 runScript('./Assets/javascript/homePage.js', 'Home Page script', 190);
 runScript('./Assets/javascript/views/footer.js', 'Footer Script', 200);

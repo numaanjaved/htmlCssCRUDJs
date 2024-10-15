@@ -1,7 +1,7 @@
 let loginPageMainContainer = createNewElement(["div", "loginPage_main_container", "main"]);
 let loginPageSubContainer = createNewElement(["div", "loginPage_sub_container", loginPageMainContainer]);
 createNewElement(["h2", "login_heading", loginPageSubContainer, `Login`]);
-let loginForm = createNewElement(["form", "login_form", loginPageSubContainer, null, { "validate": "novalidate" }]);
+createNewElement(["form", "login_form", loginPageSubContainer, null, { "validate": "novalidate" }]);
 let userNameAttr = {
     type: "text",
     id: "login_userName",
@@ -10,6 +10,7 @@ let userNameAttr = {
     spellcheck: "false",
     autocomplete: "off",
 }
+createNewElement(["span", ["error_msg", "invalid_login_Err"], ".login_form"]);
 let loginUserName = createNewElement(["input", "login_input", ".login_form", null, userNameAttr]);
 let userPasswordAttr = {
     type: "password",
@@ -33,21 +34,3 @@ passwordBtn.addEventListener("click", (e) => {
         loginUserPassword.setAttribute("type", "password");
     }
 });
-
-
-
-// let adminObj = usersDataArray.find(userData => userData.getAdminName());
-// if (loginUserName.value != adminObj.getAdminName()) {
-//     console.log(`Admin Username is: `, adminObj.getAdminName());
-//     console.log(loginUserName.value);
-//     console.log(`Check userName and try Again`);
-// } else {
-//     console.log(`User Name login successful`)
-// }
-// if (loginUserPassword.value != adminObj.getPassword()) {
-//     console.log(`Admin Password is:`, adminObj.getPassword());
-//     console.log(loginUserPassword.value);
-//     console.log(`Check Password and try Again`);
-// } else {
-//     console.log(`User Password login successful`)
-// }

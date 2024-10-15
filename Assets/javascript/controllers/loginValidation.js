@@ -1,3 +1,4 @@
+let loginForm = document.querySelector(`.login_form`);
 let adminAcc = new Admin();
 adminAcc.setAdminName(`ahmed_tahiri`);
 adminAcc.setPassword(`Ahmed123`);
@@ -13,16 +14,17 @@ adminAcc.setID();
 usersDataArray.push(adminAcc);
 
 
-
-
 let loginFromReset = () => {
     loginForm.reset();
 };
-
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    let testValidation = new LoginValidation();
-    testValidation.checkLoginValidation(loginUserName);
-    testValidation.checkLoginValidation(loginUserPassword);
+    adminAcc.CheckValidation(loginUserName, loginUserPassword);
+    // adminAcc.CheckValidation(loginUserPassword);
     loginFromReset();
 });
+
+
+
+// testValidation.checkLoginValidation(loginUserName);
+// testValidation.checkLoginValidation(loginUserPassword);

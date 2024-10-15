@@ -772,6 +772,13 @@ body {
       align-items: center;
       justify-content: flex-start;
       margin-top: 5rem;
+      > .error_msg {
+        font-family: "poppins", sans-serif;
+        font-weight: 500;
+        font-size: 1.5rem;
+        color: var(--error-color);
+        display: none;
+      }
       > .login_input {
         width: 100%;
         height: 4rem;
@@ -891,4 +898,7 @@ body {
 }
 .userType_error {
   display: block;
+}
+.invalid_login_Err {
+  display: none;
 }

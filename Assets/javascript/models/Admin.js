@@ -1,6 +1,7 @@
 class Admin extends User {
     #adminName;
     #password;
+    #validator;
     setAdminName(adminName) {
         this.#adminName = adminName;
     }
@@ -34,4 +35,9 @@ class Admin extends User {
         Admin Name: ${this.getAdminName()}\n
         Password: ${this.getPassword()}`);
     }
+    CheckValidation(userName, userPass) {
+        this.#validator = new LoginValidation();
+        this.#validator.checkLoginValidation(userName, userPass);
+    }
+
 };
