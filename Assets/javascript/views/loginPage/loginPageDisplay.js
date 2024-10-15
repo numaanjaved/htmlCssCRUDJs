@@ -27,6 +27,8 @@ let loginBtn = createNewElement(["button", "login_btn", ".login_form", `Login`, 
 let loginFromReset = () => {
     loginForm.reset();
 }
+
+
 passwordBtn.addEventListener("click", (e) => {
     e.preventDefault();
     if (passwordBtn.innerHTML === `Show`) {
@@ -39,20 +41,28 @@ passwordBtn.addEventListener("click", (e) => {
 });
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    let adminObj = usersDataArray.find(userData => userData.getAdminName());
-    if (loginUserName.value != adminObj.getAdminName()) {
-        console.log(`Admin Username is: `, adminObj.getAdminName());
-        console.log(loginUserName.value);
-        console.log(`Check userName and try Again`);
-    } else {
-        console.log(`User Name login successful`)
-    }
-    if (loginUserPassword.value != adminObj.getPassword()) {
-        console.log(`Admin Password is:`, adminObj.getPassword());
-        console.log(loginUserPassword.value);
-        console.log(`Check Password and try Again`);
-    } else {
-        console.log(`User Password login successful`)
-    }
+    let testValidation = new LoginValidation();
+    testValidation.checkLoginValidation(loginUserName);
+    testValidation.checkLoginValidation(loginUserPassword);
+    // validateLogin(loginUserName);
+    // validateLogin(loginUserPassword);
     loginFromReset();
 });
+
+
+
+// let adminObj = usersDataArray.find(userData => userData.getAdminName());
+// if (loginUserName.value != adminObj.getAdminName()) {
+//     console.log(`Admin Username is: `, adminObj.getAdminName());
+//     console.log(loginUserName.value);
+//     console.log(`Check userName and try Again`);
+// } else {
+//     console.log(`User Name login successful`)
+// }
+// if (loginUserPassword.value != adminObj.getPassword()) {
+//     console.log(`Admin Password is:`, adminObj.getPassword());
+//     console.log(loginUserPassword.value);
+//     console.log(`Check Password and try Again`);
+// } else {
+//     console.log(`User Password login successful`)
+// }
