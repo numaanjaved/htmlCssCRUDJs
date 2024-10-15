@@ -1,7 +1,7 @@
 let loginPageMainContainer = createNewElement(["div", "loginPage_main_container", "main"]);
 let loginPageSubContainer = createNewElement(["div", "loginPage_sub_container", loginPageMainContainer]);
 createNewElement(["h2", "login_heading", loginPageSubContainer, `Login`]);
-let loginForm = createNewElement(["form", "login_form", loginPageSubContainer]);
+let loginForm = createNewElement(["form", "login_form", loginPageSubContainer, null, { "validate": "novalidate" }]);
 let userNameAttr = {
     type: "text",
     id: "login_userName",
@@ -24,7 +24,11 @@ let loginUserPassword = createNewElement(["input", "login_input", password_Conta
 let passwordBtn = createNewElement(["button", "password_btn", password_Container, `Show`, { id: "passwordBtn" }]);
 let loginBtn = createNewElement(["button", "login_btn", ".login_form", `Login`, { type: "submit", id: "login_form_btn" }]);
 
+let loginFromReset = () => {
+    loginForm.reset();
+}
 passwordBtn.addEventListener("click", (e) => {
+    e.preventDefault();
     if (passwordBtn.innerHTML === `Show`) {
         passwordBtn.innerHTML = `Hide`;
         loginUserPassword.setAttribute("type", "text");
@@ -50,4 +54,5 @@ loginForm.addEventListener("submit", (e) => {
     } else {
         console.log(`User Password login successful`)
     }
+    loginFromReset();
 });
