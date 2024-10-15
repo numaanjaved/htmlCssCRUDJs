@@ -11,3 +11,18 @@ adminAcc.setProfilePic("./Assets/images/default_profile.png");
 adminAcc.setUserType("Admin");
 adminAcc.setID();
 usersDataArray.push(adminAcc);
+
+
+
+
+let loginFromReset = () => {
+    loginForm.reset();
+};
+
+loginForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let testValidation = new LoginValidation();
+    testValidation.checkLoginValidation(loginUserName);
+    testValidation.checkLoginValidation(loginUserPassword);
+    loginFromReset();
+});

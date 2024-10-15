@@ -23,12 +23,6 @@ let password_Container = createNewElement(["div", "password_container", ".login_
 let loginUserPassword = createNewElement(["input", "login_input", password_Container, null, userPasswordAttr]);
 let passwordBtn = createNewElement(["button", "password_btn", password_Container, `Show`, { id: "passwordBtn" }]);
 let loginBtn = createNewElement(["button", "login_btn", ".login_form", `Login`, { type: "submit", id: "login_form_btn" }]);
-
-let loginFromReset = () => {
-    loginForm.reset();
-}
-
-
 passwordBtn.addEventListener("click", (e) => {
     e.preventDefault();
     if (passwordBtn.innerHTML === `Show`) {
@@ -38,15 +32,6 @@ passwordBtn.addEventListener("click", (e) => {
         passwordBtn.innerHTML = `Show`;
         loginUserPassword.setAttribute("type", "password");
     }
-});
-loginForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let testValidation = new LoginValidation();
-    testValidation.checkLoginValidation(loginUserName);
-    testValidation.checkLoginValidation(loginUserPassword);
-    // validateLogin(loginUserName);
-    // validateLogin(loginUserPassword);
-    loginFromReset();
 });
 
 
