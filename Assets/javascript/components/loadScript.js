@@ -11,7 +11,6 @@ let loadScript = async (src, scriptName, scriptLoadingTime) => {
                 newScript.onload = () => {
                     resolve(`"${scriptName}" Script Loaded Successfully`);
                 };
-
                 newScript.onerror = () => {
                     reject(`Error Occurred while Loading "${scriptName}" Script`);
                 };
@@ -21,9 +20,6 @@ let loadScript = async (src, scriptName, scriptLoadingTime) => {
     }
     return returnScripts;
 };
-
-
-
 
 let runScript = async (src, scriptName, time) => {
     let scriptsArray = [];

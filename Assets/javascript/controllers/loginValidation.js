@@ -13,7 +13,6 @@ adminAcc.setUserType("Admin");
 adminAcc.setID();
 usersDataArray.push(adminAcc);
 
-
 let loginFromReset = () => {
     loginForm.reset();
 };
@@ -29,7 +28,3 @@ loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
     loginValidation();
 });
-
-
-// data_input_section
-// .user_data_section

@@ -1,5 +1,3 @@
-// display: flex;
-
 let loginSuccessful = () => {
     let inputContainer = document.querySelector(`.data_input_section`);
     let outputContainer = document.querySelector(`.user_data_section`);

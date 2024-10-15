@@ -29,7 +29,6 @@ class Validation {
         }
         return check;
     };
-
     elemValidationCheck(attribute, regex, len) {
         this.setAttribute(attribute);
         this.setRegex(regex);

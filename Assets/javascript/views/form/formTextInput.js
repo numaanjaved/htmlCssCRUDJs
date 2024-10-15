@@ -111,4 +111,3 @@ selectUserType.addEventListener("change", () => {
     admin_heading.style.display = "block";
   }
 });
-

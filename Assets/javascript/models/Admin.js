@@ -17,7 +17,6 @@ class Admin extends User {
     constructor() {
         super();
     }
-
     create([firstName, lastName, email, contact, address, bio, userPicture, adminUserName, adminPass]) {
         super.create([firstName, lastName, email, contact, address, bio, userPicture]);
         this.setAdminName(adminUserName);
