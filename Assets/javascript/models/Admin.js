@@ -37,7 +37,8 @@ class Admin extends User {
     }
     CheckValidation(userName, userPass) {
         this.#validator = new LoginValidation();
-        this.#validator.checkLoginValidation(userName, userPass);
+        if (!this.#validator.checkLoginValidation(userName, userPass)) {
+            return false;
+        } else { return true; }
     }
-
 };

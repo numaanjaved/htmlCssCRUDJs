@@ -17,14 +17,19 @@ usersDataArray.push(adminAcc);
 let loginFromReset = () => {
     loginForm.reset();
 };
+let loginValidation = () => {
+    let validationCheck = true;
+    if (!adminAcc.CheckValidation(loginUserName, loginUserPassword)) { validationCheck = false };
+    if (validationCheck) {
+        loginSuccessful();
+    }
+    loginFromReset();
+}
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    adminAcc.CheckValidation(loginUserName, loginUserPassword);
-    // adminAcc.CheckValidation(loginUserPassword);
-    loginFromReset();
+    loginValidation();
 });
 
 
-
-// testValidation.checkLoginValidation(loginUserName);
-// testValidation.checkLoginValidation(loginUserPassword);
+// data_input_section
+// .user_data_section

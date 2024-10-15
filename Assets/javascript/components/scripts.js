@@ -1,6 +1,7 @@
 // Calling All scripts
 runScript('./Assets/javascript/views/header.js', 'Header Script', 0);
 runScript('./Assets/javascript/views/main.js', 'Main Script', 10);
+runScript('./Assets/javascript/views/dataDisplay/loginSuccessful.js', 'Display all Input and output', 15);
 runScript('./Assets/javascript/models/Validation.js', 'Validation Class Script', 20);
 runScript('./Assets/javascript/models/ValidationLogin.js', 'Validation Login Class Script', 25);
 runScript('./Assets/javascript/models/User.js', 'User Class Script', 30);
